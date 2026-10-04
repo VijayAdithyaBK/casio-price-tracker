@@ -1,217 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casio Watch Price Tracker & Discount Radar | casiostore.bhawar.com</title>
-  <meta name="description" content="Real-time discount tracker and price drop monitor for official Casio India Store (casiostore.bhawar.com). Watches sorted by discount descending.">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>CASIO.RADAR — BHAWAR ARCHIVE CATALOG (Live Price Tracker)</title>
+  <meta name="description" content="Automated liquidation detector & real-time arbitrage tracker for official Casio India Store (casiostore.bhawar.com). Watches sorted by highest discount descending."/>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "background": "#F5F5F3",
+            "surface": "#F5F5F3",
+            "surface-pure": "#FFFFFF",
+            "surface-muted": "#EFEFEA",
+            "border-hairline": "#E2E2DF",
+            "border-dark": "#111111",
+            "ink": "#111111",
+            "ink-muted": "#666666",
+            "ink-faint": "#999999",
+            "accent-red": "#E02A1D",
+            "accent-red-faint": "#FBEBEA",
+            "accent-green": "#16a34a",
+            "accent-green-faint": "#f0fdf4"
+          },
+          fontFamily: {
+            "sans": ["Work Sans", "sans-serif"],
+            "grotesk": ["Space Grotesk", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #F5F5F3;
+        color: #111111;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    }
+    .hairline-b { border-bottom: 1px solid #E2E2DF; }
+    .hairline-t { border-top: 1px solid #E2E2DF; }
+    .hairline-r { border-right: 1px solid #E2E2DF; }
+    .hairline-l { border-left: 1px solid #E2E2DF; }
+    .hairline-all { border: 1px solid #E2E2DF; }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
 </head>
-<body>
-  <!-- Header / Navigation -->
-  <header class="site-header">
-    <div class="header-inner container">
-      <div class="brand">
-        <div class="brand-badge">LIVE</div>
-        <div class="brand-text">
-          <span class="brand-title">CASIO<span class="highlight">RADAR</span></span>
-          <span class="brand-subtitle">Official Price Drop & Discount Tracker</span>
-        </div>
-      </div>
-      <div class="header-actions">
-        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="btn btn-outline" id="btn-visit-store">
-          <span>Official Store</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+<body class="bg-background text-ink font-sans selection:bg-ink selection:text-surface-pure antialiased min-h-screen">
+
+  <!-- TOP MINIMAL NAV BAR -->
+  <header class="w-full hairline-b bg-background/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-12 h-14 flex items-center justify-between text-[11px] font-mono tracking-[0.14em] uppercase text-ink">
+      <div class="flex items-center gap-8">
+        <a class="hover:text-accent-red transition-colors flex items-center gap-1.5" href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener">
+          <span>STORE</span>
+          <span class="text-[9px] text-ink-muted">↗</span>
         </a>
-        <button class="btn btn-primary" id="btn-open-alert-modal">
-          <span class="bell-icon">🔔</span>
-          <span>Set Up Alerts</span>
+        <a class="hover:text-accent-red transition-colors hidden sm:inline-block" href="#series">SERIES</a>
+      </div>
+
+      <!-- CENTER ICONIC MARQUEE -->
+      <a class="flex flex-col items-center justify-center group" href="#">
+        <div class="flex items-center gap-1.5 font-bold tracking-[0.2em] text-[12px]">
+          <span class="inline-block w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
+          <span>CASIO.RADAR</span>
+        </div>
+        <span class="text-[9px] text-ink-muted tracking-[0.18em] font-normal scale-90">BHAWAR TELEMETRIC / 2026</span>
+      </a>
+
+      <div class="flex items-center gap-6 sm:gap-8">
+        <button id="btn-open-alert-modal" class="hover:text-accent-red transition-colors flex items-center gap-1.5 font-semibold text-accent-red">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
+          <span>ALERTS [LIVE]</span>
         </button>
+        <a class="hover:text-accent-red transition-colors hidden md:inline-block" href="https://github.com/VijayAdithyaBK/casio-price-tracker" target="_blank" rel="noopener">GITHUB</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero & Live Metrics -->
-  <section class="hero-section container">
-    <div class="hero-content">
-      <div class="radar-status">
-        <span class="pulse-dot"></span>
-        <span>Monitoring <a href="https://casiostore.bhawar.com/collections/watches" target="_blank">casiostore.bhawar.com</a> via GitHub Actions</span>
-      </div>
-      <h1 class="hero-title">
-        Casio Deals, Sorted by <span class="gradient-text">Highest Discount</span>
+  <!-- MAIN WRAPPER MATCHING EDITORIAL POSTER COMPOSITION -->
+  <main class="max-w-[1400px] mx-auto px-6 sm:px-12 pt-10 sm:pt-14 pb-24">
+
+    <!-- HERO EDITORIAL TITLE -->
+    <div class="w-full text-center select-none overflow-hidden">
+      <h1 class="font-grotesk font-black text-[18vw] lg:text-[195px] leading-[0.82] tracking-[-0.05em] uppercase text-ink text-center">
+        CATALOG
       </h1>
-      <p class="hero-desc">
-        Automated price scanner extracting live discounts from Bhawar Casio India. Filter by series, discount depth, stock availability, and grab deals before they sell out.
-      </p>
-    </div>
-
-    <!-- Stats Bar -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-label">Max Discount Found</div>
-        <div class="stat-value highlight-red" id="stat-max-discount">--%</div>
-        <div class="stat-sub">Top active markdown</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Active Deals</div>
-        <div class="stat-value highlight-gold" id="stat-total-deals">--</div>
-        <div class="stat-sub" id="stat-in-stock-sub">-- in stock now</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Catalog Scanned</div>
-        <div class="stat-value" id="stat-total-scanned">--</div>
-        <div class="stat-sub">Official collection items</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Last Checked</div>
-        <div class="stat-value stat-small" id="stat-last-checked">Syncing...</div>
-        <div class="stat-sub" id="stat-sync-relative">via GitHub Cron</div>
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-mono tracking-[0.16em] text-ink-muted uppercase">
+        <span>BHAWAR AUTHORIZED DISTRIBUTOR</span>
+        <span class="w-1 h-1 rounded-full bg-ink-muted"></span>
+        <span>AUTOMATED LIQUIDATION DETECTOR</span>
+        <span class="w-1 h-1 rounded-full bg-ink-muted"></span>
+        <span>REAL-TIME ARBITRAGE</span>
       </div>
     </div>
-  </section>
 
-  <!-- Interactive Controls Bar -->
-  <section class="controls-section container">
-    <div class="controls-glass">
-      <!-- Search Input -->
-      <div class="search-box">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="search-input" placeholder="Search model (e.g. GA-2100, MTP, Edifice, DW-5600)..." autocomplete="off" />
-        <span class="search-hint">/</span>
+    <!-- MINIMALIST SUB-INDEX FILTER -->
+    <section class="mt-12 sm:mt-16 flex flex-col items-center" id="series">
+      <div class="text-[10px] font-mono tracking-[0.25em] text-ink-muted uppercase mb-1">
+        SERIES SELECTION
+      </div>
+      <div class="font-grotesk font-bold text-[28px] sm:text-[34px] tracking-[-0.03em] mb-7" id="series-index-label">
+        01 / 07
       </div>
 
-      <!-- Quick Series Filter Pills -->
-      <div class="series-filters" id="series-filters">
-        <button class="filter-pill active" data-series="all">All Series</button>
-        <button class="filter-pill" data-series="G-Shock">G-Shock</button>
-        <button class="filter-pill" data-series="Edifice">Edifice</button>
-        <button class="filter-pill" data-series="Vintage">Vintage</button>
-        <button class="filter-pill" data-series="Enticer">Enticer</button>
-        <button class="filter-pill" data-series="Pro Trek">Pro Trek</button>
+      <!-- MICRO THUMBNAIL HARDWARE SELECTOR -->
+      <div class="flex items-center justify-center gap-2 sm:gap-4 pb-4 overflow-x-auto max-w-full no-scrollbar" id="series-pill-bar">
+        <!-- ALL -->
+        <button data-series="all" class="series-pill w-14 sm:w-16 h-20 sm:h-24 bg-white border border-ink flex flex-col items-center justify-between p-1.5 group cursor-pointer shadow-sm transition-all">
+          <span class="text-[8px] font-mono text-ink tracking-tight font-bold">ALL</span>
+          <span class="text-[18px]">⌚</span>
+          <span class="text-[8px] font-mono text-accent-red font-medium" id="pill-all-count">...</span>
+        </button>
+
+        <!-- Edifice -->
+        <button data-series="Edifice" class="series-pill w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">EDF</span>
+          <span class="text-[16px]">⏱️</span>
+          <span class="text-[8px] font-mono text-accent-red font-medium" id="pill-edf-cut">-50%</span>
+        </button>
+
+        <!-- G-Shock / CasiOak -->
+        <button data-series="G-Shock" class="series-pill w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">G-SHK</span>
+          <span class="text-[16px]">🛡️</span>
+          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#02</span>
+        </button>
+
+        <!-- Vintage -->
+        <button data-series="Vintage" class="series-pill w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">VTG</span>
+          <span class="text-[16px]">✨</span>
+          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#03</span>
+        </button>
+
+        <!-- Pro Trek -->
+        <button data-series="Pro Trek" class="series-pill w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">PRT</span>
+          <span class="text-[16px]">🧭</span>
+          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#04</span>
+        </button>
+
+        <!-- Enticer -->
+        <button data-series="Enticer" class="series-pill w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">ENT</span>
+          <span class="text-[16px]">👔</span>
+          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#05</span>
+        </button>
       </div>
 
-      <!-- Filter Dropdowns Row -->
-      <div class="filter-dropdowns">
-        <!-- Stock Filter -->
-        <div class="toggle-group">
-          <label class="toggle-label" for="stock-toggle">
-            <input type="checkbox" id="stock-toggle" />
-            <span class="toggle-slider"></span>
-            <span class="toggle-text">In Stock Only</span>
-          </label>
-        </div>
+      <!-- SEARCH BAR INTEGRATION -->
+      <div class="mt-6 w-full max-w-lg relative">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="SEARCH MODEL, SKU, OR SERIES (e.g. GA-2100, MTP, EDIFICE)..." 
+          class="w-full bg-white border border-border-hairline px-4 py-2.5 text-[11px] font-mono tracking-wider uppercase text-ink placeholder:text-ink-faint focus:outline-none focus:border-ink transition-colors"
+        />
+        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-mono text-ink-muted bg-surface-muted px-1.5 py-0.5 border border-border-hairline">/</span>
+      </div>
+    </section>
 
-        <!-- Min Discount Filter -->
-        <div class="select-wrapper">
-          <label for="discount-select">Min Discount:</label>
-          <select id="discount-select">
-            <option value="0">Any Discount</option>
-            <option value="20">20% or More</option>
-            <option value="30">30% or More</option>
-            <option value="40">40% or More</option>
-            <option value="50">50% or More</option>
-          </select>
-        </div>
+    <!-- TECHNICAL CONTROL & METRIC RUNNER STRIP -->
+    <div class="mt-10 hairline-t hairline-b py-3.5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[11px] font-mono tracking-[0.1em] uppercase">
+      <!-- PARAMETRIC SORT CONTROLS -->
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <span class="text-ink-muted">SORT:</span>
+        <button data-sort="discount_desc" class="sort-btn text-ink font-bold border-b border-ink">HIGHEST DISCOUNT %</button>
+        <button data-sort="savings_desc" class="sort-btn text-ink-muted hover:text-ink transition-colors">BIGGEST ₹ DELTA</button>
+        <button data-sort="price_asc" class="sort-btn text-ink-muted hover:text-ink transition-colors">LOWEST PRICE</button>
+        <button data-sort="price_desc" class="sort-btn text-ink-muted hover:text-ink transition-colors">HIGHEST PRICE</button>
+        <button id="toggle-stock-filter" class="text-ink-muted hover:text-ink transition-colors flex items-center gap-1.5 border border-border-hairline px-2 py-0.5 bg-white">
+          <span id="stock-indicator-dot" class="w-1.5 h-1.5 rounded-full bg-ink-muted"></span>
+          <span id="stock-filter-text">IN STOCK ONLY</span>
+        </button>
+      </div>
 
-        <!-- Sort Option -->
-        <div class="select-wrapper">
-          <label for="sort-select">Sort By:</label>
-          <select id="sort-select">
-            <option value="discount_desc" selected>Discount % (Highest First)</option>
-            <option value="savings_desc">Amount Saved ₹ (Highest First)</option>
-            <option value="price_asc">Price (Lowest First)</option>
-            <option value="price_desc">Price (Highest First)</option>
-          </select>
-        </div>
+      <!-- TELEMETRY BADGE -->
+      <div class="flex items-center gap-2 text-ink-muted text-[10px]">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
+        <span id="telemetry-time">SYNCING LIVE</span>
+        <span>•</span>
+        <span id="telemetry-scanned">1,361 SKUS SCANNED</span>
+        <span>•</span>
+        <span id="telemetry-deals" class="text-ink font-bold">0 DEALS ACTIVE</span>
       </div>
     </div>
-  </section>
 
-  <!-- Main Deals Grid Section -->
-  <main class="deals-section container">
-    <div class="deals-header">
-      <h2 class="deals-title">
-        Available Deals <span class="deals-count-tag" id="deals-count-badge">0 Watches</span>
-      </h2>
-      <div class="active-filter-tags" id="active-filter-tags"></div>
+    <!-- MAIN PRODUCT GRID ARCHITECTURE -->
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border-hairline bg-background" id="catalog-product-matrix">
+      <!-- Cards rendered dynamically via app.js -->
+    </section>
+
+    <!-- EMPTY STATE -->
+    <div id="empty-state" class="hidden mt-12 p-16 text-center hairline-all bg-white flex flex-col items-center justify-center">
+      <span class="text-3xl mb-3">⌚</span>
+      <h3 class="font-grotesk font-bold text-lg uppercase tracking-tight">No Matching Watches Found</h3>
+      <p class="font-mono text-[11px] text-ink-muted uppercase mt-1">Try resetting search filters or stock toggles</p>
+      <button id="btn-reset-filters" class="mt-4 px-4 py-2 border border-ink text-[10px] font-mono uppercase tracking-widest hover:bg-ink hover:text-white transition-colors">
+        RESET FILTERS
+      </button>
     </div>
 
-    <!-- Watch Cards Grid -->
-    <div class="watch-grid" id="watch-grid">
-      <!-- Loading Skeleton Cards -->
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-    </div>
-
-    <!-- Empty State -->
-    <div class="empty-state hidden" id="empty-state">
-      <div class="empty-icon">⌚</div>
-      <h3>No matching discounted watches found</h3>
-      <p>Try resetting filters or search query to browse all tracked models.</p>
-      <button class="btn btn-outline" id="btn-reset-filters">Reset All Filters</button>
-    </div>
   </main>
 
-  <!-- Alert Instructions Modal -->
-  <div class="modal-overlay hidden" id="alert-modal">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h3>⚡ Receive Free Instant Alerts</h3>
-        <button class="modal-close" id="btn-close-modal">&times;</button>
+  <!-- ALERTS MODAL -->
+  <div id="alert-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 hidden">
+    <div class="bg-white border border-border-dark max-w-lg w-full p-8 relative shadow-2xl">
+      <div class="flex items-center justify-between hairline-b pb-4 mb-6">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
+          <h2 class="font-grotesk font-bold text-lg uppercase tracking-tight">DISCOUNT RADAR ALERTS</h2>
+        </div>
+        <button id="btn-close-modal" class="text-xl font-mono hover:text-accent-red">&times;</button>
       </div>
-      <div class="modal-body">
-        <p class="modal-desc">
-          Get notified on your phone or desktop the second Casio drops prices or restocks discounted models!
-        </p>
 
-        <div class="alert-option">
-          <div class="alert-option-header">
-            <span class="channel-badge telegram">Telegram Bot</span>
-            <span class="free-tag">Instant Push</span>
+      <p class="font-mono text-[11px] text-ink-muted uppercase tracking-wider mb-6 leading-relaxed">
+        Autonomous GitHub Actions daemon alerts you the instant Casio India cuts prices or restocks liquidation items, sorted from highest discount descending.
+      </p>
+
+      <div class="space-y-4 font-mono text-[11px]">
+        <!-- Telegram -->
+        <div class="p-4 border border-border-hairline bg-surface flex flex-col gap-1">
+          <div class="flex items-center justify-between font-bold text-ink">
+            <span>✈️ TELEGRAM BOT</span>
+            <span class="text-accent-green bg-accent-green-faint px-1.5 py-0.5 text-[9px] uppercase">Active</span>
           </div>
-          <p>Create a free Telegram bot via <code>@BotFather</code>, then set repository secrets <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code>.</p>
+          <p class="text-ink-muted text-[10px] leading-relaxed">
+            Delivers push notifications with watch photography, exact price cuts in ₹, and instant 1-click buy links directly to your phone.
+          </p>
         </div>
 
-        <div class="alert-option">
-          <div class="alert-option-header">
-            <span class="channel-badge discord">Discord Webhook</span>
-            <span class="free-tag">Channel Feed</span>
+        <!-- Discord -->
+        <div class="p-4 border border-border-hairline bg-surface flex flex-col gap-1">
+          <div class="flex items-center justify-between font-bold text-ink">
+            <span>🎮 DISCORD WEBHOOK</span>
+            <span class="text-ink-muted text-[9px] uppercase">Optional</span>
           </div>
-          <p>Create a Discord Webhook in your server channel and add it as <code>DISCORD_WEBHOOK_URL</code> in GitHub repository secrets.</p>
+          <p class="text-ink-muted text-[10px] leading-relaxed">
+            Pings your personal server with color-coded markdown embeds (Red for 50%+, Orange for 40%+).
+          </p>
         </div>
 
-        <div class="alert-option">
-          <div class="alert-option-header">
-            <span class="channel-badge ntfy">NTFY.sh Mobile App</span>
-            <span class="free-tag">Zero Setup Needed</span>
+        <!-- Schedule -->
+        <div class="p-4 border border-border-hairline bg-surface flex flex-col gap-1">
+          <div class="flex items-center justify-between font-bold text-ink">
+            <span>⏱️ SCHEDULE CRON</span>
+            <span class="text-ink text-[9px] uppercase">Every 1 Hour</span>
           </div>
-          <p>Install the free NTFY app or visit <code>ntfy.sh</code>, choose a unique topic name, and set <code>NTFY_TOPIC</code> in your workflow.</p>
+          <p class="text-ink-muted text-[10px] leading-relaxed">
+            Runs continuously on GitHub Actions with zero server costs or cloud hosting fees.
+          </p>
         </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" id="btn-close-modal-footer">Got It</button>
-      </div>
+
+      <button id="btn-close-modal-footer" class="mt-8 w-full py-3 bg-ink text-white font-mono text-[11px] tracking-widest uppercase hover:bg-accent-red transition-colors">
+        CLOSE RADAR INTERFACE
+      </button>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <p><strong>Casio Price Tracker & Discount Radar</strong></p>
-        <p class="footer-sub">Autonomous GitHub Actions daemon extracting public Shopify store data from <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener">casiostore.bhawar.com</a>.</p>
+  <!-- FOOTER -->
+  <footer class="w-full hairline-t bg-background py-10">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase text-ink-muted">
+      <div>
+        CASIO.RADAR — AUTONOMOUS LIQUIDATION MONITOR // BHATWAR ARCHIVE
       </div>
-      <div class="footer-right">
-        <a href="https://github.com" target="_blank" class="footer-link">GitHub Repository</a>
-        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" class="footer-link">Official Casio India</a>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker" target="_blank" rel="noopener" class="hover:text-ink">REPOSITORY ↗</a>
+        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="hover:text-ink">OFFICIAL STORE ↗</a>
       </div>
     </div>
   </footer>
