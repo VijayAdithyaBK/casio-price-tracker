@@ -1,0 +1,22 @@
+{
+  "name": "casio-price-tracker",
+  "version": "1.0.0",
+  "description": "High-efficiency GitHub-hosted Casio watch price tracker and discount alert system for casiostore.bhawar.com",
+  "main": "src/tracker.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node src/tracker.mjs",
+    "test-scan": "node test-run.mjs",
+    "serve": "node -e \"const http=require('http'),fs=require('fs'),path=require('path');http.createServer((req,res)=>{const p=path.join('docs',req.url==='/'?'index.html':req.url);if(fs.existsSync(p)){res.writeHead(200,{'Content-Type':p.endsWith('.html')?'text/html':p.endsWith('.css')?'text/css':p.endsWith('.js')?'application/javascript':'application/json'});res.end(fs.readFileSync(p));}else{res.writeHead(404);res.end('Not found');}}).listen(3000,()=>console.log('Dashboard live at http://localhost:3000'))\""
+  },
+  "keywords": [
+    "casio",
+    "gshock",
+    "price-tracker",
+    "discount-alert",
+    "github-actions",
+    "shopify-api"
+  ],
+  "author": "",
+  "license": "MIT"
+}

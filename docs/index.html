@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casio Watch Price Tracker & Discount Radar | casiostore.bhawar.com</title>
+  <meta name="description" content="Real-time discount tracker and price drop monitor for official Casio India Store (casiostore.bhawar.com). Watches sorted by discount descending.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="brand">
+        <div class="brand-badge">LIVE</div>
+        <div class="brand-text">
+          <span class="brand-title">CASIO<span class="highlight">RADAR</span></span>
+          <span class="brand-subtitle">Official Price Drop & Discount Tracker</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="btn btn-outline" id="btn-visit-store">
+          <span>Official Store</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+        <button class="btn btn-primary" id="btn-open-alert-modal">
+          <span class="bell-icon">🔔</span>
+          <span>Set Up Alerts</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Live Metrics -->
+  <section class="hero-section container">
+    <div class="hero-content">
+      <div class="radar-status">
+        <span class="pulse-dot"></span>
+        <span>Monitoring <a href="https://casiostore.bhawar.com/collections/watches" target="_blank">casiostore.bhawar.com</a> via GitHub Actions</span>
+      </div>
+      <h1 class="hero-title">
+        Casio Deals, Sorted by <span class="gradient-text">Highest Discount</span>
+      </h1>
+      <p class="hero-desc">
+        Automated price scanner extracting live discounts from Bhawar Casio India. Filter by series, discount depth, stock availability, and grab deals before they sell out.
+      </p>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Max Discount Found</div>
+        <div class="stat-value highlight-red" id="stat-max-discount">--%</div>
+        <div class="stat-sub">Top active markdown</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Active Deals</div>
+        <div class="stat-value highlight-gold" id="stat-total-deals">--</div>
+        <div class="stat-sub" id="stat-in-stock-sub">-- in stock now</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Catalog Scanned</div>
+        <div class="stat-value" id="stat-total-scanned">--</div>
+        <div class="stat-sub">Official collection items</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Last Checked</div>
+        <div class="stat-value stat-small" id="stat-last-checked">Syncing...</div>
+        <div class="stat-sub" id="stat-sync-relative">via GitHub Cron</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Controls Bar -->
+  <section class="controls-section container">
+    <div class="controls-glass">
+      <!-- Search Input -->
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="search-input" placeholder="Search model (e.g. GA-2100, MTP, Edifice, DW-5600)..." autocomplete="off" />
+        <span class="search-hint">/</span>
+      </div>
+
+      <!-- Quick Series Filter Pills -->
+      <div class="series-filters" id="series-filters">
+        <button class="filter-pill active" data-series="all">All Series</button>
+        <button class="filter-pill" data-series="G-Shock">G-Shock</button>
+        <button class="filter-pill" data-series="Edifice">Edifice</button>
+        <button class="filter-pill" data-series="Vintage">Vintage</button>
+        <button class="filter-pill" data-series="Enticer">Enticer</button>
+        <button class="filter-pill" data-series="Pro Trek">Pro Trek</button>
+      </div>
+
+      <!-- Filter Dropdowns Row -->
+      <div class="filter-dropdowns">
+        <!-- Stock Filter -->
+        <div class="toggle-group">
+          <label class="toggle-label" for="stock-toggle">
+            <input type="checkbox" id="stock-toggle" />
+            <span class="toggle-slider"></span>
+            <span class="toggle-text">In Stock Only</span>
+          </label>
+        </div>
+
+        <!-- Min Discount Filter -->
+        <div class="select-wrapper">
+          <label for="discount-select">Min Discount:</label>
+          <select id="discount-select">
+            <option value="0">Any Discount</option>
+            <option value="20">20% or More</option>
+            <option value="30">30% or More</option>
+            <option value="40">40% or More</option>
+            <option value="50">50% or More</option>
+          </select>
+        </div>
+
+        <!-- Sort Option -->
+        <div class="select-wrapper">
+          <label for="sort-select">Sort By:</label>
+          <select id="sort-select">
+            <option value="discount_desc" selected>Discount % (Highest First)</option>
+            <option value="savings_desc">Amount Saved ₹ (Highest First)</option>
+            <option value="price_asc">Price (Lowest First)</option>
+            <option value="price_desc">Price (Highest First)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Deals Grid Section -->
+  <main class="deals-section container">
+    <div class="deals-header">
+      <h2 class="deals-title">
+        Available Deals <span class="deals-count-tag" id="deals-count-badge">0 Watches</span>
+      </h2>
+      <div class="active-filter-tags" id="active-filter-tags"></div>
+    </div>
+
+    <!-- Watch Cards Grid -->
+    <div class="watch-grid" id="watch-grid">
+      <!-- Loading Skeleton Cards -->
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state hidden" id="empty-state">
+      <div class="empty-icon">⌚</div>
+      <h3>No matching discounted watches found</h3>
+      <p>Try resetting filters or search query to browse all tracked models.</p>
+      <button class="btn btn-outline" id="btn-reset-filters">Reset All Filters</button>
+    </div>
+  </main>
+
+  <!-- Alert Instructions Modal -->
+  <div class="modal-overlay hidden" id="alert-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>⚡ Receive Free Instant Alerts</h3>
+        <button class="modal-close" id="btn-close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Get notified on your phone or desktop the second Casio drops prices or restocks discounted models!
+        </p>
+
+        <div class="alert-option">
+          <div class="alert-option-header">
+            <span class="channel-badge telegram">Telegram Bot</span>
+            <span class="free-tag">Instant Push</span>
+          </div>
+          <p>Create a free Telegram bot via <code>@BotFather</code>, then set repository secrets <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code>.</p>
+        </div>
+
+        <div class="alert-option">
+          <div class="alert-option-header">
+            <span class="channel-badge discord">Discord Webhook</span>
+            <span class="free-tag">Channel Feed</span>
+          </div>
+          <p>Create a Discord Webhook in your server channel and add it as <code>DISCORD_WEBHOOK_URL</code> in GitHub repository secrets.</p>
+        </div>
+
+        <div class="alert-option">
+          <div class="alert-option-header">
+            <span class="channel-badge ntfy">NTFY.sh Mobile App</span>
+            <span class="free-tag">Zero Setup Needed</span>
+          </div>
+          <p>Install the free NTFY app or visit <code>ntfy.sh</code>, choose a unique topic name, and set <code>NTFY_TOPIC</code> in your workflow.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-close-modal-footer">Got It</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p><strong>Casio Price Tracker & Discount Radar</strong></p>
+        <p class="footer-sub">Autonomous GitHub Actions daemon extracting public Shopify store data from <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener">casiostore.bhawar.com</a>.</p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com" target="_blank" class="footer-link">GitHub Repository</a>
+        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" class="footer-link">Official Casio India</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
