@@ -12,6 +12,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   
+  <!-- PWA & Favicon Icons -->
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#F5F5F3"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="CASIO.RADAR"/>
+  
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config">
     tailwind.config = {
@@ -119,9 +131,10 @@
 
       <!-- CENTER ICONIC MARQUEE -->
       <a class="flex flex-col items-center justify-center group" href="#">
-        <div class="flex items-center gap-1.5 font-bold tracking-[0.2em] text-[12px]">
-          <span class="inline-block w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
+        <div class="flex items-center gap-2 font-bold tracking-[0.2em] text-[12px]">
+          <img src="icons/icon.svg" class="w-4 h-4 object-contain inline-block" alt="Radar Icon"/>
           <span>CASIO.RADAR</span>
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
         </div>
         <span class="text-[9px] text-ink-muted tracking-[0.18em] font-normal scale-90">BHAWAR TELEMETRIC / 2026</span>
       </a>
@@ -368,7 +381,7 @@
   <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 pb-safe bg-background/95 backdrop-blur-xl hairline-t shadow-[0_-2px_10px_rgba(0,0,0,0.03)]">
     <div class="flex items-center justify-around h-14 px-2 font-mono text-[9px] uppercase tracking-wider text-ink-muted">
       <button id="nav-btn-radar" class="flex flex-col items-center justify-center flex-1 py-1 hover:text-ink transition-colors text-ink font-bold">
-        <span class="material-symbols-outlined text-[19px]">sensors</span>
+        <img src="icons/icon.svg" class="w-[18px] h-[18px] object-contain inline-block" alt="Radar"/>
         <span class="mt-0.5">RADAR</span>
       </button>
 
