@@ -1,0 +1,78 @@
+name: Casio Watch Discount Tracker
+
+on:
+  schedule:
+    # Runs every 1 hour (at minute 0)
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      force_alert:
+        description: 'Force send alerts for all active discounts (ignores history)'
+        required: false
+        type: boolean
+        default: false
+      track_all_store:
+        description: 'Scan entire Casio catalog (all collections vs /collections/watches)'
+        required: false
+        type: boolean
+        default: false
+      min_discount:
+        description: 'Minimum discount percent to alert on (default 5%)'
+        required: false
+        type: string
+        default: '5'
+      in_stock_only:
+        description: 'Alert only for in-stock watches'
+        required: false
+        type: boolean
+        default: true
+
+# Grant permission to commit updated price database back to the repo
+permissions:
+  contents: write
+
+jobs:
+  track-prices:
+    name: Check Casio Discounts & Alert
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Casio Discount Tracker & Alerter
+        env:
+          # Target configuration
+          BASE_URL: 'https://casiostore.bhawar.com'
+          TRACK_ALL_STORE: ${{ github.event.inputs.track_all_store || 'false' }}
+          ALERT_MIN_DISCOUNT_PERCENT: ${{ github.event.inputs.min_discount || '5' }}
+          ALERT_IN_STOCK_ONLY: ${{ github.event.inputs.in_stock_only != 'false' }}
+          FORCE_ALERT_ALL: ${{ github.event.inputs.force_alert || 'false' }}
+
+          # Alert secrets (Configure these in GitHub Repo Settings -> Secrets & Variables -> Actions)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+
+        run: |
+          node src/tracker.mjs
+
+      - name: Commit & Push Updated Price Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add data/ docs/
+          if git diff --staged --quiet; then
+            echo "No price data changes to commit."
+          else
+            git commit -m "chore(tracker): update casio discounts database [skip ci]"
+            git push
+          fi
