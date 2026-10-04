@@ -10,9 +10,12 @@ function formatInr(num) {
  */
 async function sendTelegramAlert(items) {
   const { botToken, chatId } = config.telegram;
-  if (!botToken || !chatId) return false;
+  if (!botToken || !chatId) {
+    console.log('[Alerter] Telegram: No credentials configured (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID). Skipping.');
+    return false;
+  }
 
-  console.log(`[Alerter] Sending Telegram alert for ${items.length} watch(es)...`);
+  console.log(`[Alerter] Sending Telegram alert for ${items.length} watch(es) to chat ID: ${chatId.slice(0, 4)}****...`);
 
   const lines = [
     `<b>🚨 CASIO DISCOUNT ALERT (${items.length} Watch${items.length > 1 ? 'es' : ''})</b>`,
@@ -64,11 +67,13 @@ async function sendTelegramAlert(items) {
         })
       });
       const data = await res.json();
-      if (!data.ok) {
-        console.error('[Alerter] Telegram error:', data.description);
+      if (data.ok) {
+        console.log(`[Alerter] ✅ Telegram alert delivered successfully! (Message ID: ${data.result?.message_id})`);
+      } else {
+        console.error(`[Alerter] ❌ Telegram API error (${data.error_code}): ${data.description}`);
       }
     } catch (err) {
-      console.error('[Alerter] Telegram network error:', err.message);
+      console.error('[Alerter] ❌ Telegram network error:', err.message);
     }
   }
 
@@ -80,7 +85,10 @@ async function sendTelegramAlert(items) {
  */
 async function sendDiscordAlert(items) {
   const { webhookUrl } = config.discord;
-  if (!webhookUrl) return false;
+  if (!webhookUrl) {
+    console.log('[Alerter] Discord: No DISCORD_WEBHOOK_URL configured. Skipping.');
+    return false;
+  }
 
   console.log(`[Alerter] Sending Discord alert for ${items.length} watch(es)...`);
 
@@ -89,11 +97,6 @@ async function sendDiscordAlert(items) {
   const topItems = items.slice(0, maxEmbeds);
 
   const embeds = topItems.map((item) => {
-    // Color code based on discount depth:
-    // >= 50% => Red (0xFF0000)
-    // >= 40% => Orange (0xFFA500)
-    // >= 30% => Gold (0xFFD700)
-    // else => Emerald (0x00FF88)
     let color = 0x00FF88;
     if (item.discountPercent >= 50) color = 0xFF2A55;
     else if (item.discountPercent >= 40) color = 0xFF7A00;
@@ -128,11 +131,14 @@ async function sendDiscordAlert(items) {
         embeds
       })
     });
-    if (!res.ok) {
-      console.error(`[Alerter] Discord returned status ${res.status}`);
+    if (res.ok) {
+      console.log('[Alerter] ✅ Discord webhook delivered successfully!');
+    } else {
+      const errText = await res.text();
+      console.error(`[Alerter] ❌ Discord returned status ${res.status}: ${errText}`);
     }
   } catch (err) {
-    console.error('[Alerter] Discord network error:', err.message);
+    console.error('[Alerter] ❌ Discord network error:', err.message);
   }
 
   return true;
@@ -143,11 +149,13 @@ async function sendDiscordAlert(items) {
  */
 async function sendNtfyAlert(items) {
   const { topic, server } = config.ntfy;
-  if (!topic) return false;
+  if (!topic) {
+    console.log('[Alerter] NTFY: No NTFY_TOPIC configured. Skipping.');
+    return false;
+  }
 
   console.log(`[Alerter] Sending NTFY push notification to topic '${topic}'...`);
 
-  // Send top deal summary
   const topDeal = items[0];
   const title = `🚨 Casio Sale: ${topDeal.discountPercent}% OFF on ${topDeal.title}${items.length > 1 ? ` & ${items.length - 1} more` : ''}`;
   const message = items
@@ -159,7 +167,7 @@ async function sendNtfyAlert(items) {
     .join('\n');
 
   try {
-    await fetch(`${server.replace(/\/$/, '')}/${topic}`, {
+    const res = await fetch(`${server.replace(/\/$/, '')}/${topic}`, {
       method: 'POST',
       headers: {
         'Title': title,
@@ -169,8 +177,13 @@ async function sendNtfyAlert(items) {
       },
       body: message
     });
+    if (res.ok) {
+      console.log(`[Alerter] ✅ NTFY push delivered to topic '${topic}'!`);
+    } else {
+      console.error(`[Alerter] ❌ NTFY returned status ${res.status}`);
+    }
   } catch (err) {
-    console.error('[Alerter] NTFY network error:', err.message);
+    console.error('[Alerter] ❌ NTFY network error:', err.message);
   }
 
   return true;
