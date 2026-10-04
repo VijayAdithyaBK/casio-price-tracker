@@ -1,4 +1,4 @@
-// Casio Radar Editorial Application Logic (Stitch Design Integration)
+// Casio Radar Editorial Application Logic (Stitch Minimalist Mobile & Desktop Integration)
 let allWatches = [];
 let metadata = {};
 
@@ -6,8 +6,31 @@ const state = {
   search: '',
   series: 'all',
   inStockOnly: false,
-  sortBy: 'discount_desc'
+  savedOnly: false,
+  sortBy: 'discount_desc',
+  viewMode: 'editorial'
 };
+
+// Bookmarks in LocalStorage
+function getBookmarks() {
+  try {
+    return JSON.parse(localStorage.getItem('casio_bookmarks') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function toggleBookmark(id) {
+  const bookmarks = getBookmarks();
+  const index = bookmarks.indexOf(id);
+  if (index >= 0) {
+    bookmarks.splice(index, 1);
+  } else {
+    bookmarks.push(id);
+  }
+  localStorage.setItem('casio_bookmarks', JSON.stringify(bookmarks));
+  updateSavedFilterCount();
+}
 
 function formatInr(num) {
   return '₹' + Number(num).toLocaleString('en-IN');
@@ -33,6 +56,7 @@ async function loadData() {
     metadata = data;
     updateTelemetry();
     renderSeriesCounts();
+    updateSavedFilterCount();
     renderGrid();
   } catch (err) {
     console.warn('Could not load data.json:', err);
@@ -41,14 +65,10 @@ async function loadData() {
 
 function updateTelemetry() {
   const telemetryTime = document.getElementById('telemetry-time');
-  const telemetryScanned = document.getElementById('telemetry-scanned');
   const telemetryDeals = document.getElementById('telemetry-deals');
 
   if (telemetryTime && metadata.updatedAt) {
     telemetryTime.textContent = `API: BHAWAR ${timeAgo(metadata.updatedAt)}`;
-  }
-  if (telemetryScanned && metadata.stats) {
-    telemetryScanned.textContent = `${metadata.stats.totalScanned || '1,361'} SKUS SCANNED`;
   }
   if (telemetryDeals) {
     telemetryDeals.textContent = `${allWatches.length} DEALS ACTIVE`;
@@ -69,7 +89,17 @@ function renderSeriesCounts() {
   }
 }
 
+function updateSavedFilterCount() {
+  const savedCount = getBookmarks().length;
+  const countSpan = document.getElementById('bookmark-filter-text');
+  if (countSpan) {
+    countSpan.textContent = savedCount > 0 ? `SAVED [${savedCount}]` : 'SAVED';
+  }
+}
+
 function getFilteredWatches() {
+  const bookmarks = getBookmarks();
+
   let list = allWatches.filter(item => {
     // Search
     if (state.search) {
@@ -87,6 +117,11 @@ function getFilteredWatches() {
 
     // In Stock
     if (state.inStockOnly && !item.available) {
+      return false;
+    }
+
+    // Saved only
+    if (state.savedOnly && !bookmarks.includes(item.id)) {
       return false;
     }
 
@@ -116,6 +151,7 @@ function renderGrid() {
   const container = document.getElementById('catalog-product-matrix');
   const emptyState = document.getElementById('empty-state');
   const seriesIndexLabel = document.getElementById('series-index-label');
+  const bookmarks = getBookmarks();
 
   const filtered = getFilteredWatches();
 
@@ -143,57 +179,89 @@ function renderGrid() {
     const padIndex = String(index + 1).padStart(2, '0');
     const imageSrc = item.image || 'https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-2100RL-1A.png?v=1751277644';
     const seriesTitle = (item.series || 'CASIO').toUpperCase();
+    const isSaved = bookmarks.includes(item.id);
     const stockStatus = item.available 
       ? '<span class="text-accent-green font-semibold">🟢 IN STOCK</span>'
       : '<span class="text-ink-muted">🔴 OUT OF STOCK</span>';
 
     return `
-      <article class="border-r border-b border-border-hairline p-8 sm:p-10 flex flex-col justify-between group hover:bg-white transition-colors duration-200">
+      <article class="border-r border-b border-border-hairline p-6 sm:p-8 flex flex-col justify-between group hover:bg-white transition-colors duration-200" data-watch-id="${item.id}">
         <!-- Top spec label & deal index -->
-        <div class="flex items-center justify-between text-[10px] font-mono tracking-widest text-ink-muted">
-          <span>${padIndex} / ${seriesTitle}</span>
-          <span class="text-accent-red font-bold tracking-normal border border-accent-red/30 px-1.5 py-0.5 bg-accent-red-faint">-${item.discountPercent}% CUT</span>
+        <div class="flex items-center justify-between text-[10px] font-mono tracking-widest text-ink-muted pb-2">
+          <span>PLATE ${padIndex} • ${seriesTitle}</span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-accent-red font-bold tracking-normal border border-accent-red/30 px-1.5 py-0.5 bg-accent-red-faint text-[9px]">
+              -${item.discountPercent}% CUT
+            </span>
+            <button 
+              class="bookmark-btn p-1 text-ink-muted hover:text-ink transition-colors" 
+              title="Bookmark Watch" 
+              data-id="${item.id}"
+            >
+              <span class="material-symbols-outlined text-[16px]">
+                ${isSaved ? 'bookmark' : 'bookmark_border'}
+              </span>
+            </button>
+          </div>
         </div>
 
-        <!-- High-res product studio presentation -->
-        <div class="py-10 sm:py-14 flex items-center justify-center min-h-[220px]">
+        <!-- Archival Studio Isolation Plate -->
+        <div class="img-plate py-8 sm:py-12 flex items-center justify-center min-h-[200px] relative bg-surface-muted/30">
+          <div class="absolute top-2 left-2 font-mono text-[8px] text-ink-muted uppercase tracking-widest opacity-60">
+            RAW SPEC // ${item.sku || 'CATALOG'}
+          </div>
           <img 
             alt="${item.title}" 
-            class="max-h-52 max-w-full object-contain filter contrast-105 group-hover:scale-[1.04] transition-transform duration-300" 
+            class="max-h-48 max-w-full object-contain filter contrast-105 group-hover:scale-[1.04] transition-transform duration-300" 
             src="${imageSrc}"
             loading="lazy"
           />
+          <div class="absolute bottom-2 right-2 font-mono text-[8px] text-ink-muted tracking-widest uppercase">
+            GAP: +${formatInr(item.savings)}
+          </div>
         </div>
 
         <!-- Product Details, Pricing, Direct Link -->
-        <div>
-          <div class="flex items-baseline justify-between pt-4 border-t border-border-hairline text-ink">
-            <h2 class="font-grotesk font-bold text-[14px] uppercase tracking-[-0.01em]">
+        <div class="pt-4">
+          <div class="flex items-baseline justify-between pt-2 border-t border-border-hairline text-ink">
+            <h2 class="font-grotesk font-bold text-[14px] uppercase tracking-[-0.01em] line-clamp-1">
               ${item.title}
             </h2>
-            <div class="flex items-baseline gap-2 font-mono">
+            <div class="flex items-baseline gap-2 font-mono flex-shrink-0 ml-2">
               <span class="text-[11px] line-through text-ink-muted">${formatInr(item.originalPrice)}</span>
-              <span class="font-bold text-[16px] text-ink">${formatInr(item.price)}</span>
+              <span class="font-bold text-[15px] sm:text-[16px] text-ink">${formatInr(item.price)}</span>
             </div>
           </div>
 
-          <div class="mt-3 flex items-center justify-between text-[10px] font-mono text-ink-muted uppercase">
-            <span>SKU: ${item.sku || 'N/A'} • SAVE ${formatInr(item.savings)}</span>
+          <div class="card-specs mt-2.5 flex items-center justify-between text-[10px] font-mono text-ink-muted uppercase">
+            <span>ARBITRAGE: +${formatInr(item.savings)} GAP</span>
             ${stockStatus}
           </div>
 
-          <a 
-            class="mt-4 w-full py-2.5 hairline-all text-center block text-[10px] font-mono tracking-[0.16em] uppercase hover:bg-ink hover:text-white transition-colors duration-150 font-semibold" 
-            href="${item.url}" 
-            rel="noopener noreferrer" 
-            target="_blank"
-          >
-            SECURE AT BHAWAR ↗
-          </a>
+          <div class="mt-3 flex items-center gap-2">
+            <a 
+              class="card-btn flex-1 py-2.5 hairline-all text-center block text-[10px] font-mono tracking-[0.16em] uppercase hover:bg-ink hover:text-white transition-colors duration-150 font-semibold" 
+              href="${item.url}" 
+              rel="noopener noreferrer" 
+              target="_blank"
+            >
+              SECURE AT BHAWAR ↗
+            </a>
+          </div>
         </div>
       </article>
     `;
   }).join('');
+
+  // Attach bookmark toggle listeners
+  container.querySelectorAll('.bookmark-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = btn.dataset.id;
+      toggleBookmark(id);
+      renderGrid();
+    });
+  });
 }
 
 function setupEvents() {
@@ -274,6 +342,87 @@ function setupEvents() {
     });
   }
 
+  // Saved / Bookmark Filter Toggle
+  const bookmarkToggleBtn = document.getElementById('toggle-bookmark-filter');
+  if (bookmarkToggleBtn) {
+    bookmarkToggleBtn.addEventListener('click', () => {
+      state.savedOnly = !state.savedOnly;
+      if (state.savedOnly) {
+        bookmarkToggleBtn.classList.add('bg-ink', 'text-white', 'border-ink');
+        bookmarkToggleBtn.classList.remove('bg-white', 'text-ink-muted', 'border-border-hairline');
+      } else {
+        bookmarkToggleBtn.classList.remove('bg-ink', 'text-white', 'border-ink');
+        bookmarkToggleBtn.classList.add('bg-white', 'text-ink-muted', 'border-border-hairline');
+      }
+      renderGrid();
+    });
+  }
+
+  // Layout View Switcher (EDITORIAL / 1 CARD / 2 CARD)
+  const viewToggle = document.getElementById('layout-view-toggle');
+  const matrix = document.getElementById('catalog-product-matrix');
+  if (viewToggle && matrix) {
+    const buttons = viewToggle.querySelectorAll('button[data-layout-mode]');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const mode = this.dataset.layoutMode;
+        buttons.forEach(b => {
+          b.classList.remove('bg-ink', 'text-white', 'font-semibold');
+          b.classList.add('bg-transparent', 'text-ink-muted');
+        });
+        this.classList.remove('bg-transparent', 'text-ink-muted');
+        this.classList.add('bg-ink', 'text-white', 'font-semibold');
+
+        matrix.classList.remove('view-dual', 'view-single', 'view-editorial');
+        if (mode === 'dual') {
+          matrix.classList.add('view-dual');
+        } else if (mode === 'single') {
+          matrix.classList.add('view-single');
+        } else {
+          matrix.classList.add('view-editorial');
+        }
+      });
+    });
+  }
+
+  // Mobile Bottom Navigation Buttons
+  const navRadar = document.getElementById('nav-btn-radar');
+  const navSeries = document.getElementById('nav-btn-series');
+  const navDrops = document.getElementById('nav-btn-drops');
+  const navAlerts = document.getElementById('nav-btn-alerts');
+
+  if (navRadar) {
+    navRadar.addEventListener('click', () => {
+      state.search = '';
+      state.series = 'all';
+      state.inStockOnly = false;
+      state.savedOnly = false;
+      renderGrid();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  if (navSeries) {
+    navSeries.addEventListener('click', () => {
+      document.getElementById('series')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (navDrops) {
+    navDrops.addEventListener('click', () => {
+      state.sortBy = 'discount_desc';
+      renderGrid();
+      document.getElementById('catalog-product-matrix')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (navAlerts) {
+    navAlerts.addEventListener('click', () => {
+      document.getElementById('alert-modal')?.classList.remove('hidden');
+    });
+  }
+
   // Reset filters
   const resetBtn = document.getElementById('btn-reset-filters');
   if (resetBtn) {
@@ -281,16 +430,10 @@ function setupEvents() {
       state.search = '';
       state.series = 'all';
       state.inStockOnly = false;
+      state.savedOnly = false;
       state.sortBy = 'discount_desc';
 
       if (searchInput) searchInput.value = '';
-      if (stockToggleBtn) {
-        stockToggleBtn.classList.remove('bg-ink', 'text-white', 'border-ink');
-        stockToggleBtn.classList.add('bg-white', 'text-ink-muted', 'border-border-hairline');
-        stockDot.classList.add('bg-ink-muted');
-        stockDot.classList.remove('bg-accent-green');
-      }
-
       renderGrid();
     });
   }
@@ -298,15 +441,22 @@ function setupEvents() {
   // Modal
   const modal = document.getElementById('alert-modal');
   const openBtn = document.getElementById('btn-open-alert-modal');
+  const openBtn2 = document.getElementById('btn-open-alert-modal-2');
+  const footerAlertsBtn = document.getElementById('footer-alerts-btn');
   const closeBtn = document.getElementById('btn-close-modal');
   const closeFooterBtn = document.getElementById('btn-close-modal-footer');
 
-  if (modal && openBtn) {
-    openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
-    if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
-    if (closeFooterBtn) closeFooterBtn.addEventListener('click', () => modal.classList.add('hidden'));
+  const openModal = () => modal?.classList.remove('hidden');
+  const closeModal = () => modal?.classList.add('hidden');
+
+  if (openBtn) openBtn.addEventListener('click', openModal);
+  if (openBtn2) openBtn2.addEventListener('click', openModal);
+  if (footerAlertsBtn) footerAlertsBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (closeFooterBtn) closeFooterBtn.addEventListener('click', closeModal);
+  if (modal) {
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.add('hidden');
+      if (e.target === modal) closeModal();
     });
   }
 }
