@@ -6,7 +6,7 @@
       "originalPrice": 9495,
       "discountPercent": 30,
       "available": true,
-      "lastSeen": "2026-10-06T08:29:24.185Z"
+      "lastSeen": "2026-10-06T15:39:40.184Z"
     },
     "10324322386201_52224662044953": {
       "title": "ECB-2200P-1A",
@@ -2277,8 +2277,8 @@
       "price": 6296.5,
       "originalPrice": 8995,
       "discountPercent": 30,
-      "available": false,
-      "lastSeen": "2026-10-04T16:58:38.032Z"
+      "available": true,
+      "lastSeen": "2026-10-06T15:39:40.184Z"
     },
     "9928110670105_50750267687193": {
       "title": "DW-5610UU-8",
@@ -2449,5 +2449,5 @@
       "lastSeen": "2026-10-04T16:58:38.032Z"
     }
   },
-  "lastRun": "2026-10-06T08:29:24.201Z"
+  "lastRun": "2026-10-06T15:39:40.819Z"
 }
