@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-07T00:19:28.320Z",
+  "updatedAt": "2026-10-07T06:48:41.776Z",
   "storeUrl": "https://casiostore.bhawar.com/collections/watches",
   "stats": {
-    "totalScanned": 347,
-    "totalDiscounted": 2,
-    "inStockDiscounted": 2
+    "totalScanned": 340,
+    "totalDiscounted": 1,
+    "inStockDiscounted": 1
   },
   "items": [
     {
@@ -22,24 +22,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/gma-p2110sc-4a",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GMA-P2110SC-4A.png?v=1769251616",
-      "updatedAt": "2026-10-07T05:49:27+05:30"
-    },
-    {
-      "id": "9928120762649_50750334632217",
-      "productId": 9928120762649,
-      "variantId": 50750334632217,
-      "title": "GD-100GB-1",
-      "variantTitle": null,
-      "sku": "G340",
-      "series": "Casio Classic",
-      "price": 6296.5,
-      "originalPrice": 8995,
-      "savings": 2699,
-      "discountPercent": 30,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-g-shock-gd-100gb-1dr-black-gold-digital-mens-watch",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GD-100GB-1_Seq1.png?v=1751278182",
-      "updatedAt": "2026-10-07T05:49:28+05:30"
+      "updatedAt": "2026-10-07T12:18:41+05:30"
     }
   ]
 }
