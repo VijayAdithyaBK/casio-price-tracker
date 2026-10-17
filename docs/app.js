@@ -1,4 +1,4 @@
-// Casio Radar Editorial Application Logic (Stitch Minimalist Mobile & Desktop Integration)
+// Casio Radar Editorial Application Logic (Minimalist Mobile & Desktop Integration)
 let allWatches = [];
 let metadata = {};
 
@@ -8,7 +8,7 @@ const state = {
   inStockOnly: false,
   savedOnly: false,
   sortBy: 'discount_desc',
-  viewMode: 'editorial'
+  viewMode: 'dual' // 2-card view default
 };
 
 // Bookmarks in LocalStorage
@@ -33,7 +33,7 @@ function toggleBookmark(id) {
 }
 
 function formatInr(num) {
-  return '₹' + Number(num).toLocaleString('en-IN');
+  return '₹' + Math.round(Number(num)).toLocaleString('en-IN');
 }
 
 function timeAgo(dateString) {
@@ -47,7 +47,21 @@ function timeAgo(dateString) {
   return `${Math.floor(diffHours / 24)}d AGO`;
 }
 
-async function loadData() {
+// Toast Feedback Helper
+let toastTimer = null;
+function showToast(msg, duration = 2400) {
+  const toast = document.getElementById('radar-toast');
+  const toastMsg = document.getElementById('radar-toast-msg');
+  if (!toast || !toastMsg) return;
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, duration);
+}
+
+async function loadData(showFeedback = false) {
   try {
     const res = await fetch('data.json?v=' + Date.now());
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -58,8 +72,16 @@ async function loadData() {
     renderSeriesCounts();
     updateSavedFilterCount();
     renderGrid();
+    if (showFeedback) {
+      showToast(`RADAR SYNCED • ${allWatches.length} ACTIVE DEALS`);
+    }
+    return true;
   } catch (err) {
     console.warn('Could not load data.json:', err);
+    if (showFeedback) {
+      showToast('OFFLINE CACHE LOADED');
+    }
+    return false;
   }
 }
 
@@ -76,17 +98,40 @@ function updateTelemetry() {
 }
 
 function renderSeriesCounts() {
+  // Update ALL badge
   const pillAll = document.getElementById('pill-all-count');
   if (pillAll) {
     pillAll.textContent = `[${allWatches.length}]`;
   }
 
-  const edfCount = allWatches.filter(w => w.series === 'Edifice').length;
-  const pillEdf = document.getElementById('pill-edf-cut');
-  if (pillEdf && edfCount > 0) {
-    const maxEdfCut = Math.max(...allWatches.filter(w => w.series === 'Edifice').map(w => w.discountPercent));
-    pillEdf.textContent = `-${maxEdfCut}%`;
-  }
+  // Update discount cuts for every series pill dynamically
+  document.querySelectorAll('.series-pill[data-series]').forEach(pill => {
+    const series = pill.dataset.series;
+    if (series === 'all') return;
+
+    const matching = allWatches.filter(w => {
+      if (!w.series) return false;
+      return w.series.toLowerCase() === series.toLowerCase();
+    });
+
+    const badge = pill.querySelector('.series-cut-badge');
+    if (badge) {
+      if (matching.length > 0) {
+        const cuts = matching.map(w => w.discountPercent || 0).filter(c => c > 0);
+        if (cuts.length > 0) {
+          const maxCut = Math.max(...cuts);
+          badge.textContent = `-${maxCut}%`;
+          badge.className = 'series-cut-badge text-[8px] font-mono text-accent-red font-medium';
+        } else {
+          badge.textContent = `[${matching.length}]`;
+          badge.className = 'series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink';
+        }
+      } else {
+        badge.textContent = '--';
+        badge.className = 'series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink';
+      }
+    }
+  });
 }
 
 function updateSavedFilterCount() {
@@ -112,7 +157,7 @@ function getFilteredWatches() {
 
     // Series
     if (state.series !== 'all') {
-      if (item.series !== state.series) return false;
+      if ((item.series || '').toLowerCase() !== state.series.toLowerCase()) return false;
     }
 
     // In Stock
@@ -162,9 +207,16 @@ function renderGrid() {
       'G-Shock': '03 / 07',
       'Vintage': '04 / 07',
       'Pro Trek': '05 / 07',
-      'Enticer': '06 / 07'
+      'Enticer': '06 / 07',
+      'Casio Classic': '07 / 07'
     };
     seriesIndexLabel.textContent = activeIndexMap[state.series] || '01 / 07';
+  }
+
+  // Ensure matrix has proper view class
+  if (container) {
+    container.classList.remove('view-dual', 'view-single');
+    container.classList.add(state.viewMode === 'single' ? 'view-single' : 'view-dual');
   }
 
   if (filtered.length === 0) {
@@ -185,20 +237,20 @@ function renderGrid() {
       : '<span class="text-ink-muted">🔴 OUT OF STOCK</span>';
 
     return `
-      <article class="border-r border-b border-border-hairline p-6 sm:p-8 flex flex-col justify-between group hover:bg-white transition-colors duration-200" data-watch-id="${item.id}">
+      <article class="border-r border-b border-border-hairline p-4 sm:p-7 flex flex-col justify-between group hover:bg-white transition-colors duration-200" data-watch-id="${item.id}">
         <!-- Top spec label & deal index -->
-        <div class="flex items-center justify-between text-[10px] font-mono tracking-widest text-ink-muted pb-2">
-          <span>PLATE ${padIndex} • ${seriesTitle}</span>
-          <div class="flex items-center gap-1.5">
-            <span class="text-accent-red font-bold tracking-normal border border-accent-red/30 px-1.5 py-0.5 bg-accent-red-faint text-[9px]">
+        <div class="flex items-center justify-between text-[9px] sm:text-[10px] font-mono tracking-widest text-ink-muted pb-2">
+          <span class="truncate max-w-[120px] sm:max-w-none">PLATE ${padIndex} • ${seriesTitle}</span>
+          <div class="flex items-center gap-1.5 flex-shrink-0">
+            <span class="text-accent-red font-bold tracking-normal border border-accent-red/30 px-1 py-0.5 bg-accent-red-faint text-[8px] sm:text-[9px]">
               -${item.discountPercent}% CUT
             </span>
             <button 
-              class="bookmark-btn p-1 text-ink-muted hover:text-ink transition-colors" 
+              class="bookmark-btn p-1 text-ink-muted hover:text-accent-red transition-colors" 
               title="Bookmark Watch" 
               data-id="${item.id}"
             >
-              <span class="material-symbols-outlined text-[16px]">
+              <span class="material-symbols-outlined text-[15px] sm:text-[16px]">
                 ${isSaved ? 'bookmark' : 'bookmark_border'}
               </span>
             </button>
@@ -206,41 +258,41 @@ function renderGrid() {
         </div>
 
         <!-- Archival Studio Isolation Plate -->
-        <div class="img-plate py-8 sm:py-12 flex items-center justify-center min-h-[200px] relative bg-surface-muted/30">
-          <div class="absolute top-2 left-2 font-mono text-[8px] text-ink-muted uppercase tracking-widest opacity-60">
+        <div class="img-plate py-4 sm:py-8 flex items-center justify-center min-h-[140px] sm:min-h-[190px] relative bg-surface-muted/30">
+          <div class="absolute top-1.5 left-2 font-mono text-[7px] sm:text-[8px] text-ink-muted uppercase tracking-widest opacity-60">
             RAW SPEC // ${item.sku || 'CATALOG'}
           </div>
           <img 
             alt="${item.title}" 
-            class="max-h-48 max-w-full object-contain filter contrast-105 group-hover:scale-[1.04] transition-transform duration-300" 
+            class="max-h-28 sm:max-h-44 max-w-full object-contain filter contrast-105 group-hover:scale-[1.04] transition-transform duration-300" 
             src="${imageSrc}"
             loading="lazy"
           />
-          <div class="absolute bottom-2 right-2 font-mono text-[8px] text-ink-muted tracking-widest uppercase">
+          <div class="absolute bottom-1.5 right-2 font-mono text-[7px] sm:text-[8px] text-ink-muted tracking-widest uppercase">
             GAP: +${formatInr(item.savings)}
           </div>
         </div>
 
         <!-- Product Details, Pricing, Direct Link -->
-        <div class="pt-4">
+        <div class="pt-3">
           <div class="flex items-baseline justify-between pt-2 border-t border-border-hairline text-ink">
-            <h2 class="font-grotesk font-bold text-[14px] uppercase tracking-[-0.01em] line-clamp-1">
+            <h2 class="font-grotesk font-bold text-[12px] sm:text-[14px] uppercase tracking-[-0.01em] line-clamp-1">
               ${item.title}
             </h2>
-            <div class="flex items-baseline gap-2 font-mono flex-shrink-0 ml-2">
-              <span class="text-[11px] line-through text-ink-muted">${formatInr(item.originalPrice)}</span>
-              <span class="font-bold text-[15px] sm:text-[16px] text-ink">${formatInr(item.price)}</span>
+            <div class="flex items-baseline gap-1.5 sm:gap-2 font-mono flex-shrink-0 ml-1.5">
+              <span class="text-[10px] sm:text-[11px] line-through text-ink-muted">${formatInr(item.originalPrice)}</span>
+              <span class="font-bold text-[13px] sm:text-[15px] text-ink">${formatInr(item.price)}</span>
             </div>
           </div>
 
-          <div class="card-specs mt-2.5 flex items-center justify-between text-[10px] font-mono text-ink-muted uppercase">
-            <span>ARBITRAGE: +${formatInr(item.savings)} GAP</span>
+          <div class="card-specs mt-2 flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-ink-muted uppercase">
+            <span>ARBITRAGE: +${formatInr(item.savings)}</span>
             ${stockStatus}
           </div>
 
-          <div class="mt-3 flex items-center gap-2">
+          <div class="mt-2.5 flex items-center gap-2">
             <a 
-              class="card-btn flex-1 py-2.5 hairline-all text-center block text-[10px] font-mono tracking-[0.16em] uppercase hover:bg-ink hover:text-white transition-colors duration-150 font-semibold" 
+              class="card-btn flex-1 py-2 sm:py-2.5 hairline-all text-center block text-[9px] sm:text-[10px] font-mono tracking-[0.14em] uppercase hover:bg-ink hover:text-white transition-colors duration-150 font-semibold" 
               href="${item.url}" 
               rel="noopener noreferrer" 
               target="_blank"
@@ -264,7 +316,123 @@ function renderGrid() {
   });
 }
 
+// Refresh Feeds (Title Click & Pull-to-refresh)
+let isRefreshingGlobal = false;
+async function triggerFeedRefresh() {
+  if (isRefreshingGlobal) return;
+  isRefreshingGlobal = true;
+
+  const radarIcons = document.querySelectorAll('header img[alt="Radar Icon"], nav img[alt="Radar"]');
+  radarIcons.forEach(icon => icon.classList.add('animate-spin'));
+  showToast('SYNCING BHAWAR RADAR FEEDS...');
+
+  await loadData(true);
+
+  radarIcons.forEach(icon => icon.classList.remove('animate-spin'));
+  setTimeout(() => {
+    isRefreshingGlobal = false;
+  }, 400);
+}
+
+// Mobile Pull-to-refresh implementation
+function setupPullToRefresh() {
+  const ptr = document.getElementById('pull-to-refresh');
+  const ptrIcon = document.getElementById('ptr-icon');
+  const ptrLabel = document.getElementById('ptr-label');
+  if (!ptr || !ptrIcon || !ptrLabel) return;
+
+  let touchStartY = 0;
+  let isPulling = false;
+  const PTR_TRIGGER_DIST = 55;
+  const MAX_PULL = 100;
+
+  window.addEventListener('touchstart', (e) => {
+    if (window.scrollY <= 1 && !isRefreshingGlobal && e.touches.length === 1) {
+      touchStartY = e.touches[0].clientY;
+      isPulling = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isPulling || isRefreshingGlobal) return;
+    const currentY = e.touches[0].clientY;
+    const diff = currentY - touchStartY;
+
+    if (diff > 0 && window.scrollY <= 1) {
+      const pullDistance = Math.min(MAX_PULL, diff * 0.42);
+      ptr.style.transform = `translateY(${pullDistance}px)`;
+      if (pullDistance >= PTR_TRIGGER_DIST) {
+        ptrLabel.textContent = 'RELEASE TO REFRESH';
+        ptrIcon.style.transform = 'rotate(180deg)';
+      } else {
+        ptrLabel.textContent = 'PULL DOWN TO REFRESH';
+        ptrIcon.style.transform = `rotate(${pullDistance * 3}deg)`;
+      }
+    } else if (diff < 0) {
+      isPulling = false;
+      ptr.style.transform = 'translateY(-100%)';
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', async (e) => {
+    if (!isPulling || isRefreshingGlobal) return;
+    isPulling = false;
+    const currentY = e.changedTouches[0].clientY;
+    const diff = currentY - touchStartY;
+    const pullDistance = Math.min(MAX_PULL, diff * 0.42);
+
+    if (pullDistance >= PTR_TRIGGER_DIST && window.scrollY <= 2) {
+      isRefreshingGlobal = true;
+      ptr.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+      ptr.style.transform = 'translateY(55px)';
+      ptrLabel.textContent = 'SYNCING BHAWAR RADAR...';
+      ptrIcon.classList.add('animate-spin');
+
+      await loadData(false);
+
+      ptrLabel.textContent = 'FEED UPDATED';
+      ptrIcon.classList.remove('animate-spin');
+      ptrIcon.style.transform = 'rotate(0deg)';
+      showToast(`RADAR UPDATED: ${allWatches.length} LIVE DEALS`);
+
+      setTimeout(() => {
+        ptr.style.transform = 'translateY(-100%)';
+        setTimeout(() => {
+          ptr.style.transition = '';
+          isRefreshingGlobal = false;
+        }, 260);
+      }, 500);
+    } else {
+      ptr.style.transition = 'transform 0.2s ease';
+      ptr.style.transform = 'translateY(-100%)';
+      setTimeout(() => {
+        ptr.style.transition = '';
+        ptrIcon.style.transform = 'rotate(0deg)';
+      }, 200);
+    }
+  }, { passive: true });
+}
+
 function setupEvents() {
+  // Mobile Pull-to-refresh
+  setupPullToRefresh();
+
+  // Click on Title to Refresh (Header Brand & Hero Title)
+  const headerBrand = document.getElementById('header-brand');
+  if (headerBrand) {
+    headerBrand.addEventListener('click', (e) => {
+      e.preventDefault();
+      triggerFeedRefresh();
+    });
+  }
+
+  const heroTitle = document.getElementById('catalog-hero-title');
+  if (heroTitle) {
+    heroTitle.addEventListener('click', () => {
+      triggerFeedRefresh();
+    });
+  }
+
   // Search
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
@@ -290,14 +458,14 @@ function setupEvents() {
         pillBar.querySelectorAll('.series-pill').forEach(p => {
           p.classList.remove('border-ink', 'shadow-sm');
           p.classList.add('border-border-hairline');
-          p.querySelector('span:first-child')?.classList.remove('font-bold', 'text-ink');
-          p.querySelector('span:first-child')?.classList.add('text-ink-muted');
+          p.querySelector('.series-label')?.classList.remove('font-bold', 'text-ink');
+          p.querySelector('.series-label')?.classList.add('text-ink-muted');
         });
 
         btn.classList.add('border-ink', 'shadow-sm');
         btn.classList.remove('border-border-hairline');
-        btn.querySelector('span:first-child')?.classList.add('font-bold', 'text-ink');
-        btn.querySelector('span:first-child')?.classList.remove('text-ink-muted');
+        btn.querySelector('.series-label')?.classList.add('font-bold', 'text-ink');
+        btn.querySelector('.series-label')?.classList.remove('text-ink-muted');
 
         state.series = btn.dataset.series;
         renderGrid();
@@ -309,56 +477,41 @@ function setupEvents() {
   const sortButtons = document.querySelectorAll('.sort-btn');
   sortButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      sortButtons.forEach(b => {
-        b.classList.remove('text-ink', 'font-bold', 'border-b', 'border-ink');
-        b.classList.add('text-ink-muted');
-      });
-      btn.classList.add('text-ink', 'font-bold', 'border-b', 'border-ink');
-      btn.classList.remove('text-ink-muted');
+      sortButtons.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
 
       state.sortBy = btn.dataset.sort;
       renderGrid();
     });
   });
 
-  // Stock Filter Toggle
+  // Stock Filter Toggle (Clean Scoped .is-active Class)
   const stockToggleBtn = document.getElementById('toggle-stock-filter');
   const stockDot = document.getElementById('stock-indicator-dot');
   if (stockToggleBtn) {
     stockToggleBtn.addEventListener('click', () => {
       state.inStockOnly = !state.inStockOnly;
-      if (state.inStockOnly) {
-        stockToggleBtn.classList.add('bg-ink', 'text-white', 'border-ink');
-        stockToggleBtn.classList.remove('bg-white', 'text-ink-muted', 'border-border-hairline');
-        stockDot.classList.remove('bg-ink-muted');
-        stockDot.classList.add('bg-accent-green');
-      } else {
-        stockToggleBtn.classList.remove('bg-ink', 'text-white', 'border-ink');
-        stockToggleBtn.classList.add('bg-white', 'text-ink-muted', 'border-border-hairline');
-        stockDot.classList.add('bg-ink-muted');
-        stockDot.classList.remove('bg-accent-green');
+      stockToggleBtn.classList.toggle('is-active', state.inStockOnly);
+      if (stockDot) {
+        stockDot.className = state.inStockOnly
+          ? 'w-1.5 h-1.5 rounded-full bg-accent-green'
+          : 'w-1.5 h-1.5 rounded-full bg-ink-muted';
       }
       renderGrid();
     });
   }
 
-  // Saved / Bookmark Filter Toggle
+  // Saved / Bookmark Filter Toggle (Clean Scoped .is-active Class)
   const bookmarkToggleBtn = document.getElementById('toggle-bookmark-filter');
   if (bookmarkToggleBtn) {
     bookmarkToggleBtn.addEventListener('click', () => {
       state.savedOnly = !state.savedOnly;
-      if (state.savedOnly) {
-        bookmarkToggleBtn.classList.add('bg-ink', 'text-white', 'border-ink');
-        bookmarkToggleBtn.classList.remove('bg-white', 'text-ink-muted', 'border-border-hairline');
-      } else {
-        bookmarkToggleBtn.classList.remove('bg-ink', 'text-white', 'border-ink');
-        bookmarkToggleBtn.classList.add('bg-white', 'text-ink-muted', 'border-border-hairline');
-      }
+      bookmarkToggleBtn.classList.toggle('is-active', state.savedOnly);
       renderGrid();
     });
   }
 
-  // Layout View Switcher (EDITORIAL / 1 CARD / 2 CARD)
+  // Layout View Switcher: Icon-Only, 2-Card Default, No Text
   const viewToggle = document.getElementById('layout-view-toggle');
   const matrix = document.getElementById('catalog-product-matrix');
   if (viewToggle && matrix) {
@@ -367,21 +520,12 @@ function setupEvents() {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         const mode = this.dataset.layoutMode;
-        buttons.forEach(b => {
-          b.classList.remove('bg-ink', 'text-white', 'font-semibold');
-          b.classList.add('bg-transparent', 'text-ink-muted');
-        });
-        this.classList.remove('bg-transparent', 'text-ink-muted');
-        this.classList.add('bg-ink', 'text-white', 'font-semibold');
+        buttons.forEach(b => b.classList.remove('is-active'));
+        this.classList.add('is-active');
 
-        matrix.classList.remove('view-dual', 'view-single', 'view-editorial');
-        if (mode === 'dual') {
-          matrix.classList.add('view-dual');
-        } else if (mode === 'single') {
-          matrix.classList.add('view-single');
-        } else {
-          matrix.classList.add('view-editorial');
-        }
+        state.viewMode = mode;
+        matrix.classList.remove('view-dual', 'view-single');
+        matrix.classList.add(mode === 'single' ? 'view-single' : 'view-dual');
       });
     });
   }
@@ -412,6 +556,9 @@ function setupEvents() {
   if (navDrops) {
     navDrops.addEventListener('click', () => {
       state.sortBy = 'discount_desc';
+      sortButtons.forEach(b => {
+        b.classList.toggle('is-active', b.dataset.sort === 'discount_desc');
+      });
       renderGrid();
       document.getElementById('catalog-product-matrix')?.scrollIntoView({ behavior: 'smooth' });
     });
@@ -434,6 +581,26 @@ function setupEvents() {
       state.sortBy = 'discount_desc';
 
       if (searchInput) searchInput.value = '';
+      if (stockToggleBtn) stockToggleBtn.classList.remove('is-active');
+      if (stockDot) stockDot.className = 'w-1.5 h-1.5 rounded-full bg-ink-muted';
+      if (bookmarkToggleBtn) bookmarkToggleBtn.classList.remove('is-active');
+
+      sortButtons.forEach(b => {
+        b.classList.toggle('is-active', b.dataset.sort === 'discount_desc');
+      });
+
+      if (pillBar) {
+        pillBar.querySelectorAll('.series-pill').forEach(p => {
+          const isAll = p.dataset.series === 'all';
+          p.classList.toggle('border-ink', isAll);
+          p.classList.toggle('shadow-sm', isAll);
+          p.classList.toggle('border-border-hairline', !isAll);
+          p.querySelector('.series-label')?.classList.toggle('font-bold', isAll);
+          p.querySelector('.series-label')?.classList.toggle('text-ink', isAll);
+          p.querySelector('.series-label')?.classList.toggle('text-ink-muted', !isAll);
+        });
+      }
+
       renderGrid();
     });
   }

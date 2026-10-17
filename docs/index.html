@@ -64,6 +64,7 @@
         color: #111111;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overscroll-behavior-y: contain;
       }
       .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
       .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
@@ -77,46 +78,257 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+    /* Pull-To-Refresh Bar & Toast Feedback */
+    #pull-to-refresh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      transform: translateY(-100%);
+      will-change: transform;
+    }
+    .ptr-content {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #111111;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #111111;
+      margin-top: 8px;
+    }
+    #radar-toast {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-40px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+      background: #111111;
+      color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border: 1px solid #333333;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #radar-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Scoped Button Controls to Prevent Hover Clashes */
+    .filter-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #E2E2DF;
+      padding: 2px 8px;
+      background-color: #FFFFFF;
+      color: #666666;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      user-select: none;
+    }
+    .filter-pill-btn:hover {
+      color: #111111;
+      border-color: #111111;
+    }
+    .filter-pill-btn.is-active {
+      background-color: #111111 !important;
+      color: #FFFFFF !important;
+      border-color: #111111 !important;
+    }
+    .filter-pill-btn.is-active:hover {
+      background-color: #262626 !important;
+      color: #FFFFFF !important;
+      border-color: #262626 !important;
+    }
+    .filter-pill-btn.is-active span {
+      color: #FFFFFF !important;
+    }
+    .filter-pill-btn.is-active #stock-indicator-dot {
+      background-color: #16a34a !important;
+    }
+
+    /* Sort Buttons */
+    .sort-btn {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding-bottom: 2px;
+      color: #666666;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.15s ease, border-color 0.15s ease;
+      user-select: none;
+    }
+    .sort-btn:hover {
+      color: #111111;
+    }
+    .sort-btn.is-active {
+      color: #111111 !important;
+      font-weight: 700 !important;
+      border-bottom: 1px solid #111111 !important;
+    }
+
+    /* Layout View Switcher Buttons (Icon-Only) */
+    .view-matrix-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 7px;
+      background: transparent;
+      color: #666666;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+      user-select: none;
+    }
+    .view-matrix-btn:hover {
+      color: #111111;
+    }
+    .view-matrix-btn.is-active {
+      background-color: #111111 !important;
+      color: #FFFFFF !important;
+    }
+    .view-matrix-btn.is-active:hover {
+      background-color: #262626 !important;
+      color: #FFFFFF !important;
+    }
+
     /* Layout Matrix Views */
+    /* 2-Card View (Default: Dual Column Grid) */
     #catalog-product-matrix.view-dual {
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 1px !important;
       background-color: #E2E2DF !important;
+      border-right: 1px solid #E2E2DF;
+      border-bottom: 1px solid #E2E2DF;
     }
     #catalog-product-matrix.view-dual > article {
-      padding: 0.85rem !important;
+      padding: 0.75rem !important;
       background-color: #FFFFFF !important;
+      border-right: none !important;
+      border-bottom: none !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-dual > article {
+        padding: 1.25rem !important;
+      }
     }
     #catalog-product-matrix.view-dual > article h2 {
-      font-size: 13px !important;
-      line-height: 16px !important;
+      font-size: 11px !important;
+      line-height: 14px !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-dual > article h2 {
+        font-size: 13px !important;
+        line-height: 16px !important;
+      }
     }
     #catalog-product-matrix.view-dual > article .img-plate {
       padding: 0.5rem !important;
-      min-height: 140px !important;
+      min-height: 130px !important;
+    }
+    #catalog-product-matrix.view-dual > article .img-plate img {
+      max-height: 110px !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-dual > article .img-plate {
+        min-height: 170px !important;
+      }
+      #catalog-product-matrix.view-dual > article .img-plate img {
+        max-height: 145px !important;
+      }
     }
     #catalog-product-matrix.view-dual > article .card-specs {
-      display: none !important;
+      display: flex !important;
+      font-size: 9px !important;
+      flex-wrap: wrap;
+      gap: 2px;
     }
     #catalog-product-matrix.view-dual > article .card-btn {
-      padding-top: 0.35rem !important;
-      padding-bottom: 0.35rem !important;
+      padding-top: 0.4rem !important;
+      padding-bottom: 0.4rem !important;
       font-size: 9px !important;
     }
 
+    /* 1-Card View (Single Column Stack) */
     #catalog-product-matrix.view-single {
       display: flex !important;
       flex-direction: column !important;
+      background-color: transparent !important;
+      gap: 0 !important;
+      border-right: none !important;
     }
     #catalog-product-matrix.view-single > article {
-      border-right: none !important;
+      border-right: 1px solid #E2E2DF !important;
       border-bottom: 1px solid #E2E2DF !important;
       padding: 1.25rem !important;
+      background-color: #FFFFFF !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-single > article {
+        padding: 2rem !important;
+      }
+    }
+
+    /* Prevent sticky hover on mobile touch devices */
+    @media (hover: none) {
+      .filter-pill-btn:hover:not(.is-active) {
+        color: #666666;
+        border-color: #E2E2DF;
+      }
+      .view-matrix-btn:hover:not(.is-active) {
+        color: #666666;
+      }
+      .sort-btn:hover:not(.is-active) {
+        color: #666666;
+      }
     }
   </style>
 </head>
 <body class="bg-background text-ink font-sans selection:bg-ink selection:text-surface-pure antialiased min-h-screen pb-20 md:pb-0">
+
+  <!-- MOBILE PULL TO REFRESH BANNER -->
+  <div id="pull-to-refresh">
+    <div class="ptr-content">
+      <span id="ptr-icon" class="material-symbols-outlined text-[16px] text-accent-red transition-transform duration-200">refresh</span>
+      <span id="ptr-label">PULL DOWN TO REFRESH</span>
+    </div>
+  </div>
+
+  <!-- RADAR FEEDBACK TOAST -->
+  <div id="radar-toast">
+    <span class="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
+    <span id="radar-toast-msg">RADAR SYNCED</span>
+  </div>
 
   <!-- TOP MINIMAL NAV BAR -->
   <header class="w-full hairline-b bg-background/90 backdrop-blur-md sticky top-0 z-40 pt-safe">
@@ -129,14 +341,14 @@
         <a class="hover:text-accent-red transition-colors hidden sm:inline-block" href="#series">SERIES</a>
       </div>
 
-      <!-- CENTER ICONIC MARQUEE -->
-      <a class="flex flex-col items-center justify-center group" href="#">
-        <div class="flex items-center gap-2 font-bold tracking-[0.2em] text-[12px]">
-          <img src="icons/icon.svg" class="w-4 h-4 object-contain inline-block" alt="Radar Icon"/>
+      <!-- CENTER ICONIC MARQUEE: CLICKABLE TO REFRESH -->
+      <a id="header-brand" class="flex flex-col items-center justify-center group cursor-pointer" href="javascript:void(0)" title="Tap or click to refresh radar live feeds">
+        <div class="flex items-center gap-2 font-bold tracking-[0.2em] text-[12px] group-hover:text-accent-red transition-colors">
+          <img src="icons/icon.svg" class="w-4 h-4 object-contain inline-block transition-transform group-hover:rotate-45" alt="Radar Icon"/>
           <span>CASIO.RADAR</span>
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
         </div>
-        <span class="text-[9px] text-ink-muted tracking-[0.18em] font-normal scale-90">BHAWAR TELEMETRIC / 2026</span>
+        <span class="text-[9px] text-ink-muted tracking-[0.18em] font-normal scale-90 group-hover:text-ink transition-colors">BHAWAR TELEMETRIC / 2026 • REFRESH</span>
       </a>
 
       <div class="flex items-center gap-4 sm:gap-8">
@@ -158,9 +370,9 @@
       <span class="text-ink font-semibold">ARBITRAGE PROTOCOL</span>
     </div>
 
-    <!-- HERO EDITORIAL TITLE -->
+    <!-- HERO EDITORIAL TITLE: CLICKABLE TO REFRESH -->
     <div class="w-full text-center select-none overflow-hidden pt-6">
-      <h1 class="font-grotesk font-black text-[16vw] lg:text-[195px] leading-[0.82] tracking-[-0.05em] uppercase text-ink text-center">
+      <h1 id="catalog-hero-title" class="font-grotesk font-black text-[16vw] lg:text-[195px] leading-[0.82] tracking-[-0.05em] uppercase text-ink text-center cursor-pointer hover:opacity-85 transition-opacity" title="Click or tap to refresh liquidation radar">
         CATALOG
       </h1>
       <div class="mt-3 sm:mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] sm:text-[11px] font-mono tracking-[0.16em] text-ink-muted uppercase">
@@ -181,48 +393,55 @@
         01 / 07
       </div>
 
-      <!-- MICRO THUMBNAIL HARDWARE SELECTOR -->
+      <!-- MICRO THUMBNAIL HARDWARE SELECTOR (ALL 7 SERIES WITH ACCURATE DISCOUNT CUTS) -->
       <div class="flex items-center justify-start sm:justify-center gap-2 sm:gap-4 pb-3 overflow-x-auto max-w-full no-scrollbar w-full" id="series-pill-bar">
         <!-- ALL -->
         <button data-series="all" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-ink flex flex-col items-center justify-between p-1.5 group cursor-pointer shadow-sm transition-all">
-          <span class="text-[8px] font-mono text-ink tracking-tight font-bold">ALL</span>
+          <span class="text-[8px] font-mono text-ink tracking-tight font-bold series-label">ALL</span>
           <span class="text-[18px]">⌚</span>
-          <span class="text-[8px] font-mono text-accent-red font-medium" id="pill-all-count">...</span>
+          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-all-count">[174]</span>
         </button>
 
         <!-- Edifice -->
         <button data-series="Edifice" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
-          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">EDF</span>
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">EDF</span>
           <span class="text-[16px]">⏱️</span>
-          <span class="text-[8px] font-mono text-accent-red font-medium" id="pill-edf-cut">-50%</span>
+          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-edf-cut">-40%</span>
         </button>
 
         <!-- G-Shock / CasiOak -->
         <button data-series="G-Shock" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
-          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">G-SHK</span>
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">G-SHK</span>
           <span class="text-[16px]">🛡️</span>
-          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#02</span>
+          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-gshk-cut">-30%</span>
         </button>
 
         <!-- Vintage -->
         <button data-series="Vintage" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
-          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">VTG</span>
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">VTG</span>
           <span class="text-[16px]">✨</span>
-          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#03</span>
+          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-vtg-cut">-20%</span>
         </button>
 
         <!-- Pro Trek -->
         <button data-series="Pro Trek" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
-          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">PRT</span>
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">PRT</span>
           <span class="text-[16px]">🧭</span>
-          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#04</span>
+          <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink" id="pill-prt-cut">--</span>
         </button>
 
         <!-- Enticer -->
         <button data-series="Enticer" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
-          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink">ENT</span>
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">ENT</span>
           <span class="text-[16px]">👔</span>
-          <span class="text-[8px] font-mono text-ink-muted group-hover:text-ink">#05</span>
+          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-ent-cut">-50%</span>
+        </button>
+
+        <!-- Casio Classic -->
+        <button data-series="Casio Classic" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">CLS</span>
+          <span class="text-[16px]">🏷️</span>
+          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-cls-cut">-50%</span>
         </button>
       </div>
 
@@ -240,38 +459,32 @@
 
     <!-- TECHNICAL CONTROL & METRIC RUNNER STRIP -->
     <div class="mt-8 hairline-t hairline-b py-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[11px] font-mono tracking-[0.1em] uppercase">
-      <!-- PARAMETRIC SORT CONTROLS -->
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+      <!-- PARAMETRIC SORT & STOCK CONTROLS -->
+      <div class="flex flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-2">
         <span class="text-ink-muted">SORT:</span>
-        <button data-sort="discount_desc" class="sort-btn text-ink font-bold border-b border-ink">HIGHEST DISCOUNT %</button>
-        <button data-sort="savings_desc" class="sort-btn text-ink-muted hover:text-ink transition-colors">BIGGEST ₹ DELTA</button>
-        <button data-sort="price_asc" class="sort-btn text-ink-muted hover:text-ink transition-colors">LOWEST PRICE</button>
-        <button data-sort="price_desc" class="sort-btn text-ink-muted hover:text-ink transition-colors">HIGHEST PRICE</button>
-        <button id="toggle-stock-filter" class="text-ink-muted hover:text-ink transition-colors flex items-center gap-1.5 border border-border-hairline px-2 py-0.5 bg-white">
+        <button data-sort="discount_desc" class="sort-btn is-active">HIGHEST DISCOUNT %</button>
+        <button data-sort="savings_desc" class="sort-btn">BIGGEST ₹ DELTA</button>
+        <button data-sort="price_asc" class="sort-btn">LOWEST PRICE</button>
+        <button data-sort="price_desc" class="sort-btn">HIGHEST PRICE</button>
+        <button id="toggle-stock-filter" class="filter-pill-btn" title="Toggle In-Stock Only">
           <span id="stock-indicator-dot" class="w-1.5 h-1.5 rounded-full bg-ink-muted"></span>
           <span id="stock-filter-text">IN STOCK ONLY</span>
         </button>
-        <button id="toggle-bookmark-filter" class="text-ink-muted hover:text-ink transition-colors flex items-center gap-1 border border-border-hairline px-2 py-0.5 bg-white">
+        <button id="toggle-bookmark-filter" class="filter-pill-btn" title="Toggle Saved Watchlist">
           <span class="material-symbols-outlined text-[13px]">bookmark</span>
           <span id="bookmark-filter-text">SAVED</span>
         </button>
       </div>
 
       <!-- VIEW MATRIX TOGGLE & TELEMETRY -->
-      <div class="w-full md:w-auto flex items-center justify-between md:justify-end gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-border-hairline">
-        <!-- VIEW MATRIX TOGGLE (From mobile catalog) -->
-        <div class="inline-flex items-center p-0.5 bg-white border border-border-hairline gap-1" id="layout-view-toggle">
-          <button data-layout-mode="editorial" class="px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider transition-all bg-ink text-white font-semibold flex items-center gap-1">
-            <span class="material-symbols-outlined text-[11px]">view_agenda</span>
-            <span>EDITORIAL</span>
+      <div class="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 sm:gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-border-hairline">
+        <!-- VIEW MATRIX TOGGLE: ICON ONLY, 2-CARD DEFAULT, NO TEXT (Zara Minimal DNA) -->
+        <div class="inline-flex items-center p-0.5 bg-white border border-border-hairline gap-0.5" id="layout-view-toggle">
+          <button data-layout-mode="single" class="view-matrix-btn" title="Single Card View (1 Column)" aria-label="1 Card View">
+            <span class="material-symbols-outlined text-[16px]">crop_square</span>
           </button>
-          <button data-layout-mode="single" class="px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider transition-all bg-transparent text-ink-muted hover:text-ink flex items-center gap-1">
-            <span class="material-symbols-outlined text-[11px]">crop_square</span>
-            <span>1 CARD</span>
-          </button>
-          <button data-layout-mode="dual" class="px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider transition-all bg-transparent text-ink-muted hover:text-ink flex items-center gap-1">
-            <span class="material-symbols-outlined text-[11px]">grid_view</span>
-            <span>2 CARD</span>
+          <button data-layout-mode="dual" class="view-matrix-btn is-active" title="Two Card View (2 Columns)" aria-label="2 Card View">
+            <span class="material-symbols-outlined text-[16px]">grid_view</span>
           </button>
         </div>
 
@@ -285,8 +498,8 @@
       </div>
     </div>
 
-    <!-- MAIN PRODUCT GRID ARCHITECTURE -->
-    <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border-hairline bg-background transition-all" id="catalog-product-matrix">
+    <!-- MAIN PRODUCT GRID ARCHITECTURE (DEFAULT 2-CARD VIEW) -->
+    <section class="mt-8 border-t border-l border-border-hairline bg-background transition-all view-dual" id="catalog-product-matrix">
       <!-- Cards rendered dynamically via app.js -->
     </section>
 
