@@ -550,16 +550,16 @@
 
       <!-- VIEW MATRIX TOGGLE & TELEMETRY -->
       <div class="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 sm:gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-border-hairline">
-        <!-- VIEW MATRIX TOGGLE: ICON ONLY (Single, Dual Default, Editorial Adaptive) -->
+        <!-- VIEW MATRIX TOGGLE: ICON ONLY (Editorial First & Default, then 2-Card, then 1-Card) -->
         <div class="inline-flex items-center p-0.5 bg-white border border-border-hairline gap-0.5" id="layout-view-toggle">
-          <button data-layout-mode="single" class="view-matrix-btn" title="Single Card View (1 Column)" aria-label="1 Card View">
-            <span class="material-symbols-outlined text-[16px]">crop_square</span>
+          <button data-layout-mode="editorial" class="view-matrix-btn is-active" title="Editorial View (Auto-adjusts columns by screen width)" aria-label="Editorial View">
+            <span class="material-symbols-outlined text-[16px]">view_agenda</span>
           </button>
-          <button data-layout-mode="dual" class="view-matrix-btn is-active" title="Two Card View (2 Columns)" aria-label="2 Card View">
+          <button data-layout-mode="dual" class="view-matrix-btn" title="Two Card View (2 Columns)" aria-label="2 Card View">
             <span class="material-symbols-outlined text-[16px]">grid_view</span>
           </button>
-          <button data-layout-mode="editorial" class="view-matrix-btn" title="Editorial View (Auto-adjusts columns by screen width)" aria-label="Editorial Adaptive View">
-            <span class="material-symbols-outlined text-[16px]">view_agenda</span>
+          <button data-layout-mode="single" class="view-matrix-btn" title="Single Card View (1 Column)" aria-label="1 Card View">
+            <span class="material-symbols-outlined text-[16px]">crop_square</span>
           </button>
         </div>
 
@@ -573,8 +573,8 @@
       </div>
     </div>
 
-    <!-- MAIN PRODUCT GRID ARCHITECTURE (DEFAULT 2-CARD VIEW) -->
-    <section class="mt-8 border-t border-l border-border-hairline bg-background transition-all view-dual" id="catalog-product-matrix">
+    <!-- MAIN PRODUCT GRID ARCHITECTURE (DEFAULT EDITORIAL VIEW) -->
+    <section class="mt-8 border-t border-l border-border-hairline bg-background transition-all view-editorial" id="catalog-product-matrix">
       <!-- Cards rendered dynamically via app.js -->
     </section>
 

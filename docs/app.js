@@ -8,7 +8,7 @@ const state = {
   inStockOnly: false,
   savedOnly: false,
   sortBy: 'discount_desc',
-  viewMode: 'dual' // 2-card view default
+  viewMode: 'editorial' // editorial view default (screen-adaptive)
 };
 
 // Bookmarks in LocalStorage
