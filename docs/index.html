@@ -299,6 +299,78 @@
       }
     }
 
+    /* Editorial View (Fluid Adaptive: 1 Col Mobile -> 2 Col Tablet -> 3 Col Desktop -> 4 Col Wide) */
+    #catalog-product-matrix.view-editorial {
+      display: grid !important;
+      grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+      gap: 1px !important;
+      background-color: #E2E2DF !important;
+      border-right: 1px solid #E2E2DF;
+      border-bottom: 1px solid #E2E2DF;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-editorial {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      #catalog-product-matrix.view-editorial {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+    }
+    @media (min-width: 1440px) {
+      #catalog-product-matrix.view-editorial {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      }
+    }
+    #catalog-product-matrix.view-editorial > article {
+      padding: 1.25rem !important;
+      background-color: #FFFFFF !important;
+      border-right: none !important;
+      border-bottom: none !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-editorial > article {
+        padding: 1.75rem !important;
+      }
+    }
+    #catalog-product-matrix.view-editorial > article h2 {
+      font-size: 13px !important;
+      line-height: 17px !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-editorial > article h2 {
+        font-size: 14px !important;
+        line-height: 18px !important;
+      }
+    }
+    #catalog-product-matrix.view-editorial > article .img-plate {
+      padding: 1rem !important;
+      min-height: 160px !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-editorial > article .img-plate {
+        min-height: 200px !important;
+      }
+    }
+    #catalog-product-matrix.view-editorial > article .img-plate img {
+      max-height: 135px !important;
+    }
+    @media (min-width: 640px) {
+      #catalog-product-matrix.view-editorial > article .img-plate img {
+        max-height: 180px !important;
+      }
+    }
+    #catalog-product-matrix.view-editorial > article .card-specs {
+      display: flex !important;
+      font-size: 10px !important;
+    }
+    #catalog-product-matrix.view-editorial > article .card-btn {
+      padding-top: 0.55rem !important;
+      padding-bottom: 0.55rem !important;
+      font-size: 10px !important;
+    }
+
     /* Prevent sticky hover on mobile touch devices */
     @media (hover: none) {
       .filter-pill-btn:hover:not(.is-active) {
@@ -478,13 +550,16 @@
 
       <!-- VIEW MATRIX TOGGLE & TELEMETRY -->
       <div class="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 sm:gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-border-hairline">
-        <!-- VIEW MATRIX TOGGLE: ICON ONLY, 2-CARD DEFAULT, NO TEXT (Zara Minimal DNA) -->
+        <!-- VIEW MATRIX TOGGLE: ICON ONLY (Single, Dual Default, Editorial Adaptive) -->
         <div class="inline-flex items-center p-0.5 bg-white border border-border-hairline gap-0.5" id="layout-view-toggle">
           <button data-layout-mode="single" class="view-matrix-btn" title="Single Card View (1 Column)" aria-label="1 Card View">
             <span class="material-symbols-outlined text-[16px]">crop_square</span>
           </button>
           <button data-layout-mode="dual" class="view-matrix-btn is-active" title="Two Card View (2 Columns)" aria-label="2 Card View">
             <span class="material-symbols-outlined text-[16px]">grid_view</span>
+          </button>
+          <button data-layout-mode="editorial" class="view-matrix-btn" title="Editorial View (Auto-adjusts columns by screen width)" aria-label="Editorial Adaptive View">
+            <span class="material-symbols-outlined text-[16px]">view_agenda</span>
           </button>
         </div>
 

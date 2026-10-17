@@ -215,8 +215,14 @@ function renderGrid() {
 
   // Ensure matrix has proper view class
   if (container) {
-    container.classList.remove('view-dual', 'view-single');
-    container.classList.add(state.viewMode === 'single' ? 'view-single' : 'view-dual');
+    container.classList.remove('view-dual', 'view-single', 'view-editorial');
+    if (state.viewMode === 'editorial') {
+      container.classList.add('view-editorial');
+    } else if (state.viewMode === 'single') {
+      container.classList.add('view-single');
+    } else {
+      container.classList.add('view-dual');
+    }
   }
 
   if (filtered.length === 0) {
@@ -511,7 +517,7 @@ function setupEvents() {
     });
   }
 
-  // Layout View Switcher: Icon-Only, 2-Card Default, No Text
+  // Layout View Switcher: Icon-Only (Single, Dual Default, Editorial Adaptive)
   const viewToggle = document.getElementById('layout-view-toggle');
   const matrix = document.getElementById('catalog-product-matrix');
   if (viewToggle && matrix) {
@@ -524,8 +530,14 @@ function setupEvents() {
         this.classList.add('is-active');
 
         state.viewMode = mode;
-        matrix.classList.remove('view-dual', 'view-single');
-        matrix.classList.add(mode === 'single' ? 'view-single' : 'view-dual');
+        matrix.classList.remove('view-dual', 'view-single', 'view-editorial');
+        if (mode === 'editorial') {
+          matrix.classList.add('view-editorial');
+        } else if (mode === 'single') {
+          matrix.classList.add('view-single');
+        } else {
+          matrix.classList.add('view-dual');
+        }
       });
     });
   }
