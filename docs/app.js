@@ -653,6 +653,13 @@ async function triggerFeedRefresh() {
   }, 400);
 }
 
+function scrollToCatalogTop() {
+  const container = document.getElementById('catalog-scroll-container');
+  if (container) {
+    container.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
 function setupEvents() {
   // Click on Title to Refresh (Header Brand & Hero Title)
   const headerBrand = document.getElementById('header-brand');
@@ -660,6 +667,7 @@ function setupEvents() {
     headerBrand.addEventListener('click', (e) => {
       e.preventDefault();
       triggerFeedRefresh();
+      scrollToCatalogTop();
     });
   }
 
@@ -667,6 +675,7 @@ function setupEvents() {
   if (heroTitle) {
     heroTitle.addEventListener('click', () => {
       triggerFeedRefresh();
+      scrollToCatalogTop();
     });
   }
 
@@ -732,6 +741,7 @@ function setupEvents() {
         state.series = btn.dataset.series;
         state.visibleCount = state.pageSize;
         renderGrid();
+        scrollToCatalogTop();
       }
     });
   }
@@ -745,6 +755,7 @@ function setupEvents() {
       state.budget = btn.dataset.budget;
       state.visibleCount = state.pageSize;
       renderGrid();
+      scrollToCatalogTop();
     });
   });
 
@@ -757,6 +768,7 @@ function setupEvents() {
       state.minDiscount = parseInt(btn.dataset.minDiscount || '0', 10);
       state.visibleCount = state.pageSize;
       renderGrid();
+      scrollToCatalogTop();
     });
   });
 
@@ -768,6 +780,7 @@ function setupEvents() {
       atlToggleBtn.classList.toggle('is-active', state.allTimeLowOnly);
       state.visibleCount = state.pageSize;
       renderGrid();
+      scrollToCatalogTop();
     });
   }
 
@@ -781,6 +794,7 @@ function setupEvents() {
       state.sortBy = btn.dataset.sort;
       state.visibleCount = state.pageSize;
       renderGrid();
+      scrollToCatalogTop();
     });
   });
 
@@ -798,6 +812,7 @@ function setupEvents() {
       }
       state.visibleCount = state.pageSize;
       renderGrid();
+      scrollToCatalogTop();
     });
   }
 
@@ -809,6 +824,7 @@ function setupEvents() {
       bookmarkToggleBtn.classList.toggle('is-active', state.savedOnly);
       state.visibleCount = state.pageSize;
       renderGrid();
+      scrollToCatalogTop();
     });
   }
 
@@ -877,6 +893,7 @@ function setupEvents() {
       }
 
       renderGrid();
+      scrollToCatalogTop();
     });
   }
 
