@@ -5,10 +5,15 @@ let metadata = {};
 const state = {
   search: '',
   series: 'all',
+  budget: 'all', // 'all' | 'under_2500' | '2500_5000' | '5000_10000' | 'above_10000'
+  minDiscount: 0, // 0 | 30 | 40 | 50
+  allTimeLowOnly: false,
   inStockOnly: false,
   savedOnly: false,
   sortBy: 'discount_desc',
-  viewMode: 'editorial' // editorial view default (screen-adaptive)
+  viewMode: 'editorial', // editorial view default (screen-adaptive)
+  visibleCount: 24,
+  pageSize: 24
 };
 
 // Bookmarks in LocalStorage
@@ -25,8 +30,10 @@ function toggleBookmark(id) {
   const index = bookmarks.indexOf(id);
   if (index >= 0) {
     bookmarks.splice(index, 1);
+    showToast('REMOVED FROM SAVED');
   } else {
     bookmarks.push(id);
+    showToast('SAVED TO WATCHLIST');
   }
   localStorage.setItem('casio_bookmarks', JSON.stringify(bookmarks));
   updateSavedFilterCount();
@@ -59,6 +66,34 @@ function showToast(msg, duration = 2400) {
   toastTimer = setTimeout(() => {
     toast.classList.remove('show');
   }, duration);
+}
+
+// Share Deal Helper
+async function shareDeal(item) {
+  const shareData = {
+    title: `Casio Deal: ${item.discountPercent}% OFF on ${item.title}`,
+    text: `🔥 Grab ${item.title} for ${formatInr(item.price)} (M.R.P: ${formatInr(item.originalPrice)}) on Casio India!`,
+    url: item.url
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      return;
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        console.warn('Share error:', err);
+      }
+    }
+  }
+
+  // Fallback: Copy link to clipboard
+  try {
+    await navigator.clipboard.writeText(item.url);
+    showToast('COPIED DIRECT LINK TO CLIPBOARD');
+  } catch (err) {
+    showToast('LINK: ' + item.url.slice(0, 30) + '...');
+  }
 }
 
 async function loadData(showFeedback = false) {
@@ -105,11 +140,11 @@ function renderSeriesCounts() {
   }
 
   // Update discount cuts for every series pill dynamically
-  document.querySelectorAll('.series-pill[data-series]').forEach(pill => {
+  document.querySelectorAll('.series-pill[data-series]').forEach((pill) => {
     const series = pill.dataset.series;
     if (series === 'all') return;
 
-    const matching = allWatches.filter(w => {
+    const matching = allWatches.filter((w) => {
       if (!w.series) return false;
       return w.series.toLowerCase() === series.toLowerCase();
     });
@@ -117,7 +152,7 @@ function renderSeriesCounts() {
     const badge = pill.querySelector('.series-cut-badge');
     if (badge) {
       if (matching.length > 0) {
-        const cuts = matching.map(w => w.discountPercent || 0).filter(c => c > 0);
+        const cuts = matching.map((w) => w.discountPercent || 0).filter((c) => c > 0);
         if (cuts.length > 0) {
           const maxCut = Math.max(...cuts);
           badge.textContent = `-${maxCut}%`;
@@ -145,7 +180,7 @@ function updateSavedFilterCount() {
 function getFilteredWatches() {
   const bookmarks = getBookmarks();
 
-  let list = allWatches.filter(item => {
+  let list = allWatches.filter((item) => {
     // Search
     if (state.search) {
       const q = state.search.toLowerCase();
@@ -159,6 +194,18 @@ function getFilteredWatches() {
     if (state.series !== 'all') {
       if ((item.series || '').toLowerCase() !== state.series.toLowerCase()) return false;
     }
+
+    // Budget range
+    if (state.budget === 'under_2500' && item.price >= 2500) return false;
+    if (state.budget === '2500_5000' && (item.price < 2500 || item.price > 5000)) return false;
+    if (state.budget === '5000_10000' && (item.price < 5000 || item.price > 10000)) return false;
+    if (state.budget === 'above_10000' && item.price <= 10000) return false;
+
+    // Minimum discount threshold
+    if (state.minDiscount > 0 && item.discountPercent < state.minDiscount) return false;
+
+    // All-time low only
+    if (state.allTimeLowOnly && !item.isAllTimeLow) return false;
 
     // In Stock
     if (state.inStockOnly && !item.available) {
@@ -196,21 +243,26 @@ function renderGrid() {
   const container = document.getElementById('catalog-product-matrix');
   const emptyState = document.getElementById('empty-state');
   const seriesIndexLabel = document.getElementById('series-index-label');
+  const paginationControls = document.getElementById('pagination-controls');
+  const btnLoadMore = document.getElementById('btn-load-more');
+  const resultsCountText = document.getElementById('results-count-text');
   const bookmarks = getBookmarks();
 
   const filtered = getFilteredWatches();
 
   if (seriesIndexLabel) {
     const activeIndexMap = {
-      'all': '01 / 07',
-      'Edifice': '02 / 07',
-      'G-Shock': '03 / 07',
-      'Vintage': '04 / 07',
-      'Pro Trek': '05 / 07',
-      'Enticer': '06 / 07',
-      'Casio Classic': '07 / 07'
+      'all': '01 / 09',
+      'Edifice': '02 / 09',
+      'G-Shock': '03 / 09',
+      'Vintage': '04 / 09',
+      'Pro Trek': '05 / 09',
+      'Enticer': '06 / 09',
+      'Sheen': '07 / 09',
+      'Youth': '08 / 09',
+      'Casio Classic': '09 / 09'
     };
-    seriesIndexLabel.textContent = activeIndexMap[state.series] || '01 / 07';
+    seriesIndexLabel.textContent = activeIndexMap[state.series] || '01 / 09';
   }
 
   // Ensure matrix has proper view class
@@ -227,20 +279,43 @@ function renderGrid() {
 
   if (filtered.length === 0) {
     container.innerHTML = '';
-    emptyState.classList.remove('hidden');
+    emptyState?.classList.remove('hidden');
+    if (paginationControls) paginationControls.style.display = 'none';
     return;
   }
 
-  emptyState.classList.add('hidden');
+  emptyState?.classList.add('hidden');
 
-  container.innerHTML = filtered.map((item, index) => {
+  // Progressive rendering slice
+  const visible = filtered.slice(0, state.visibleCount);
+
+  if (paginationControls) {
+    paginationControls.style.display = 'flex';
+    if (resultsCountText) {
+      resultsCountText.textContent = `SHOWING ${visible.length} OF ${filtered.length} WATCHES`;
+    }
+    if (btnLoadMore) {
+      if (visible.length < filtered.length) {
+        btnLoadMore.style.display = 'inline-block';
+        btnLoadMore.textContent = `LOAD MORE WATCHES (+${Math.min(state.pageSize, filtered.length - visible.length)})`;
+      } else {
+        btnLoadMore.style.display = 'none';
+      }
+    }
+  }
+
+  container.innerHTML = visible.map((item, index) => {
     const padIndex = String(index + 1).padStart(2, '0');
     const imageSrc = item.image || 'https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-2100RL-1A.png?v=1751277644';
     const seriesTitle = (item.series || 'CASIO').toUpperCase();
     const isSaved = bookmarks.includes(item.id);
-    const stockStatus = item.available 
+    const stockStatus = item.available
       ? '<span class="text-accent-green font-semibold">🟢 IN STOCK</span>'
       : '<span class="text-ink-muted">🔴 OUT OF STOCK</span>';
+
+    const atlBadge = item.isAllTimeLow
+      ? `<span class="bg-amber-100 border border-amber-400 text-amber-900 px-1 py-0.5 text-[8px] sm:text-[9px] font-bold tracking-tight" title="Lowest price recorded across all tracker runs">🌟 ALL-TIME LOW</span>`
+      : '';
 
     return `
       <article class="border-r border-b border-border-hairline p-4 sm:p-7 flex flex-col justify-between group hover:bg-white transition-colors duration-200" data-watch-id="${item.id}">
@@ -248,6 +323,7 @@ function renderGrid() {
         <div class="flex items-center justify-between text-[9px] sm:text-[10px] font-mono tracking-widest text-ink-muted pb-2">
           <span class="truncate max-w-[120px] sm:max-w-none">PLATE ${padIndex} • ${seriesTitle}</span>
           <div class="flex items-center gap-1.5 flex-shrink-0">
+            ${atlBadge}
             <span class="text-accent-red font-bold tracking-normal border border-accent-red/30 px-1 py-0.5 bg-accent-red-faint text-[8px] sm:text-[9px]">
               -${item.discountPercent}% CUT
             </span>
@@ -282,7 +358,7 @@ function renderGrid() {
         <!-- Product Details, Pricing, Direct Link -->
         <div class="pt-3">
           <div class="flex items-baseline justify-between pt-2 border-t border-border-hairline text-ink">
-            <h2 class="font-grotesk font-bold text-[12px] sm:text-[14px] uppercase tracking-[-0.01em] line-clamp-1">
+            <h2 class="font-grotesk font-bold text-[12px] sm:text-[14px] uppercase tracking-[-0.01em] line-clamp-1" title="${item.title}">
               ${item.title}
             </h2>
             <div class="flex items-baseline gap-1.5 sm:gap-2 font-mono flex-shrink-0 ml-1.5">
@@ -305,6 +381,13 @@ function renderGrid() {
             >
               SECURE AT BHAWAR ↗
             </a>
+            <button 
+              class="share-deal-btn px-2.5 py-2 sm:py-2.5 hairline-all text-center font-mono text-[9px] sm:text-[10px] tracking-wider text-ink-muted hover:text-ink hover:border-ink transition-colors"
+              title="Share Deal or Copy Direct Link"
+              data-id="${item.id}"
+            >
+              <span class="material-symbols-outlined text-[13px]">share</span>
+            </button>
           </div>
         </div>
       </article>
@@ -312,12 +395,22 @@ function renderGrid() {
   }).join('');
 
   // Attach bookmark toggle listeners
-  container.querySelectorAll('.bookmark-btn').forEach(btn => {
+  container.querySelectorAll('.bookmark-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const id = btn.dataset.id;
       toggleBookmark(id);
       renderGrid();
+    });
+  });
+
+  // Attach share deal listeners
+  container.querySelectorAll('.share-deal-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = btn.dataset.id;
+      const watch = allWatches.find((w) => w.id === id);
+      if (watch) shareDeal(watch);
     });
   });
 }
@@ -329,12 +422,12 @@ async function triggerFeedRefresh() {
   isRefreshingGlobal = true;
 
   const radarIcons = document.querySelectorAll('header img[alt="Radar Icon"], nav img[alt="Radar"]');
-  radarIcons.forEach(icon => icon.classList.add('animate-spin'));
+  radarIcons.forEach((icon) => icon.classList.add('animate-spin'));
   showToast('SYNCING BHAWAR RADAR FEEDS...');
 
   await loadData(true);
 
-  radarIcons.forEach(icon => icon.classList.remove('animate-spin'));
+  radarIcons.forEach((icon) => icon.classList.remove('animate-spin'));
   setTimeout(() => {
     isRefreshingGlobal = false;
   }, 400);
@@ -420,7 +513,6 @@ function setupPullToRefresh() {
 }
 
 function setupEvents() {
-  // Mobile Pull-to-refresh
   setupPullToRefresh();
 
   // Click on Title to Refresh (Header Brand & Hero Title)
@@ -444,6 +536,7 @@ function setupEvents() {
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       state.search = e.target.value.trim();
+      state.visibleCount = state.pageSize;
       renderGrid();
     });
 
@@ -455,13 +548,22 @@ function setupEvents() {
     });
   }
 
+  // Load More Button
+  const btnLoadMore = document.getElementById('btn-load-more');
+  if (btnLoadMore) {
+    btnLoadMore.addEventListener('click', () => {
+      state.visibleCount += state.pageSize;
+      renderGrid();
+    });
+  }
+
   // Series Pills
   const pillBar = document.getElementById('series-pill-bar');
   if (pillBar) {
     pillBar.addEventListener('click', (e) => {
       const btn = e.target.closest('.series-pill');
       if (btn) {
-        pillBar.querySelectorAll('.series-pill').forEach(p => {
+        pillBar.querySelectorAll('.series-pill').forEach((p) => {
           p.classList.remove('border-ink', 'shadow-sm');
           p.classList.add('border-border-hairline');
           p.querySelector('.series-label')?.classList.remove('font-bold', 'text-ink');
@@ -474,24 +576,61 @@ function setupEvents() {
         btn.querySelector('.series-label')?.classList.remove('text-ink-muted');
 
         state.series = btn.dataset.series;
+        state.visibleCount = state.pageSize;
         renderGrid();
       }
     });
   }
 
-  // Sort buttons
-  const sortButtons = document.querySelectorAll('.sort-btn');
-  sortButtons.forEach(btn => {
+  // Budget Filter Buttons
+  const budgetButtons = document.querySelectorAll('.budget-btn');
+  budgetButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      sortButtons.forEach(b => b.classList.remove('is-active'));
+      budgetButtons.forEach((b) => b.classList.remove('is-active'));
       btn.classList.add('is-active');
-
-      state.sortBy = btn.dataset.sort;
+      state.budget = btn.dataset.budget;
+      state.visibleCount = state.pageSize;
       renderGrid();
     });
   });
 
-  // Stock Filter Toggle (Clean Scoped .is-active Class)
+  // Min Discount Cut Buttons
+  const cutButtons = document.querySelectorAll('.cut-btn');
+  cutButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      cutButtons.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      state.minDiscount = parseInt(btn.dataset.minDiscount || '0', 10);
+      state.visibleCount = state.pageSize;
+      renderGrid();
+    });
+  });
+
+  // All-Time Low Filter Toggle
+  const atlToggleBtn = document.getElementById('toggle-atl-filter');
+  if (atlToggleBtn) {
+    atlToggleBtn.addEventListener('click', () => {
+      state.allTimeLowOnly = !state.allTimeLowOnly;
+      atlToggleBtn.classList.toggle('is-active', state.allTimeLowOnly);
+      state.visibleCount = state.pageSize;
+      renderGrid();
+    });
+  }
+
+  // Sort buttons
+  const sortButtons = document.querySelectorAll('.sort-btn');
+  sortButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      sortButtons.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      state.sortBy = btn.dataset.sort;
+      state.visibleCount = state.pageSize;
+      renderGrid();
+    });
+  });
+
+  // Stock Filter Toggle
   const stockToggleBtn = document.getElementById('toggle-stock-filter');
   const stockDot = document.getElementById('stock-indicator-dot');
   if (stockToggleBtn) {
@@ -503,16 +642,18 @@ function setupEvents() {
           ? 'w-1.5 h-1.5 rounded-full bg-accent-green'
           : 'w-1.5 h-1.5 rounded-full bg-ink-muted';
       }
+      state.visibleCount = state.pageSize;
       renderGrid();
     });
   }
 
-  // Saved / Bookmark Filter Toggle (Clean Scoped .is-active Class)
+  // Saved / Bookmark Filter Toggle
   const bookmarkToggleBtn = document.getElementById('toggle-bookmark-filter');
   if (bookmarkToggleBtn) {
     bookmarkToggleBtn.addEventListener('click', () => {
       state.savedOnly = !state.savedOnly;
       bookmarkToggleBtn.classList.toggle('is-active', state.savedOnly);
+      state.visibleCount = state.pageSize;
       renderGrid();
     });
   }
@@ -522,11 +663,11 @@ function setupEvents() {
   const matrix = document.getElementById('catalog-product-matrix');
   if (viewToggle && matrix) {
     const buttons = viewToggle.querySelectorAll('button[data-layout-mode]');
-    buttons.forEach(btn => {
+    buttons.forEach((btn) => {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         const mode = this.dataset.layoutMode;
-        buttons.forEach(b => b.classList.remove('is-active'));
+        buttons.forEach((b) => b.classList.remove('is-active'));
         this.classList.add('is-active');
 
         state.viewMode = mode;
@@ -552,8 +693,12 @@ function setupEvents() {
     navRadar.addEventListener('click', () => {
       state.search = '';
       state.series = 'all';
+      state.budget = 'all';
+      state.minDiscount = 0;
+      state.allTimeLowOnly = false;
       state.inStockOnly = false;
       state.savedOnly = false;
+      state.visibleCount = state.pageSize;
       renderGrid();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -568,9 +713,10 @@ function setupEvents() {
   if (navDrops) {
     navDrops.addEventListener('click', () => {
       state.sortBy = 'discount_desc';
-      sortButtons.forEach(b => {
+      sortButtons.forEach((b) => {
         b.classList.toggle('is-active', b.dataset.sort === 'discount_desc');
       });
+      state.visibleCount = state.pageSize;
       renderGrid();
       document.getElementById('catalog-product-matrix')?.scrollIntoView({ behavior: 'smooth' });
     });
@@ -588,21 +734,29 @@ function setupEvents() {
     resetBtn.addEventListener('click', () => {
       state.search = '';
       state.series = 'all';
+      state.budget = 'all';
+      state.minDiscount = 0;
+      state.allTimeLowOnly = false;
       state.inStockOnly = false;
       state.savedOnly = false;
       state.sortBy = 'discount_desc';
+      state.visibleCount = state.pageSize;
 
       if (searchInput) searchInput.value = '';
       if (stockToggleBtn) stockToggleBtn.classList.remove('is-active');
       if (stockDot) stockDot.className = 'w-1.5 h-1.5 rounded-full bg-ink-muted';
       if (bookmarkToggleBtn) bookmarkToggleBtn.classList.remove('is-active');
+      if (atlToggleBtn) atlToggleBtn.classList.remove('is-active');
 
-      sortButtons.forEach(b => {
+      budgetButtons.forEach((b) => b.classList.toggle('is-active', b.dataset.budget === 'all'));
+      cutButtons.forEach((b) => b.classList.toggle('is-active', b.dataset.minDiscount === '0'));
+
+      sortButtons.forEach((b) => {
         b.classList.toggle('is-active', b.dataset.sort === 'discount_desc');
       });
 
       if (pillBar) {
-        pillBar.querySelectorAll('.series-pill').forEach(p => {
+        pillBar.querySelectorAll('.series-pill').forEach((p) => {
           const isAll = p.dataset.series === 'all';
           p.classList.toggle('border-ink', isAll);
           p.classList.toggle('shadow-sm', isAll);

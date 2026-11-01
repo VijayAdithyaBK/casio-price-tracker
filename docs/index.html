@@ -477,10 +477,10 @@
         SERIES SELECTION
       </div>
       <div class="font-grotesk font-bold text-[24px] sm:text-[34px] tracking-[-0.03em] mb-5 sm:mb-7" id="series-index-label">
-        01 / 07
+        01 / 09
       </div>
 
-      <!-- MICRO THUMBNAIL HARDWARE SELECTOR (ALL 7 SERIES WITH ACCURATE DISCOUNT CUTS) -->
+      <!-- MICRO THUMBNAIL HARDWARE SELECTOR (ALL 9 SERIES WITH ACCURATE DISCOUNT CUTS) -->
       <div class="flex items-center justify-start sm:justify-center gap-2 sm:gap-4 pb-3 overflow-x-auto max-w-full no-scrollbar w-full" id="series-pill-bar">
         <!-- ALL -->
         <button data-series="all" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-ink flex flex-col items-center justify-between p-1.5 group cursor-pointer shadow-sm transition-all">
@@ -522,6 +522,20 @@
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">ENT</span>
           <span class="text-[16px]">👔</span>
           <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-ent-cut">-50%</span>
+        </button>
+
+        <!-- Sheen -->
+        <button data-series="Sheen" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">SHN</span>
+          <span class="text-[16px]">💎</span>
+          <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink" id="pill-shn-cut">--</span>
+        </button>
+
+        <!-- Youth / Royale -->
+        <button data-series="Youth" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+          <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">YTH</span>
+          <span class="text-[16px]">⚡</span>
+          <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink" id="pill-yth-cut">--</span>
         </button>
 
         <!-- Casio Classic -->
@@ -588,10 +602,48 @@
       </div>
     </div>
 
+    <!-- SECONDARY PARAMETRIC FILTERS (BUDGET & DISCOUNT TIER & ALL-TIME LOW) -->
+    <div class="mt-2.5 py-2.5 px-3 bg-white border border-border-hairline flex flex-wrap items-center justify-between gap-y-2.5 gap-x-4 text-[10px] font-mono tracking-wider uppercase">
+      <!-- BUDGET RANGE PILLS -->
+      <div class="flex flex-wrap items-center gap-1.5" id="budget-filter-group">
+        <span class="text-ink-muted mr-1">BUDGET:</span>
+        <button data-budget="all" class="budget-btn filter-pill-btn is-active">ALL</button>
+        <button data-budget="under_2500" class="budget-btn filter-pill-btn">&lt; ₹2.5K</button>
+        <button data-budget="2500_5000" class="budget-btn filter-pill-btn">₹2.5K–₹5K</button>
+        <button data-budget="5000_10000" class="budget-btn filter-pill-btn">₹5K–₹10K</button>
+        <button data-budget="above_10000" class="budget-btn filter-pill-btn">&gt; ₹10K</button>
+      </div>
+
+      <!-- MIN DISCOUNT CUT & ALL-TIME LOW -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1.5" id="discount-filter-group">
+          <span class="text-ink-muted mr-1">CUT:</span>
+          <button data-min-discount="0" class="cut-btn filter-pill-btn is-active">ANY</button>
+          <button data-min-discount="30" class="cut-btn filter-pill-btn">30%+</button>
+          <button data-min-discount="40" class="cut-btn filter-pill-btn">40%+</button>
+          <button data-min-discount="50" class="cut-btn filter-pill-btn">50%+</button>
+        </div>
+        <button id="toggle-atl-filter" class="filter-pill-btn" title="Filter to All-Time Lowest Prices Ever Recorded">
+          <span>🌟</span>
+          <span id="atl-filter-text">ALL-TIME LOW</span>
+        </button>
+      </div>
+    </div>
+
     <!-- MAIN PRODUCT GRID ARCHITECTURE (DEFAULT EDITORIAL VIEW) -->
-    <section class="mt-8 border-t border-l border-border-hairline bg-background transition-all view-editorial" id="catalog-product-matrix">
+    <section class="mt-6 border-t border-l border-border-hairline bg-background transition-all view-editorial" id="catalog-product-matrix">
       <!-- Cards rendered dynamically via app.js -->
     </section>
+
+    <!-- PAGINATION / PROGRESSIVE LOAD MORE -->
+    <div id="pagination-controls" class="mt-8 flex flex-col items-center justify-center gap-2.5">
+      <button id="btn-load-more" class="px-8 py-3 bg-white border border-ink text-ink font-mono text-[11px] uppercase tracking-widest hover:bg-ink hover:text-white transition-colors cursor-pointer font-bold shadow-sm">
+        LOAD MORE WATCHES (+24)
+      </button>
+      <span id="results-count-text" class="font-mono text-[10px] text-ink-muted uppercase tracking-widest">
+        SHOWING 24 OF 165 WATCHES
+      </span>
+    </div>
 
     <!-- EMPTY STATE -->
     <div id="empty-state" class="hidden mt-12 p-14 text-center hairline-all bg-white flex flex-col items-center justify-center">

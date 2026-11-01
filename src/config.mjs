@@ -24,6 +24,17 @@ export const config = {
   // Force alert all items on test run
   forceAlertAll: process.env.FORCE_ALERT_ALL === 'true',
 
+  // Dry-run mode (skips mutating data files and sending live notifications)
+  dryRun: process.argv.includes('--dry-run') || process.env.DRY_RUN === 'true',
+
+  // Network retry settings
+  retryAttempts: parseInt(process.env.RETRY_ATTEMPTS || '3', 10),
+  retryBaseDelayMs: parseInt(process.env.RETRY_BASE_DELAY_MS || '1000', 10),
+  maxAlertItems: parseInt(process.env.MAX_ALERT_ITEMS || '50', 10),
+
+  // Dashboard URL for web links and alerts
+  dashboardUrl: process.env.DASHBOARD_URL || 'https://vijayadithyabk.github.io/casio-price-tracker',
+
   // Alert services
   telegram: {
     botToken: process.env.TELEGRAM_BOT_TOKEN || '',

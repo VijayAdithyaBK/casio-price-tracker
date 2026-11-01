@@ -11,7 +11,7 @@ function ensureDirectoryExistence(filePath) {
   }
 }
 
-function loadJson(filePath, fallback = {}) {
+export function loadJson(filePath, fallback = {}) {
   try {
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, 'utf-8');
@@ -23,41 +23,50 @@ function loadJson(filePath, fallback = {}) {
   return fallback;
 }
 
-function saveJson(filePath, data) {
+export function saveJson(filePath, data) {
   ensureDirectoryExistence(filePath);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
-export async function runTracker() {
-  console.log('='.repeat(65));
-  console.log('⌚ Casio Watch Discount Tracker & Alerter');
-  console.log(`Target: ${config.baseUrl}/collections/watches`);
-  console.log(`Time:   ${new Date().toISOString()}`);
-  console.log('='.repeat(65));
+/**
+ * Pure delta analysis: compares current scan with historical snapshot
+ * Detects: NEW_DISCOUNT, RETURNED_TO_SALE, PRICE_DROP, RESTOCKED, and ALL-TIME LOW
+ */
+export function detectAlerts(allDiscounted, previousItems = {}, options = {}) {
+  const {
+    alertMinDiscountPercent = config.alertMinDiscountPercent,
+    alertInStockOnly = config.alertInStockOnly,
+    forceAlertAll = config.forceAlertAll
+  } = options;
 
-  // 1. Load historical state
-  const history = loadJson(config.paths.historyJson, { items: {}, lastRun: null });
-  const previousItems = history.items || {};
-
-  // 2. Fetch fresh discounted watches
-  const scanResult = await fetchDiscountedWatches();
-  const { items: allDiscounted, totalProductsScanned } = scanResult;
-
-  // 3. Detect changes (new discounts, price drops, restocks)
+  const currentDiscountedIds = new Set(allDiscounted.map((i) => i.id));
   const newAlerts = [];
-  const updatedHistory = { ...previousItems };
+  const updatedHistory = {};
 
+  // 1. Ingest clean previous items (discard corrupted entries where price <= 0)
+  for (const [id, prev] of Object.entries(previousItems)) {
+    if (prev && typeof prev.price === 'number' && prev.price > 0) {
+      updatedHistory[id] = { ...prev };
+      // If the watch was previously on sale, but is no longer in current discounts, mark its sale ended
+      if (!currentDiscountedIds.has(id) && prev.isDiscounted !== false) {
+        updatedHistory[id].isDiscounted = false;
+        updatedHistory[id].saleEndedAt = new Date().toISOString();
+      }
+    }
+  }
+
+  // 2. Evaluate current discounted watches
   for (const item of allDiscounted) {
-    const prev = previousItems[item.id];
+    const prev = updatedHistory[item.id];
     let shouldAlert = false;
     let reason = '';
 
-    if (!prev) {
-      // New deal detected
+    if (!prev || prev.isDiscounted === false) {
+      // First time seen, OR returning to discount after sale ended!
       shouldAlert = true;
-      reason = 'NEW_DISCOUNT';
+      reason = prev ? 'RETURNED_TO_SALE' : 'NEW_DISCOUNT';
     } else if (item.price < prev.price) {
-      // Price dropped even further!
+      // Price dropped even lower!
       shouldAlert = true;
       reason = 'PRICE_DROP';
     } else if (!prev.available && item.available) {
@@ -66,11 +75,21 @@ export async function runTracker() {
       reason = 'RESTOCKED';
     }
 
-    // Apply configured alert filters
-    const meetsDiscountThreshold = item.discountPercent >= config.alertMinDiscountPercent;
-    const meetsStockCondition = !config.alertInStockOnly || item.available;
+    // Determine all-time low & highest discount recorded
+    const lowestPrev = prev && typeof prev.lowestPriceEver === 'number' && prev.lowestPriceEver > 0
+      ? prev.lowestPriceEver
+      : (prev ? prev.price : item.price);
+    const isAllTimeLow = !prev || !prev.lowestPriceEver || item.price < lowestPrev;
+    const lowestPriceEver = Math.min(lowestPrev, item.price);
+    const highestDiscountEver = Math.max(prev?.highestDiscountEver || 0, item.discountPercent);
 
-    if (config.forceAlertAll) {
+    item.isAllTimeLow = isAllTimeLow;
+    item.lowestPriceEver = lowestPriceEver;
+
+    const meetsDiscountThreshold = item.discountPercent >= alertMinDiscountPercent;
+    const meetsStockCondition = !alertInStockOnly || item.available;
+
+    if (forceAlertAll) {
       shouldAlert = true;
       reason = 'FORCED_TEST';
     }
@@ -83,44 +102,72 @@ export async function runTracker() {
       });
     }
 
-    // Update state tracking
+    // Update historical state
     updatedHistory[item.id] = {
       title: item.title,
       price: item.price,
       originalPrice: item.originalPrice,
       discountPercent: item.discountPercent,
       available: item.available,
+      isDiscounted: true,
+      lowestPriceEver,
+      highestDiscountEver,
       lastSeen: new Date().toISOString()
     };
   }
 
-  // 4. Sort new alerts strictly by discount descending
   newAlerts.sort((a, b) => b.discountPercent - a.discountPercent || b.savings - a.savings);
+
+  return { newAlerts, updatedHistory };
+}
+
+export async function runTracker() {
+  console.log('='.repeat(65));
+  console.log(`⌚ Casio Watch Discount Tracker & Alerter ${config.dryRun ? '[DRY RUN MODE]' : ''}`);
+  console.log(`Target: ${config.baseUrl}/collections/watches`);
+  console.log(`Time:   ${new Date().toISOString()}`);
+  console.log('='.repeat(65));
+
+  // 1. Load historical state
+  const history = loadJson(config.paths.historyJson, { items: {}, lastRun: null });
+  const previousItems = history.items || {};
+
+  // 2. Fetch fresh discounted watches
+  const scanResult = await fetchDiscountedWatches();
+  const { items: allDiscounted, totalProductsScanned } = scanResult;
+
+  // 3. Detect changes (new discounts, returned to sale, price drops, restocks)
+  const { newAlerts, updatedHistory } = detectAlerts(allDiscounted, previousItems, {
+    alertMinDiscountPercent: config.alertMinDiscountPercent,
+    alertInStockOnly: config.alertInStockOnly,
+    forceAlertAll: config.forceAlertAll
+  });
 
   console.log(`\n[Tracker] Analysis Summary:`);
   console.log(`- Scanned Total:        ${totalProductsScanned} watches`);
   console.log(`- Total Discounted:     ${allDiscounted.length} watches`);
   console.log(`- New Alerts Triggered: ${newAlerts.length} watches`);
 
-  // Console preview of top 5 discounts
+  // Console preview of top discounts
   if (allDiscounted.length > 0) {
     console.log(`\nTop current discounts:`);
     console.table(
       allDiscounted.slice(0, 8).map((w) => ({
         Model: w.title,
         'Discount %': `${w.discountPercent}%`,
-        Price: `₹${w.price.toLocaleString('en-IN')}`,
-        MRP: `₹${w.originalPrice.toLocaleString('en-IN')}`,
+        Price: `₹${Math.round(w.price).toLocaleString('en-IN')}`,
+        MRP: `₹${Math.round(w.originalPrice).toLocaleString('en-IN')}`,
+        'All-Time Low': w.isAllTimeLow ? '🌟 Yes' : 'No',
         Stock: w.available ? 'In Stock' : 'Out of Stock',
         Series: w.series
       }))
     );
   }
 
-  // 5. Dispatch alerts to Telegram, Discord, NTFY, and GitHub Summary
+  // 4. Dispatch alerts to Telegram, Discord, NTFY, and GitHub Summary
   await dispatchAlerts(newAlerts, allDiscounted);
 
-  // 6. Save data artifacts for GitHub Pages and future runs
+  // 5. Save data artifacts for GitHub Pages and future runs (unless in dry-run mode)
   const payload = {
     updatedAt: new Date().toISOString(),
     storeUrl: `${config.baseUrl}/collections/watches`,
@@ -132,15 +179,20 @@ export async function runTracker() {
     items: allDiscounted
   };
 
-  saveJson(config.paths.discountsJson, payload);
-  saveJson(config.paths.webDataJson, payload);
-  saveJson(config.paths.historyJson, {
-    items: updatedHistory,
-    lastRun: new Date().toISOString()
-  });
+  if (config.dryRun) {
+    console.log(`\n[Tracker] [DRY RUN] Skipping file writes to ${config.paths.discountsJson}`);
+  } else {
+    saveJson(config.paths.discountsJson, payload);
+    saveJson(config.paths.webDataJson, payload);
+    saveJson(config.paths.historyJson, {
+      items: updatedHistory,
+      lastRun: new Date().toISOString()
+    });
 
-  console.log(`\n[Tracker] Saved current discounts to ${config.paths.discountsJson}`);
-  console.log(`[Tracker] Saved web data to ${config.paths.webDataJson}`);
+    console.log(`\n[Tracker] Saved current discounts to ${config.paths.discountsJson}`);
+    console.log(`[Tracker] Saved web data to ${config.paths.webDataJson}`);
+  }
+
   console.log('='.repeat(65));
 }
 
@@ -154,4 +206,3 @@ if (isMain) {
     process.exit(1);
   });
 }
-
