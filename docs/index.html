@@ -27,7 +27,6 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config">
     tailwind.config = {
-      darkMode: "class",
       theme: {
         extend: {
           colors: {
@@ -74,24 +73,6 @@
       --accent-green: #16a34a;
       --accent-green-faint: #f0fdf4;
     }
-    html.dark {
-      --bg-canvas: #090A0D;
-      --surface-card: #12151E;
-      --surface-muted: #1A1F2C;
-      --border-line: #222736;
-      --border-strong: #E2E8F0;
-      --text-primary: #F1F5F9;
-      --text-muted: #94A3B8;
-      --text-faint: #64748B;
-      --plate-bg: rgba(26, 31, 44, 0.6);
-      --toast-bg: #1A1F2C;
-      --toast-text: #F1F5F9;
-      --modal-bg: #12151E;
-      --accent-red: #FF3B30;
-      --accent-red-faint: rgba(255, 59, 48, 0.15);
-      --accent-green: #22c55e;
-      --accent-green-faint: rgba(34, 197, 94, 0.15);
-    }
     @layer base {
       html, body {
         margin: 0;
@@ -101,7 +82,6 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overscroll-behavior-y: contain;
-        transition: background-color 0.2s ease, color 0.2s ease;
       }
       .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
       .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
@@ -115,36 +95,7 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Pull-To-Refresh Bar & Toast Feedback */
-    #pull-to-refresh {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 60;
-      pointer-events: none;
-      display: flex;
-      justify-content: center;
-      transform: translateY(-100%);
-      will-change: transform;
-    }
-    .ptr-content {
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid #111111;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      padding: 6px 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #111111;
-      margin-top: 8px;
-    }
+    /* Toast Feedback */
     #radar-toast {
       position: fixed;
       top: 16px;
@@ -453,15 +404,7 @@
     }
   </style>
 </head>
-<body class="bg-background text-ink font-sans selection:bg-ink selection:text-surface-pure antialiased min-h-screen pb-20 md:pb-0">
-
-  <!-- MOBILE PULL TO REFRESH BANNER -->
-  <div id="pull-to-refresh">
-    <div class="ptr-content">
-      <span id="ptr-icon" class="material-symbols-outlined text-[16px] text-accent-red transition-transform duration-200">refresh</span>
-      <span id="ptr-label">PULL DOWN TO REFRESH</span>
-    </div>
-  </div>
+<body class="bg-background text-ink font-sans selection:bg-ink selection:text-surface-pure antialiased min-h-screen">
 
   <!-- RADAR FEEDBACK TOAST -->
   <div id="radar-toast">
@@ -477,7 +420,6 @@
           <span>STORE</span>
           <span class="text-[9px] text-ink-muted">↗</span>
         </a>
-        <a class="hover:text-accent-red transition-colors hidden sm:inline-block" href="#series">SERIES</a>
       </div>
 
       <!-- CENTER ICONIC MARQUEE: CLICKABLE TO REFRESH -->
@@ -491,12 +433,6 @@
       </a>
 
       <div class="flex items-center gap-3 sm:gap-6">
-        <!-- THEME SWITCHER -->
-        <button id="theme-toggle" class="hover:text-accent-red transition-colors flex items-center gap-1 font-mono text-[10px] cursor-pointer" title="Toggle Tactical Night / Museum Light Mode">
-          <span class="material-symbols-outlined text-[15px]" id="theme-icon">dark_mode</span>
-          <span id="theme-label" class="hidden sm:inline">TACTICAL</span>
-        </button>
-
         <!-- WISHLIST DRAWER BUTTON -->
         <button id="btn-open-saved-drawer" class="hover:text-accent-red transition-colors flex items-center gap-1 font-mono text-[10px] cursor-pointer" title="Open Saved Watchlist Drawer">
           <span class="material-symbols-outlined text-[15px]">bookmark</span>
@@ -514,26 +450,13 @@
   </header>
 
   <!-- MAIN WRAPPER -->
-  <main class="max-w-[1400px] mx-auto px-4 sm:px-12 pt-6 sm:pt-14 pb-24">
-
-    <!-- ARCHIVAL METADATA STRIP -->
-    <div class="w-full pb-3 flex items-center justify-between font-mono text-[9px] sm:text-[10px] text-ink-muted uppercase tracking-widest hairline-b">
-      <span>INDEX REF // 04.992B</span>
-      <span class="text-ink font-semibold">ARBITRAGE PROTOCOL</span>
-    </div>
+  <main class="max-w-[1400px] mx-auto px-4 sm:px-12 pt-6 sm:pt-10 pb-20">
 
     <!-- HERO EDITORIAL TITLE: CLICKABLE TO REFRESH -->
-    <div class="w-full text-center select-none overflow-hidden pt-6">
+    <div class="w-full text-center select-none overflow-hidden pt-4 sm:pt-6">
       <h1 id="catalog-hero-title" class="font-grotesk font-black text-[16vw] lg:text-[195px] leading-[0.82] tracking-[-0.05em] uppercase text-ink text-center cursor-pointer hover:opacity-85 transition-opacity" title="Click or tap to refresh liquidation radar">
         CATALOG
       </h1>
-      <div class="mt-3 sm:mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] sm:text-[11px] font-mono tracking-[0.16em] text-ink-muted uppercase">
-        <span>BHAWAR AUTHORIZED DISTRIBUTOR</span>
-        <span class="w-1 h-1 rounded-full bg-ink-muted"></span>
-        <span>AUTOMATED LIQUIDATION DETECTOR</span>
-        <span class="w-1 h-1 rounded-full bg-ink-muted"></span>
-        <span>REAL-TIME ARBITRAGE</span>
-      </div>
 
       <!-- LIVE TELEMETRY RUNNER -->
       <div class="mt-6 grid grid-cols-2 sm:grid-cols-5 gap-2 max-w-4xl mx-auto text-left font-mono">
@@ -575,15 +498,8 @@
       </div>
     </div>
 
-    <!-- MINIMALIST SUB-INDEX FILTER -->
-    <section class="mt-8 sm:mt-14 flex flex-col items-center" id="series">
-      <div class="text-[10px] font-mono tracking-[0.25em] text-ink-muted uppercase mb-1">
-        SERIES SELECTION
-      </div>
-      <div class="font-grotesk font-bold text-[24px] sm:text-[34px] tracking-[-0.03em] mb-5 sm:mb-7" id="series-index-label">
-        01 / 09
-      </div>
-
+    <!-- SUB-INDEX FILTER -->
+    <section class="mt-6 sm:mt-8 flex flex-col items-center" id="series">
       <!-- MICRO THUMBNAIL HARDWARE SELECTOR (ALL 9 SERIES WITH ACCURATE DISCOUNT CUTS) -->
       <div class="flex items-center justify-start sm:justify-center gap-2 sm:gap-4 pb-3 overflow-x-auto max-w-full no-scrollbar w-full" id="series-pill-bar">
         <!-- ALL -->
@@ -683,8 +599,8 @@
         </button>
       </div>
 
-      <!-- VIEW MATRIX TOGGLE & TELEMETRY -->
-      <div class="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 sm:gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-border-hairline">
+      <!-- VIEW MATRIX TOGGLE -->
+      <div class="w-full md:w-auto flex items-center justify-end pt-2 md:pt-0 border-t md:border-t-0 border-border-hairline">
         <!-- VIEW MATRIX TOGGLE: ICON ONLY (Editorial First & Default, then 2-Card, then 1-Card) -->
         <div class="inline-flex items-center p-0.5 bg-surface-pure border border-border-hairline gap-0.5" id="layout-view-toggle">
           <button data-layout-mode="editorial" class="view-matrix-btn is-active" title="Editorial View (Auto-adjusts columns by screen width)" aria-label="Editorial View">
@@ -696,14 +612,6 @@
           <button data-layout-mode="single" class="view-matrix-btn" title="Single Card View (1 Column)" aria-label="1 Card View">
             <span class="material-symbols-outlined text-[16px]">crop_square</span>
           </button>
-        </div>
-
-        <!-- TELEMETRY BADGE -->
-        <div class="flex items-center gap-2 text-ink-muted text-[10px]">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
-          <span id="telemetry-time">API: BHAWAR LIVE</span>
-          <span>•</span>
-          <span id="telemetry-deals" class="text-ink font-bold">0 DEALS</span>
         </div>
       </div>
     </div>
@@ -790,79 +698,41 @@
       </div>
     </section>
 
-    <!-- ARCHIVAL COLOPHON / TAXONOMY FOOTER (From mobile catalog) -->
-    <footer class="mt-12 w-full pt-8 pb-12 text-ink flex flex-col gap-6">
-      <div class="flex flex-col items-center text-center gap-1">
-        <span class="font-grotesk text-[18px] uppercase font-bold tracking-tight text-ink">
-          BHAWAR DISTRIBUTORS ARCHIVE
-        </span>
-        <p class="font-mono text-[10px] text-ink-muted uppercase tracking-widest">
-          OFFICIAL CASIO INDIA LIQUIDATION DATA INGESTION • AUTOMATED SYNC
-        </p>
+    <!-- ARCHIVAL COLOPHON / FOOTER -->
+    <footer class="mt-14 w-full pt-8 pb-10 text-ink flex flex-col gap-5 hairline-t">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-[10px] uppercase text-ink-muted">
+        <div>
+          <span class="font-grotesk font-bold text-sm tracking-tight text-ink block">BHAWAR DISTRIBUTORS ARCHIVE</span>
+          <span class="text-[9px] text-ink-faint">Casio India Liquidation Tracking • Automated Hourly Ingestion</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-ink font-mono text-[10px]">
+          <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="hover:text-accent-red transition-colors flex items-center gap-1">
+            <span>OFFICIAL STORE</span>
+            <span class="text-ink-muted">↗</span>
+          </a>
+          <a href="https://github.com/VijayAdithyaBK/casio-price-tracker" target="_blank" rel="noopener" class="hover:text-accent-red transition-colors flex items-center gap-1">
+            <span>GITHUB REPO</span>
+            <span class="text-ink-muted">↗</span>
+          </a>
+          <a href="data.json" target="_blank" class="hover:text-accent-red transition-colors flex items-center gap-1">
+            <span>RAW DATA</span>
+            <span class="text-ink-muted">↗</span>
+          </a>
+          <button id="footer-alerts-btn" class="hover:text-accent-red transition-colors cursor-pointer font-bold text-accent-red flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
+            <span>ALERTS</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Micro Taxonomy Matrix -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[10px] uppercase text-ink-muted">
-        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
-          <span>01 STORE COLLECTION</span>
-          <span class="text-ink font-semibold">↗</span>
-        </a>
-        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
-          <span>02 GITHUB REPO</span>
-          <span class="text-ink font-semibold">↗</span>
-        </a>
-        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/actions" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
-          <span>03 ACTIONS TELEMETRY</span>
-          <span class="text-ink font-semibold">↗</span>
-        </a>
-        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/blob/main/docs/DESIGN.md" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
-          <span>04 STITCH DESIGN DNA</span>
-          <span class="text-ink font-semibold">↗</span>
-        </a>
-        <button id="footer-alerts-btn" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors text-left">
-          <span>05 BOT CREDENTIALS</span>
-          <span class="text-ink font-semibold">[+]</span>
-        </button>
-        <a href="data.json" target="_blank" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
-          <span>06 RAW JSON DATA</span>
-          <span class="text-ink font-semibold">↗</span>
-        </a>
-      </div>
-
-      <div class="hairline-t pt-4 flex items-center justify-between font-mono text-[9px] text-ink-muted uppercase tracking-widest">
+      <div class="pt-3 flex items-center justify-between font-mono text-[9px] text-ink-muted uppercase tracking-widest border-t border-border-hairline">
         <span>SYS:// VERSION 4.2.1</span>
-        <span>AUTONOMOUS INVENTORY TRACKER</span>
+        <span>CASIO.RADAR</span>
         <span>2026</span>
       </div>
     </footer>
 
   </main>
-
-  <!-- MOBILE BOTTOM NAVIGATION TAB BAR (From mobile catalog) -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 pb-safe bg-background/95 backdrop-blur-xl hairline-t shadow-[0_-2px_10px_rgba(0,0,0,0.03)]">
-    <div class="flex items-center justify-around h-14 px-2 font-mono text-[9px] uppercase tracking-wider text-ink-muted">
-      <button id="nav-btn-radar" class="flex flex-col items-center justify-center flex-1 py-1 hover:text-ink transition-colors text-ink font-bold">
-        <img src="icons/icon.svg" class="w-[18px] h-[18px] object-contain inline-block" alt="Radar"/>
-        <span class="mt-0.5">RADAR</span>
-      </button>
-
-      <button id="nav-btn-series" class="flex flex-col items-center justify-center flex-1 py-1 hover:text-ink transition-colors">
-        <span class="material-symbols-outlined text-[19px]">grid_view</span>
-        <span class="mt-0.5">SERIES</span>
-      </button>
-
-      <button id="nav-btn-drops" class="flex flex-col items-center justify-center flex-1 py-1 hover:text-ink transition-colors relative">
-        <span class="absolute 1 right-4 px-1 py-0.1 bg-accent-red text-white text-[7px] font-bold">HOT</span>
-        <span class="material-symbols-outlined text-[19px]">trending_down</span>
-        <span class="mt-0.5">DROPS</span>
-      </button>
-
-      <button id="nav-btn-alerts" class="flex flex-col items-center justify-center flex-1 py-1 hover:text-ink transition-colors">
-        <span class="material-symbols-outlined text-[19px]">tune</span>
-        <span class="mt-0.5">ALERTS</span>
-      </button>
-    </div>
-  </nav>
 
   <!-- ALERTS MODAL -->
   <div id="alert-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6 hidden">

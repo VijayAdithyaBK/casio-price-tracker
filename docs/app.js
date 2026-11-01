@@ -16,41 +16,6 @@ const state = {
   pageSize: 24
 };
 
-// Theme Management (Archive Light / Tactical Dark)
-function initTheme() {
-  const savedTheme = localStorage.getItem('casio_theme');
-  const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-  applyTheme(theme);
-}
-
-function applyTheme(theme) {
-  const html = document.documentElement;
-  const themeIcon = document.getElementById('theme-icon');
-  const themeLabel = document.getElementById('theme-label');
-  const themeBtn = document.getElementById('theme-toggle');
-
-  if (theme === 'dark') {
-    html.classList.add('dark');
-    if (themeIcon) themeIcon.textContent = 'light_mode';
-    if (themeLabel) themeLabel.textContent = 'LIGHT';
-    if (themeBtn) themeBtn.title = 'Switch to Archive Light Mode';
-  } else {
-    html.classList.remove('dark');
-    if (themeIcon) themeIcon.textContent = 'dark_mode';
-    if (themeLabel) themeLabel.textContent = 'TACTICAL';
-    if (themeBtn) themeBtn.title = 'Switch to Tactical Dark Mode';
-  }
-  localStorage.setItem('casio_theme', theme);
-}
-
-function toggleTheme() {
-  const isDark = document.documentElement.classList.contains('dark');
-  const newTheme = isDark ? 'light' : 'dark';
-  applyTheme(newTheme);
-  showToast(newTheme === 'dark' ? 'TACTICAL DARK MODE ACTIVATED' : 'ARCHIVE LIGHT MODE ACTIVATED');
-}
-
 // Bookmarks in LocalStorage
 function getBookmarks() {
   try {
@@ -156,16 +121,6 @@ async function loadData(showFeedback = false) {
 }
 
 function updateTelemetry() {
-  const telemetryTime = document.getElementById('telemetry-time');
-  const telemetryDeals = document.getElementById('telemetry-deals');
-
-  if (telemetryTime && metadata.updatedAt) {
-    telemetryTime.textContent = `API: BHAWAR ${timeAgo(metadata.updatedAt)}`;
-  }
-  if (telemetryDeals) {
-    telemetryDeals.textContent = `${allWatches.length} DEALS ACTIVE`;
-  }
-
   // Live Telemetry Stats Runner in Hero Section
   const statScanned = document.getElementById('stat-scanned');
   const statDeals = document.getElementById('stat-deals');
@@ -500,28 +455,12 @@ function getFilteredWatches() {
 function renderGrid() {
   const container = document.getElementById('catalog-product-matrix');
   const emptyState = document.getElementById('empty-state');
-  const seriesIndexLabel = document.getElementById('series-index-label');
   const paginationControls = document.getElementById('pagination-controls');
   const btnLoadMore = document.getElementById('btn-load-more');
   const resultsCountText = document.getElementById('results-count-text');
   const bookmarks = getBookmarks();
 
   const filtered = getFilteredWatches();
-
-  if (seriesIndexLabel) {
-    const activeIndexMap = {
-      'all': '01 / 09',
-      'Edifice': '02 / 09',
-      'G-Shock': '03 / 09',
-      'Vintage': '04 / 09',
-      'Pro Trek': '05 / 09',
-      'Enticer': '06 / 09',
-      'Sheen': '07 / 09',
-      'Youth': '08 / 09',
-      'Casio Classic': '09 / 09'
-    };
-    seriesIndexLabel.textContent = activeIndexMap[state.series] || '01 / 09';
-  }
 
   // Ensure matrix has proper view class
   if (container) {
@@ -714,88 +653,7 @@ async function triggerFeedRefresh() {
   }, 400);
 }
 
-// Mobile Pull-to-refresh implementation
-function setupPullToRefresh() {
-  const ptr = document.getElementById('pull-to-refresh');
-  const ptrIcon = document.getElementById('ptr-icon');
-  const ptrLabel = document.getElementById('ptr-label');
-  if (!ptr || !ptrIcon || !ptrLabel) return;
-
-  let touchStartY = 0;
-  let isPulling = false;
-  const PTR_TRIGGER_DIST = 55;
-  const MAX_PULL = 100;
-
-  window.addEventListener('touchstart', (e) => {
-    if (window.scrollY <= 1 && !isRefreshingGlobal && e.touches.length === 1) {
-      touchStartY = e.touches[0].clientY;
-      isPulling = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener('touchmove', (e) => {
-    if (!isPulling || isRefreshingGlobal) return;
-    const currentY = e.touches[0].clientY;
-    const diff = currentY - touchStartY;
-
-    if (diff > 0 && window.scrollY <= 1) {
-      const pullDistance = Math.min(MAX_PULL, diff * 0.42);
-      ptr.style.transform = `translateY(${pullDistance}px)`;
-      if (pullDistance >= PTR_TRIGGER_DIST) {
-        ptrLabel.textContent = 'RELEASE TO REFRESH';
-        ptrIcon.style.transform = 'rotate(180deg)';
-      } else {
-        ptrLabel.textContent = 'PULL DOWN TO REFRESH';
-        ptrIcon.style.transform = `rotate(${pullDistance * 3}deg)`;
-      }
-    } else if (diff < 0) {
-      isPulling = false;
-      ptr.style.transform = 'translateY(-100%)';
-    }
-  }, { passive: true });
-
-  window.addEventListener('touchend', async (e) => {
-    if (!isPulling || isRefreshingGlobal) return;
-    isPulling = false;
-    const currentY = e.changedTouches[0].clientY;
-    const diff = currentY - touchStartY;
-    const pullDistance = Math.min(MAX_PULL, diff * 0.42);
-
-    if (pullDistance >= PTR_TRIGGER_DIST && window.scrollY <= 2) {
-      isRefreshingGlobal = true;
-      ptr.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
-      ptr.style.transform = 'translateY(55px)';
-      ptrLabel.textContent = 'SYNCING BHAWAR RADAR...';
-      ptrIcon.classList.add('animate-spin');
-
-      await loadData(false);
-
-      ptrLabel.textContent = 'FEED UPDATED';
-      ptrIcon.classList.remove('animate-spin');
-      ptrIcon.style.transform = 'rotate(0deg)';
-      showToast(`RADAR UPDATED: ${allWatches.length} LIVE DEALS`);
-
-      setTimeout(() => {
-        ptr.style.transform = 'translateY(-100%)';
-        setTimeout(() => {
-          ptr.style.transition = '';
-          isRefreshingGlobal = false;
-        }, 260);
-      }, 500);
-    } else {
-      ptr.style.transition = 'transform 0.2s ease';
-      ptr.style.transform = 'translateY(-100%)';
-      setTimeout(() => {
-        ptr.style.transition = '';
-        ptrIcon.style.transform = 'rotate(0deg)';
-      }, 200);
-    }
-  }, { passive: true });
-}
-
 function setupEvents() {
-  setupPullToRefresh();
-
   // Click on Title to Refresh (Header Brand & Hero Title)
   const headerBrand = document.getElementById('header-brand');
   if (headerBrand) {
@@ -979,51 +837,6 @@ function setupEvents() {
     });
   }
 
-  // Mobile Bottom Navigation Buttons
-  const navRadar = document.getElementById('nav-btn-radar');
-  const navSeries = document.getElementById('nav-btn-series');
-  const navDrops = document.getElementById('nav-btn-drops');
-  const navAlerts = document.getElementById('nav-btn-alerts');
-
-  if (navRadar) {
-    navRadar.addEventListener('click', () => {
-      state.search = '';
-      state.series = 'all';
-      state.budget = 'all';
-      state.minDiscount = 0;
-      state.allTimeLowOnly = false;
-      state.inStockOnly = false;
-      state.savedOnly = false;
-      state.visibleCount = state.pageSize;
-      renderGrid();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  if (navSeries) {
-    navSeries.addEventListener('click', () => {
-      document.getElementById('series')?.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  if (navDrops) {
-    navDrops.addEventListener('click', () => {
-      state.sortBy = 'discount_desc';
-      sortButtons.forEach((b) => {
-        b.classList.toggle('is-active', b.dataset.sort === 'discount_desc');
-      });
-      state.visibleCount = state.pageSize;
-      renderGrid();
-      document.getElementById('catalog-product-matrix')?.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  if (navAlerts) {
-    navAlerts.addEventListener('click', () => {
-      document.getElementById('alert-modal')?.classList.remove('hidden');
-    });
-  }
-
   // Reset filters
   const resetBtn = document.getElementById('btn-reset-filters');
   if (resetBtn) {
@@ -1070,7 +883,6 @@ function setupEvents() {
   // Alerts Modal
   const modal = document.getElementById('alert-modal');
   const openBtn = document.getElementById('btn-open-alert-modal');
-  const openBtn2 = document.getElementById('btn-open-alert-modal-2');
   const footerAlertsBtn = document.getElementById('footer-alerts-btn');
   const closeBtn = document.getElementById('btn-close-modal');
   const closeFooterBtn = document.getElementById('btn-close-modal-footer');
@@ -1079,7 +891,6 @@ function setupEvents() {
   const closeModal = () => modal?.classList.add('hidden');
 
   if (openBtn) openBtn.addEventListener('click', openModal);
-  if (openBtn2) openBtn2.addEventListener('click', openModal);
   if (footerAlertsBtn) footerAlertsBtn.addEventListener('click', openModal);
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (closeFooterBtn) closeFooterBtn.addEventListener('click', closeModal);
@@ -1087,12 +898,6 @@ function setupEvents() {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
     });
-  }
-
-  // Theme Toggle (Tactical Night / Archive Light)
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
   }
 
   // Watch Spec Modal
@@ -1138,7 +943,8 @@ function setupEvents() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
+  localStorage.removeItem('casio_theme');
+  document.documentElement.classList.remove('dark');
   setupEvents();
   loadData();
 });
