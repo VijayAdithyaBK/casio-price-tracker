@@ -16,6 +16,41 @@ const state = {
   pageSize: 24
 };
 
+// Theme Management (Archive Light / Tactical Dark)
+function initTheme() {
+  const savedTheme = localStorage.getItem('casio_theme');
+  const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  applyTheme(theme);
+}
+
+function applyTheme(theme) {
+  const html = document.documentElement;
+  const themeIcon = document.getElementById('theme-icon');
+  const themeLabel = document.getElementById('theme-label');
+  const themeBtn = document.getElementById('theme-toggle');
+
+  if (theme === 'dark') {
+    html.classList.add('dark');
+    if (themeIcon) themeIcon.textContent = 'light_mode';
+    if (themeLabel) themeLabel.textContent = 'LIGHT';
+    if (themeBtn) themeBtn.title = 'Switch to Archive Light Mode';
+  } else {
+    html.classList.remove('dark');
+    if (themeIcon) themeIcon.textContent = 'dark_mode';
+    if (themeLabel) themeLabel.textContent = 'TACTICAL';
+    if (themeBtn) themeBtn.title = 'Switch to Tactical Dark Mode';
+  }
+  localStorage.setItem('casio_theme', theme);
+}
+
+function toggleTheme() {
+  const isDark = document.documentElement.classList.contains('dark');
+  const newTheme = isDark ? 'light' : 'dark';
+  applyTheme(newTheme);
+  showToast(newTheme === 'dark' ? 'TACTICAL DARK MODE ACTIVATED' : 'ARCHIVE LIGHT MODE ACTIVATED');
+}
+
 // Bookmarks in LocalStorage
 function getBookmarks() {
   try {
@@ -130,6 +165,237 @@ function updateTelemetry() {
   if (telemetryDeals) {
     telemetryDeals.textContent = `${allWatches.length} DEALS ACTIVE`;
   }
+
+  // Live Telemetry Stats Runner in Hero Section
+  const statScanned = document.getElementById('stat-scanned');
+  const statDeals = document.getElementById('stat-deals');
+  const statMaxCut = document.getElementById('stat-max-cut');
+  const statInStock = document.getElementById('stat-in-stock');
+  const statAvgSavings = document.getElementById('stat-avg-savings');
+
+  const totalScanned = metadata.totalWatchesScanned || (allWatches.length > 0 ? Math.max(538, allWatches.length) : 538);
+  const activeDeals = allWatches.length;
+  const cuts = allWatches.map((w) => w.discountPercent || 0).filter((c) => c > 0);
+  const maxCut = cuts.length > 0 ? Math.max(...cuts) : 50;
+  const inStock = allWatches.filter((w) => w.available).length;
+  const totalSavings = allWatches.reduce((acc, w) => acc + (w.savings || 0), 0);
+  const avgSavings = activeDeals > 0 ? Math.round(totalSavings / activeDeals) : 0;
+
+  if (statScanned) statScanned.textContent = Number(totalScanned).toLocaleString('en-IN');
+  if (statDeals) statDeals.textContent = String(activeDeals);
+  if (statMaxCut) statMaxCut.textContent = `-${maxCut}%`;
+  if (statInStock) statInStock.textContent = String(inStock);
+  if (statAvgSavings) statAvgSavings.textContent = formatInr(avgSavings);
+}
+
+function updateSavedFilterCount() {
+  const savedCount = getBookmarks().length;
+  const countSpan = document.getElementById('bookmark-filter-text');
+  const headerCount = document.getElementById('header-saved-count');
+  const drawerCount = document.getElementById('drawer-count-badge');
+
+  if (countSpan) {
+    countSpan.textContent = savedCount > 0 ? `SAVED [${savedCount}]` : 'SAVED';
+  }
+  if (headerCount) {
+    headerCount.textContent = String(savedCount);
+  }
+  if (drawerCount) {
+    drawerCount.textContent = String(savedCount);
+  }
+}
+
+// Watch Technical Spec Modal
+function openSpecModal(watchId) {
+  const watch = allWatches.find((w) => w.id === watchId);
+  if (!watch) return;
+
+  const modal = document.getElementById('watch-spec-modal');
+  if (!modal) return;
+
+  const seriesText = (watch.series || 'CASIO').toUpperCase();
+  const seriesEl = document.getElementById('modal-spec-series');
+  const cutEl = document.getElementById('modal-spec-cut');
+  const atlBadge = document.getElementById('modal-spec-atl');
+  const img = document.getElementById('modal-spec-image');
+  const skuEl = document.getElementById('modal-spec-sku');
+  const titleEl = document.getElementById('modal-spec-title');
+  const statusEl = document.getElementById('modal-spec-status');
+  const mrpEl = document.getElementById('modal-spec-mrp');
+  const priceEl = document.getElementById('modal-spec-price');
+  const savingsEl = document.getElementById('modal-spec-savings');
+  const familyEl = document.getElementById('modal-spec-family');
+  const buyLink = document.getElementById('modal-spec-buy-link');
+
+  if (seriesEl) seriesEl.textContent = `${seriesText} // SPEC PROTOCOL`;
+  if (cutEl) cutEl.textContent = `-${watch.discountPercent}% CUT`;
+  if (atlBadge) atlBadge.classList.toggle('hidden', !watch.isAllTimeLow);
+
+  if (img) {
+    img.src = watch.image || 'https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-2100RL-1A.png?v=1751277644';
+    img.alt = watch.title;
+  }
+
+  if (skuEl) skuEl.textContent = `RAW SKU: ${watch.sku || 'N/A'}`;
+  if (titleEl) titleEl.textContent = watch.title;
+
+  if (statusEl) {
+    statusEl.innerHTML = watch.available
+      ? '<span class="text-accent-green font-semibold">🟢 IN STOCK</span> • OFFICIAL BHAWAR DISTRIBUTOR'
+      : '<span class="text-ink-muted">🔴 OUT OF STOCK</span> • MONITORING RESTOCK';
+  }
+
+  if (mrpEl) mrpEl.textContent = formatInr(watch.originalPrice);
+  if (priceEl) priceEl.textContent = formatInr(watch.price);
+  if (savingsEl) savingsEl.textContent = `+${formatInr(watch.savings)} (-${watch.discountPercent}%)`;
+  if (familyEl) familyEl.textContent = seriesText;
+  if (buyLink) buyLink.href = watch.url;
+
+  // Setup Bookmark Button inside Modal
+  const bookmarkBtn = document.getElementById('modal-spec-bookmark-btn');
+  const bookmarkLabel = document.getElementById('modal-bookmark-label');
+  const bookmarkIcon = bookmarkBtn?.querySelector('.material-symbols-outlined');
+
+  const updateModalBookmarkUI = () => {
+    const isBookmarked = getBookmarks().includes(watch.id);
+    if (bookmarkIcon) bookmarkIcon.textContent = isBookmarked ? 'bookmark' : 'bookmark_border';
+    if (bookmarkLabel) bookmarkLabel.textContent = isBookmarked ? 'SAVED IN LOCKER' : 'SAVE TO WATCHLIST';
+    if (bookmarkBtn) {
+      bookmarkBtn.classList.toggle('border-ink', isBookmarked);
+      bookmarkBtn.classList.toggle('bg-surface-pure', isBookmarked);
+    }
+  };
+  updateModalBookmarkUI();
+
+  if (bookmarkBtn) {
+    bookmarkBtn.onclick = (e) => {
+      e.preventDefault();
+      toggleBookmark(watch.id);
+      updateModalBookmarkUI();
+      renderGrid();
+    };
+  }
+
+  // Setup Share Button inside Modal
+  const shareBtn = document.getElementById('modal-spec-share-btn');
+  if (shareBtn) {
+    shareBtn.onclick = (e) => {
+      e.preventDefault();
+      shareDeal(watch);
+    };
+  }
+
+  modal.classList.remove('hidden');
+}
+
+function closeSpecModal() {
+  const modal = document.getElementById('watch-spec-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+// Saved Watchlist Drawer (Deal Locker)
+function openSavedDrawer() {
+  const drawer = document.getElementById('saved-drawer');
+  const backdrop = document.getElementById('saved-drawer-backdrop');
+  if (!drawer || !backdrop) return;
+
+  renderSavedDrawer();
+
+  backdrop.classList.remove('pointer-events-none', 'opacity-0');
+  backdrop.classList.add('opacity-100');
+  drawer.classList.remove('translate-x-full');
+}
+
+function closeSavedDrawer() {
+  const drawer = document.getElementById('saved-drawer');
+  const backdrop = document.getElementById('saved-drawer-backdrop');
+  if (!drawer || !backdrop) return;
+
+  drawer.classList.add('translate-x-full');
+  backdrop.classList.remove('opacity-100');
+  backdrop.classList.add('opacity-0', 'pointer-events-none');
+}
+
+function renderSavedDrawer() {
+  const bookmarks = getBookmarks();
+  const savedItems = allWatches.filter((w) => bookmarks.includes(w.id));
+
+  const listContainer = document.getElementById('saved-drawer-list');
+  const emptyState = document.getElementById('saved-drawer-empty');
+  const totalMrpEl = document.getElementById('drawer-total-mrp');
+  const totalSavingsEl = document.getElementById('drawer-total-savings');
+  const drawerCount = document.getElementById('drawer-count-badge');
+  const headerCount = document.getElementById('header-saved-count');
+
+  if (drawerCount) drawerCount.textContent = String(savedItems.length);
+  if (headerCount) headerCount.textContent = String(savedItems.length);
+
+  if (savedItems.length === 0) {
+    if (listContainer) listContainer.classList.add('hidden');
+    if (emptyState) emptyState.classList.remove('hidden');
+    if (totalMrpEl) totalMrpEl.textContent = '₹0';
+    if (totalSavingsEl) totalSavingsEl.textContent = '₹0';
+    return;
+  }
+
+  if (emptyState) emptyState.classList.add('hidden');
+  if (listContainer) listContainer.classList.remove('hidden');
+
+  const totalMrp = savedItems.reduce((acc, w) => acc + (w.originalPrice || 0), 0);
+  const totalSavings = savedItems.reduce((acc, w) => acc + (w.savings || 0), 0);
+
+  if (totalMrpEl) totalMrpEl.textContent = formatInr(totalMrp);
+  if (totalSavingsEl) totalSavingsEl.textContent = '+' + formatInr(totalSavings);
+
+  if (listContainer) {
+    listContainer.innerHTML = savedItems.map((item) => {
+      const imageSrc = item.image || 'https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-2100RL-1A.png?v=1751277644';
+      return `
+        <div class="flex items-center justify-between gap-3 p-2.5 bg-surface border border-border-hairline group">
+          <div class="flex items-center gap-2.5 flex-1 min-w-0 cursor-pointer drawer-item-click" data-id="${item.id}">
+            <img src="${imageSrc}" alt="${item.title}" class="w-12 h-12 object-contain bg-surface-muted/30 p-1 flex-shrink-0" />
+            <div class="flex flex-col min-w-0">
+              <span class="text-[8px] text-ink-muted uppercase tracking-wider">${item.series || 'CASIO'} • ${item.sku || ''}</span>
+              <h4 class="font-grotesk font-bold text-xs truncate text-ink">${item.title}</h4>
+              <div class="flex items-baseline gap-1.5 text-[10px]">
+                <span class="font-bold text-ink">${formatInr(item.price)}</span>
+                <span class="line-through text-ink-muted text-[8px]">${formatInr(item.originalPrice)}</span>
+                <span class="text-accent-red font-bold text-[8px]">-${item.discountPercent}%</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 flex-shrink-0">
+            <a href="${item.url}" target="_blank" rel="noopener" class="px-2.5 py-1.5 bg-ink text-surface-pure text-[8px] uppercase tracking-wider font-bold hover:bg-accent-red transition-colors">
+              BUY ↗
+            </a>
+            <button class="remove-saved-item-btn p-1 text-ink-muted hover:text-accent-red transition-colors cursor-pointer" data-id="${item.id}" title="Remove from Locker">
+              <span class="material-symbols-outlined text-[16px]">close</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Attach click listeners to drawer item rows to open modal
+    listContainer.querySelectorAll('.drawer-item-click').forEach((el) => {
+      el.addEventListener('click', () => {
+        const id = el.dataset.id;
+        closeSavedDrawer();
+        openSpecModal(id);
+      });
+    });
+
+    // Attach click listeners to remove buttons
+    listContainer.querySelectorAll('.remove-saved-item-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        toggleBookmark(id);
+        renderSavedDrawer();
+        renderGrid();
+      });
+    });
+  }
 }
 
 function renderSeriesCounts() {
@@ -167,14 +433,6 @@ function renderSeriesCounts() {
       }
     }
   });
-}
-
-function updateSavedFilterCount() {
-  const savedCount = getBookmarks().length;
-  const countSpan = document.getElementById('bookmark-filter-text');
-  if (countSpan) {
-    countSpan.textContent = savedCount > 0 ? `SAVED [${savedCount}]` : 'SAVED';
-  }
 }
 
 function getFilteredWatches() {
@@ -277,6 +535,16 @@ function renderGrid() {
     }
   }
 
+  const searchMatchText = document.getElementById('search-match-text');
+  if (searchMatchText) {
+    if (state.search) {
+      searchMatchText.textContent = `LOCATED ${filtered.length} WATCHES MATCHING "${state.search.toUpperCase()}"`;
+      searchMatchText.classList.remove('hidden');
+    } else {
+      searchMatchText.classList.add('hidden');
+    }
+  }
+
   if (filtered.length === 0) {
     container.innerHTML = '';
     emptyState?.classList.remove('hidden');
@@ -318,7 +586,7 @@ function renderGrid() {
       : '';
 
     return `
-      <article class="border-r border-b border-border-hairline p-4 sm:p-7 flex flex-col justify-between group hover:bg-white transition-colors duration-200" data-watch-id="${item.id}">
+      <article class="border-r border-b border-border-hairline p-4 sm:p-7 flex flex-col justify-between group bg-surface-pure hover:bg-surface-muted/30 transition-colors duration-200 cursor-pointer" data-watch-id="${item.id}">
         <!-- Top spec label & deal index -->
         <div class="flex items-center justify-between text-[9px] sm:text-[10px] font-mono tracking-widest text-ink-muted pb-2">
           <span class="truncate max-w-[120px] sm:max-w-none">PLATE ${padIndex} • ${seriesTitle}</span>
@@ -374,7 +642,7 @@ function renderGrid() {
 
           <div class="mt-2.5 flex items-center gap-2">
             <a 
-              class="card-btn flex-1 py-2 sm:py-2.5 hairline-all text-center block text-[9px] sm:text-[10px] font-mono tracking-[0.14em] uppercase hover:bg-ink hover:text-white transition-colors duration-150 font-semibold" 
+              class="card-btn flex-1 py-2 sm:py-2.5 hairline-all text-center block text-[9px] sm:text-[10px] font-mono tracking-[0.14em] uppercase bg-surface-pure text-ink hover:bg-ink hover:text-surface-pure transition-colors duration-150 font-semibold" 
               href="${item.url}" 
               rel="noopener noreferrer" 
               target="_blank"
@@ -382,7 +650,7 @@ function renderGrid() {
               SECURE AT BHAWAR ↗
             </a>
             <button 
-              class="share-deal-btn px-2.5 py-2 sm:py-2.5 hairline-all text-center font-mono text-[9px] sm:text-[10px] tracking-wider text-ink-muted hover:text-ink hover:border-ink transition-colors"
+              class="share-deal-btn px-2.5 py-2 sm:py-2.5 hairline-all text-center font-mono text-[9px] sm:text-[10px] tracking-wider text-ink-muted hover:text-ink hover:border-ink transition-colors bg-surface-pure"
               title="Share Deal or Copy Direct Link"
               data-id="${item.id}"
             >
@@ -394,10 +662,22 @@ function renderGrid() {
     `;
   }).join('');
 
+  // Attach card click listener to open spec modal
+  container.querySelectorAll('article[data-watch-id]').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.bookmark-btn') || e.target.closest('.share-deal-btn') || e.target.closest('.card-btn')) {
+        return;
+      }
+      const id = card.dataset.watchId;
+      openSpecModal(id);
+    });
+  });
+
   // Attach bookmark toggle listeners
   container.querySelectorAll('.bookmark-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const id = btn.dataset.id;
       toggleBookmark(id);
       renderGrid();
@@ -408,6 +688,7 @@ function renderGrid() {
   container.querySelectorAll('.share-deal-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const id = btn.dataset.id;
       const watch = allWatches.find((w) => w.id === id);
       if (watch) shareDeal(watch);
@@ -531,14 +812,29 @@ function setupEvents() {
     });
   }
 
-  // Search
+  // Search & Clear Button
   const searchInput = document.getElementById('search-input');
+  const clearSearchBtn = document.getElementById('btn-clear-search');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       state.search = e.target.value.trim();
+      if (clearSearchBtn) {
+        clearSearchBtn.classList.toggle('hidden', state.search.length === 0);
+      }
       state.visibleCount = state.pageSize;
       renderGrid();
     });
+
+    if (clearSearchBtn) {
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        state.search = '';
+        clearSearchBtn.classList.add('hidden');
+        state.visibleCount = state.pageSize;
+        renderGrid();
+        searchInput.focus();
+      });
+    }
 
     window.addEventListener('keydown', (e) => {
       if (e.key === '/' && document.activeElement !== searchInput) {
@@ -771,7 +1067,7 @@ function setupEvents() {
     });
   }
 
-  // Modal
+  // Alerts Modal
   const modal = document.getElementById('alert-modal');
   const openBtn = document.getElementById('btn-open-alert-modal');
   const openBtn2 = document.getElementById('btn-open-alert-modal-2');
@@ -792,9 +1088,57 @@ function setupEvents() {
       if (e.target === modal) closeModal();
     });
   }
+
+  // Theme Toggle (Tactical Night / Archive Light)
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // Watch Spec Modal
+  const specModal = document.getElementById('watch-spec-modal');
+  const closeSpecModalBtn = document.getElementById('btn-close-spec-modal');
+  if (closeSpecModalBtn) closeSpecModalBtn.addEventListener('click', closeSpecModal);
+  if (specModal) {
+    specModal.addEventListener('click', (e) => {
+      if (e.target === specModal) closeSpecModal();
+    });
+  }
+
+  // Saved Watchlist Drawer (Deal Locker)
+  const openSavedDrawerBtn = document.getElementById('btn-open-saved-drawer');
+  const closeSavedDrawerBtn = document.getElementById('btn-close-saved-drawer');
+  const closeSavedDrawerFooter = document.getElementById('btn-close-saved-drawer-footer');
+  const savedDrawerBackdrop = document.getElementById('saved-drawer-backdrop');
+  const clearSavedAllBtn = document.getElementById('btn-clear-saved-all');
+
+  if (openSavedDrawerBtn) openSavedDrawerBtn.addEventListener('click', openSavedDrawer);
+  if (closeSavedDrawerBtn) closeSavedDrawerBtn.addEventListener('click', closeSavedDrawer);
+  if (closeSavedDrawerFooter) closeSavedDrawerFooter.addEventListener('click', closeSavedDrawer);
+  if (savedDrawerBackdrop) savedDrawerBackdrop.addEventListener('click', closeSavedDrawer);
+
+  if (clearSavedAllBtn) {
+    clearSavedAllBtn.addEventListener('click', () => {
+      localStorage.removeItem('casio_bookmarks');
+      updateSavedFilterCount();
+      renderSavedDrawer();
+      renderGrid();
+      showToast('SAVED WATCHLIST CLEARED');
+    });
+  }
+
+  // Global ESC Key Listener to Dismiss Any Active Modal or Drawer
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSpecModal();
+      closeSavedDrawer();
+      closeModal();
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   setupEvents();
   loadData();
 });

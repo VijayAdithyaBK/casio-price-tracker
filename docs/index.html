@@ -31,19 +31,19 @@
       theme: {
         extend: {
           colors: {
-            "background": "#F5F5F3",
-            "surface": "#F5F5F3",
-            "surface-pure": "#FFFFFF",
-            "surface-muted": "#EFEFEA",
-            "border-hairline": "#E2E2DF",
-            "border-dark": "#111111",
-            "ink": "#111111",
-            "ink-muted": "#666666",
-            "ink-faint": "#999999",
-            "accent-red": "#E02A1D",
-            "accent-red-faint": "#FBEBEA",
-            "accent-green": "#16a34a",
-            "accent-green-faint": "#f0fdf4"
+            "background": "var(--bg-canvas)",
+            "surface": "var(--bg-canvas)",
+            "surface-pure": "var(--surface-card)",
+            "surface-muted": "var(--surface-muted)",
+            "border-hairline": "var(--border-line)",
+            "border-dark": "var(--border-strong)",
+            "ink": "var(--text-primary)",
+            "ink-muted": "var(--text-muted)",
+            "ink-faint": "var(--text-faint)",
+            "accent-red": "var(--accent-red)",
+            "accent-red-faint": "var(--accent-red-faint)",
+            "accent-green": "var(--accent-green)",
+            "accent-green-faint": "var(--accent-green-faint)"
           },
           fontFamily: {
             "sans": ["Work Sans", "sans-serif"],
@@ -56,24 +56,61 @@
   </script>
   
   <style>
+    :root {
+      --bg-canvas: #F5F5F3;
+      --surface-card: #FFFFFF;
+      --surface-muted: #EFEFEA;
+      --border-line: #E2E2DF;
+      --border-strong: #111111;
+      --text-primary: #111111;
+      --text-muted: #666666;
+      --text-faint: #999999;
+      --plate-bg: rgba(239, 239, 234, 0.4);
+      --toast-bg: #111111;
+      --toast-text: #FFFFFF;
+      --modal-bg: #FFFFFF;
+      --accent-red: #E02A1D;
+      --accent-red-faint: #FBEBEA;
+      --accent-green: #16a34a;
+      --accent-green-faint: #f0fdf4;
+    }
+    html.dark {
+      --bg-canvas: #090A0D;
+      --surface-card: #12151E;
+      --surface-muted: #1A1F2C;
+      --border-line: #222736;
+      --border-strong: #E2E8F0;
+      --text-primary: #F1F5F9;
+      --text-muted: #94A3B8;
+      --text-faint: #64748B;
+      --plate-bg: rgba(26, 31, 44, 0.6);
+      --toast-bg: #1A1F2C;
+      --toast-text: #F1F5F9;
+      --modal-bg: #12151E;
+      --accent-red: #FF3B30;
+      --accent-red-faint: rgba(255, 59, 48, 0.15);
+      --accent-green: #22c55e;
+      --accent-green-faint: rgba(34, 197, 94, 0.15);
+    }
     @layer base {
       html, body {
         margin: 0;
         padding: 0;
-        background-color: #F5F5F3;
-        color: #111111;
+        background-color: var(--bg-canvas);
+        color: var(--text-primary);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overscroll-behavior-y: contain;
+        transition: background-color 0.2s ease, color 0.2s ease;
       }
       .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
       .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
     }
-    .hairline-b { border-bottom: 1px solid #E2E2DF; }
-    .hairline-t { border-top: 1px solid #E2E2DF; }
-    .hairline-r { border-right: 1px solid #E2E2DF; }
-    .hairline-l { border-left: 1px solid #E2E2DF; }
-    .hairline-all { border: 1px solid #E2E2DF; }
+    .hairline-b { border-bottom: 1px solid var(--border-line); }
+    .hairline-t { border-top: 1px solid var(--border-line); }
+    .hairline-r { border-right: 1px solid var(--border-line); }
+    .hairline-l { border-left: 1px solid var(--border-line); }
+    .hairline-all { border: 1px solid var(--border-line); }
     
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -116,14 +153,14 @@
       opacity: 0;
       pointer-events: none;
       z-index: 100;
-      background: #111111;
-      color: #FFFFFF;
+      background: var(--toast-bg);
+      color: var(--toast-text);
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 7px 18px;
-      border: 1px solid #333333;
+      border: 1px solid var(--border-line);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
       transition: opacity 0.25s ease, transform 0.25s ease;
       display: flex;
@@ -135,15 +172,33 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* Series Pill Base Theme */
+    .series-pill {
+      background-color: var(--surface-card);
+      border-color: var(--border-line);
+      color: var(--text-primary);
+    }
+    .series-pill:hover {
+      border-color: var(--border-strong);
+    }
+    .series-pill.is-active {
+      border-color: var(--border-strong) !important;
+      box-shadow: 0 0 0 1px var(--border-strong);
+    }
+
+    .img-plate {
+      background-color: var(--plate-bg) !important;
+    }
+
     /* Scoped Button Controls to Prevent Hover Clashes */
     .filter-pill-btn {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      border: 1px solid #E2E2DF;
-      padding: 2px 8px;
-      background-color: #FFFFFF;
-      color: #666666;
+      border: 1px solid var(--border-line);
+      padding: 3px 8px;
+      background-color: var(--surface-card);
+      color: var(--text-muted);
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.1em;
@@ -153,21 +208,19 @@
       user-select: none;
     }
     .filter-pill-btn:hover {
-      color: #111111;
-      border-color: #111111;
+      color: var(--text-primary);
+      border-color: var(--border-strong);
     }
     .filter-pill-btn.is-active {
-      background-color: #111111 !important;
-      color: #FFFFFF !important;
-      border-color: #111111 !important;
+      background-color: var(--border-strong) !important;
+      color: var(--bg-canvas) !important;
+      border-color: var(--border-strong) !important;
     }
     .filter-pill-btn.is-active:hover {
-      background-color: #262626 !important;
-      color: #FFFFFF !important;
-      border-color: #262626 !important;
+      opacity: 0.9;
     }
     .filter-pill-btn.is-active span {
-      color: #FFFFFF !important;
+      color: var(--bg-canvas) !important;
     }
     .filter-pill-btn.is-active #stock-indicator-dot {
       background-color: #16a34a !important;
@@ -179,7 +232,7 @@
       background: transparent;
       border: none;
       padding-bottom: 2px;
-      color: #666666;
+      color: var(--text-muted);
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.1em;
@@ -188,12 +241,12 @@
       user-select: none;
     }
     .sort-btn:hover {
-      color: #111111;
+      color: var(--text-primary);
     }
     .sort-btn.is-active {
-      color: #111111 !important;
+      color: var(--text-primary) !important;
       font-weight: 700 !important;
-      border-bottom: 1px solid #111111 !important;
+      border-bottom: 1px solid var(--text-primary) !important;
     }
 
     /* Layout View Switcher Buttons (Icon-Only) */
@@ -203,22 +256,21 @@
       justify-content: center;
       padding: 4px 7px;
       background: transparent;
-      color: #666666;
+      color: var(--text-muted);
       border: none;
       cursor: pointer;
       transition: background-color 0.15s ease, color 0.15s ease;
       user-select: none;
     }
     .view-matrix-btn:hover {
-      color: #111111;
+      color: var(--text-primary);
     }
     .view-matrix-btn.is-active {
-      background-color: #111111 !important;
-      color: #FFFFFF !important;
+      background-color: var(--border-strong) !important;
+      color: var(--bg-canvas) !important;
     }
     .view-matrix-btn.is-active:hover {
-      background-color: #262626 !important;
-      color: #FFFFFF !important;
+      opacity: 0.9;
     }
 
     /* Layout Matrix Views */
@@ -227,13 +279,13 @@
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 1px !important;
-      background-color: #E2E2DF !important;
-      border-right: 1px solid #E2E2DF;
-      border-bottom: 1px solid #E2E2DF;
+      background-color: var(--border-line) !important;
+      border-right: 1px solid var(--border-line);
+      border-bottom: 1px solid var(--border-line);
     }
     #catalog-product-matrix.view-dual > article {
       padding: 0.75rem !important;
-      background-color: #FFFFFF !important;
+      background-color: var(--surface-card) !important;
       border-right: none !important;
       border-bottom: none !important;
     }
@@ -288,10 +340,10 @@
       border-right: none !important;
     }
     #catalog-product-matrix.view-single > article {
-      border-right: 1px solid #E2E2DF !important;
-      border-bottom: 1px solid #E2E2DF !important;
+      border-right: 1px solid var(--border-line) !important;
+      border-bottom: 1px solid var(--border-line) !important;
       padding: 1.25rem !important;
-      background-color: #FFFFFF !important;
+      background-color: var(--surface-card) !important;
     }
     @media (min-width: 640px) {
       #catalog-product-matrix.view-single > article {
@@ -304,9 +356,9 @@
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 1px !important;
-      background-color: #E2E2DF !important;
-      border-right: 1px solid #E2E2DF;
-      border-bottom: 1px solid #E2E2DF;
+      background-color: var(--border-line) !important;
+      border-right: 1px solid var(--border-line);
+      border-bottom: 1px solid var(--border-line);
     }
     @media (min-width: 640px) {
       #catalog-product-matrix.view-editorial {
@@ -325,7 +377,7 @@
     }
     #catalog-product-matrix.view-editorial > article {
       padding: 0.75rem !important;
-      background-color: #FFFFFF !important;
+      background-color: var(--surface-card) !important;
       border-right: none !important;
       border-bottom: none !important;
     }
@@ -389,14 +441,14 @@
     /* Prevent sticky hover on mobile touch devices */
     @media (hover: none) {
       .filter-pill-btn:hover:not(.is-active) {
-        color: #666666;
-        border-color: #E2E2DF;
+        color: var(--text-muted);
+        border-color: var(--border-line);
       }
       .view-matrix-btn:hover:not(.is-active) {
-        color: #666666;
+        color: var(--text-muted);
       }
       .sort-btn:hover:not(.is-active) {
-        color: #666666;
+        color: var(--text-muted);
       }
     }
   </style>
@@ -438,8 +490,21 @@
         <span class="text-[9px] text-ink-muted tracking-[0.18em] font-normal scale-90 group-hover:text-ink transition-colors">BHAWAR TELEMETRIC / 2026 • REFRESH</span>
       </a>
 
-      <div class="flex items-center gap-4 sm:gap-8">
-        <button id="btn-open-alert-modal" class="hover:text-accent-red transition-colors flex items-center gap-1.5 font-semibold text-accent-red">
+      <div class="flex items-center gap-3 sm:gap-6">
+        <!-- THEME SWITCHER -->
+        <button id="theme-toggle" class="hover:text-accent-red transition-colors flex items-center gap-1 font-mono text-[10px] cursor-pointer" title="Toggle Tactical Night / Museum Light Mode">
+          <span class="material-symbols-outlined text-[15px]" id="theme-icon">dark_mode</span>
+          <span id="theme-label" class="hidden sm:inline">TACTICAL</span>
+        </button>
+
+        <!-- WISHLIST DRAWER BUTTON -->
+        <button id="btn-open-saved-drawer" class="hover:text-accent-red transition-colors flex items-center gap-1 font-mono text-[10px] cursor-pointer" title="Open Saved Watchlist Drawer">
+          <span class="material-symbols-outlined text-[15px]">bookmark</span>
+          <span class="hidden sm:inline">SAVED</span>
+          <span id="header-saved-count" class="bg-ink text-surface-pure px-1 py-0.2 text-[8px] font-bold">0</span>
+        </button>
+
+        <button id="btn-open-alert-modal" class="hover:text-accent-red transition-colors flex items-center gap-1.5 font-semibold text-accent-red cursor-pointer">
           <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
           <span>ALERTS [LIVE]</span>
         </button>
@@ -469,6 +534,45 @@
         <span class="w-1 h-1 rounded-full bg-ink-muted"></span>
         <span>REAL-TIME ARBITRAGE</span>
       </div>
+
+      <!-- LIVE TELEMETRY RUNNER -->
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-5 gap-2 max-w-4xl mx-auto text-left font-mono">
+        <div class="p-2.5 sm:p-3 bg-surface-pure border border-border-hairline flex flex-col justify-between">
+          <span class="text-[9px] text-ink-muted uppercase tracking-widest flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-ink-muted"></span>
+            CATALOG
+          </span>
+          <span id="stat-scanned" class="font-grotesk font-bold text-lg sm:text-xl text-ink mt-1">--</span>
+        </div>
+        <div class="p-2.5 sm:p-3 bg-surface-pure border border-border-hairline flex flex-col justify-between">
+          <span class="text-[9px] text-ink-muted uppercase tracking-widest flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
+            ACTIVE CUTS
+          </span>
+          <span id="stat-deals" class="font-grotesk font-bold text-lg sm:text-xl text-accent-red mt-1">--</span>
+        </div>
+        <div class="p-2.5 sm:p-3 bg-surface-pure border border-border-hairline flex flex-col justify-between">
+          <span class="text-[9px] text-ink-muted uppercase tracking-widest flex items-center gap-1.5">
+            <span>⚡</span>
+            PEAK CUT
+          </span>
+          <span id="stat-max-cut" class="font-grotesk font-bold text-lg sm:text-xl text-accent-red mt-1">--</span>
+        </div>
+        <div class="p-2.5 sm:p-3 bg-surface-pure border border-border-hairline flex flex-col justify-between">
+          <span class="text-[9px] text-ink-muted uppercase tracking-widest flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>
+            IN STOCK
+          </span>
+          <span id="stat-in-stock" class="font-grotesk font-bold text-lg sm:text-xl text-accent-green mt-1">--</span>
+        </div>
+        <div class="col-span-2 sm:col-span-1 p-2.5 sm:p-3 bg-surface-pure border border-border-hairline flex flex-col justify-between">
+          <span class="text-[9px] text-ink-muted uppercase tracking-widest flex items-center gap-1.5">
+            <span>💰</span>
+            AVG SAVINGS
+          </span>
+          <span id="stat-avg-savings" class="font-grotesk font-bold text-lg sm:text-xl text-ink mt-1">--</span>
+        </div>
+      </div>
     </div>
 
     <!-- MINIMALIST SUB-INDEX FILTER -->
@@ -483,63 +587,63 @@
       <!-- MICRO THUMBNAIL HARDWARE SELECTOR (ALL 9 SERIES WITH ACCURATE DISCOUNT CUTS) -->
       <div class="flex items-center justify-start sm:justify-center gap-2 sm:gap-4 pb-3 overflow-x-auto max-w-full no-scrollbar w-full" id="series-pill-bar">
         <!-- ALL -->
-        <button data-series="all" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-ink flex flex-col items-center justify-between p-1.5 group cursor-pointer shadow-sm transition-all">
+        <button data-series="all" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-ink flex flex-col items-center justify-between p-1.5 group cursor-pointer shadow-sm transition-all">
           <span class="text-[8px] font-mono text-ink tracking-tight font-bold series-label">ALL</span>
           <span class="text-[18px]">⌚</span>
           <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-all-count">[174]</span>
         </button>
 
         <!-- Edifice -->
-        <button data-series="Edifice" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="Edifice" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">EDF</span>
           <span class="text-[16px]">⏱️</span>
           <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-edf-cut">-40%</span>
         </button>
 
         <!-- G-Shock / CasiOak -->
-        <button data-series="G-Shock" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="G-Shock" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">G-SHK</span>
           <span class="text-[16px]">🛡️</span>
           <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-gshk-cut">-30%</span>
         </button>
 
         <!-- Vintage -->
-        <button data-series="Vintage" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="Vintage" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">VTG</span>
           <span class="text-[16px]">✨</span>
           <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-vtg-cut">-20%</span>
         </button>
 
         <!-- Pro Trek -->
-        <button data-series="Pro Trek" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="Pro Trek" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">PRT</span>
           <span class="text-[16px]">🧭</span>
           <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink" id="pill-prt-cut">--</span>
         </button>
 
         <!-- Enticer -->
-        <button data-series="Enticer" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="Enticer" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">ENT</span>
           <span class="text-[16px]">👔</span>
           <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-ent-cut">-50%</span>
         </button>
 
         <!-- Sheen -->
-        <button data-series="Sheen" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="Sheen" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">SHN</span>
           <span class="text-[16px]">💎</span>
           <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink" id="pill-shn-cut">--</span>
         </button>
 
         <!-- Youth / Royale -->
-        <button data-series="Youth" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="Youth" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">YTH</span>
           <span class="text-[16px]">⚡</span>
           <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink" id="pill-yth-cut">--</span>
         </button>
 
         <!-- Casio Classic -->
-        <button data-series="Casio Classic" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-white border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
+        <button data-series="Casio Classic" class="series-pill flex-shrink-0 w-14 sm:w-16 h-20 sm:h-24 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex flex-col items-center justify-between p-1.5 group cursor-pointer">
           <span class="text-[8px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">CLS</span>
           <span class="text-[16px]">🏷️</span>
           <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium" id="pill-cls-cut">-50%</span>
@@ -547,15 +651,17 @@
       </div>
 
       <!-- SEARCH BAR -->
-      <div class="mt-4 w-full max-w-lg relative">
+      <div class="mt-5 w-full max-w-lg relative">
         <input 
           type="text" 
           id="search-input" 
           placeholder="SEARCH MODEL, SKU, OR SERIES (e.g. GA-2100, MTP, EDIFICE)..." 
-          class="w-full bg-white border border-border-hairline px-4 py-2.5 text-[11px] font-mono tracking-wider uppercase text-ink placeholder:text-ink-faint focus:outline-none focus:border-ink transition-colors"
+          class="w-full bg-surface-pure border border-border-hairline pl-4 pr-16 py-2.5 text-[11px] font-mono tracking-wider uppercase text-ink placeholder:text-ink-faint focus:outline-none focus:border-ink transition-colors"
         />
-        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-mono text-ink-muted bg-surface-muted px-1.5 py-0.5 border border-border-hairline">/</span>
+        <button id="btn-clear-search" class="hidden absolute right-8 top-1/2 -translate-y-1/2 text-ink-muted hover:text-accent-red font-mono text-base px-1 leading-none cursor-pointer" title="Clear search">&times;</button>
+        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-mono text-ink-muted bg-surface-muted px-1.5 py-0.5 border border-border-hairline select-none">/</span>
       </div>
+      <div id="search-match-text" class="hidden mt-1.5 font-mono text-[9px] uppercase tracking-widest text-ink-muted"></div>
     </section>
 
     <!-- TECHNICAL CONTROL & METRIC RUNNER STRIP -->
@@ -580,7 +686,7 @@
       <!-- VIEW MATRIX TOGGLE & TELEMETRY -->
       <div class="w-full md:w-auto flex items-center justify-between md:justify-end gap-3 sm:gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-border-hairline">
         <!-- VIEW MATRIX TOGGLE: ICON ONLY (Editorial First & Default, then 2-Card, then 1-Card) -->
-        <div class="inline-flex items-center p-0.5 bg-white border border-border-hairline gap-0.5" id="layout-view-toggle">
+        <div class="inline-flex items-center p-0.5 bg-surface-pure border border-border-hairline gap-0.5" id="layout-view-toggle">
           <button data-layout-mode="editorial" class="view-matrix-btn is-active" title="Editorial View (Auto-adjusts columns by screen width)" aria-label="Editorial View">
             <span class="material-symbols-outlined text-[16px]">view_agenda</span>
           </button>
@@ -603,7 +709,7 @@
     </div>
 
     <!-- SECONDARY PARAMETRIC FILTERS (BUDGET & DISCOUNT TIER & ALL-TIME LOW) -->
-    <div class="mt-2.5 py-2.5 px-3 bg-white border border-border-hairline flex flex-wrap items-center justify-between gap-y-2.5 gap-x-4 text-[10px] font-mono tracking-wider uppercase">
+    <div class="mt-2.5 py-2.5 px-3 bg-surface-pure border border-border-hairline flex flex-wrap items-center justify-between gap-y-2.5 gap-x-4 text-[10px] font-mono tracking-wider uppercase">
       <!-- BUDGET RANGE PILLS -->
       <div class="flex flex-wrap items-center gap-1.5" id="budget-filter-group">
         <span class="text-ink-muted mr-1">BUDGET:</span>
@@ -637,7 +743,7 @@
 
     <!-- PAGINATION / PROGRESSIVE LOAD MORE -->
     <div id="pagination-controls" class="mt-8 flex flex-col items-center justify-center gap-2.5">
-      <button id="btn-load-more" class="px-8 py-3 bg-white border border-ink text-ink font-mono text-[11px] uppercase tracking-widest hover:bg-ink hover:text-white transition-colors cursor-pointer font-bold shadow-sm">
+      <button id="btn-load-more" class="px-8 py-3 bg-surface-pure border border-ink text-ink font-mono text-[11px] uppercase tracking-widest hover:bg-ink hover:text-surface-pure transition-colors cursor-pointer font-bold shadow-sm">
         LOAD MORE WATCHES (+24)
       </button>
       <span id="results-count-text" class="font-mono text-[10px] text-ink-muted uppercase tracking-widest">
@@ -646,17 +752,17 @@
     </div>
 
     <!-- EMPTY STATE -->
-    <div id="empty-state" class="hidden mt-12 p-14 text-center hairline-all bg-white flex flex-col items-center justify-center">
+    <div id="empty-state" class="hidden mt-12 p-14 text-center hairline-all bg-surface-pure flex flex-col items-center justify-center">
       <span class="text-3xl mb-3">⌚</span>
       <h3 class="font-grotesk font-bold text-lg uppercase tracking-tight">No Matching Watches Found</h3>
       <p class="font-mono text-[11px] text-ink-muted uppercase mt-1">Try resetting search filters or stock toggles</p>
-      <button id="btn-reset-filters" class="mt-4 px-4 py-2 border border-ink text-[10px] font-mono uppercase tracking-widest hover:bg-ink hover:text-white transition-colors">
+      <button id="btn-reset-filters" class="mt-4 px-4 py-2 border border-ink text-[10px] font-mono uppercase tracking-widest hover:bg-ink hover:text-surface-pure transition-colors">
         RESET FILTERS
       </button>
     </div>
 
     <!-- TELEMETRY SUBSCRIPTION FORM (From mobile catalog) -->
-    <section class="mt-14 p-6 sm:p-8 bg-white hairline-all flex flex-col gap-4">
+    <section class="mt-14 p-6 sm:p-8 bg-surface-pure hairline-all flex flex-col gap-4">
       <div class="flex flex-col gap-1">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
@@ -668,11 +774,11 @@
       </div>
 
       <div class="flex flex-col sm:flex-row gap-2">
-        <button id="btn-open-alert-modal-2" class="h-11 px-6 bg-ink text-white font-mono text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center gap-2 hover:bg-accent-red transition-colors">
+        <button id="btn-open-alert-modal-2" class="h-11 px-6 bg-ink text-surface-pure font-mono text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center gap-2 hover:bg-accent-red transition-colors">
           <span>CONFIGURE INSTANT TELEGRAM BOT</span>
           <span class="material-symbols-outlined text-[16px]">bolt</span>
         </button>
-        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/actions" target="_blank" rel="noopener" class="h-11 px-6 border border-border-hairline bg-surface text-ink font-mono text-[11px] uppercase tracking-widest font-medium flex items-center justify-center gap-2 hover:bg-ink hover:text-white transition-colors">
+        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/actions" target="_blank" rel="noopener" class="h-11 px-6 border border-border-hairline bg-surface text-ink font-mono text-[11px] uppercase tracking-widest font-medium flex items-center justify-center gap-2 hover:bg-ink hover:text-surface-pure transition-colors">
           <span>VIEW GITHUB ACTIONS CRON RUNS ↗</span>
         </a>
       </div>
@@ -697,27 +803,27 @@
 
       <!-- Micro Taxonomy Matrix -->
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[10px] uppercase text-ink-muted">
-        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-white px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
+        <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
           <span>01 STORE COLLECTION</span>
           <span class="text-ink font-semibold">↗</span>
         </a>
-        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-white px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
+        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
           <span>02 GITHUB REPO</span>
           <span class="text-ink font-semibold">↗</span>
         </a>
-        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/actions" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-white px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
+        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/actions" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
           <span>03 ACTIONS TELEMETRY</span>
           <span class="text-ink font-semibold">↗</span>
         </a>
-        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/blob/main/docs/DESIGN.md" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-white px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
+        <a href="https://github.com/VijayAdithyaBK/casio-price-tracker/blob/main/docs/DESIGN.md" target="_blank" rel="noopener" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
           <span>04 STITCH DESIGN DNA</span>
           <span class="text-ink font-semibold">↗</span>
         </a>
-        <button id="footer-alerts-btn" class="flex items-center justify-between py-2 bg-white px-3 hairline-all hover:border-ink hover:text-ink transition-colors text-left">
+        <button id="footer-alerts-btn" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors text-left">
           <span>05 BOT CREDENTIALS</span>
           <span class="text-ink font-semibold">[+]</span>
         </button>
-        <a href="data.json" target="_blank" class="flex items-center justify-between py-2 bg-white px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
+        <a href="data.json" target="_blank" class="flex items-center justify-between py-2 bg-surface-pure px-3 hairline-all hover:border-ink hover:text-ink transition-colors">
           <span>06 RAW JSON DATA</span>
           <span class="text-ink font-semibold">↗</span>
         </a>
@@ -760,7 +866,7 @@
 
   <!-- ALERTS MODAL -->
   <div id="alert-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6 hidden">
-    <div class="bg-white border border-border-dark max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+    <div class="bg-surface-pure border border-border-dark max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
       <div class="flex items-center justify-between hairline-b pb-4 mb-5">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
@@ -808,11 +914,154 @@
         </div>
       </div>
 
-      <button id="btn-close-modal-footer" class="mt-6 w-full py-3 bg-ink text-white font-mono text-[11px] tracking-widest uppercase hover:bg-accent-red transition-colors font-semibold">
+      <button id="btn-close-modal-footer" class="mt-6 w-full py-3 bg-ink text-surface-pure font-mono text-[11px] tracking-widest uppercase hover:bg-accent-red transition-colors font-semibold">
         CLOSE RADAR INTERFACE
       </button>
     </div>
   </div>
+
+  <!-- WATCH TECHNICAL SPEC MODAL -->
+  <div id="watch-spec-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-6 hidden">
+    <div class="bg-surface-pure border border-border-dark max-w-2xl w-full p-5 sm:p-7 relative shadow-2xl overflow-y-auto max-h-[92vh]">
+      <!-- Header Bar -->
+      <div class="flex items-center justify-between hairline-b pb-3 mb-4">
+        <div class="flex items-center gap-2 font-mono text-[10px] text-ink-muted uppercase tracking-widest">
+          <span class="w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
+          <span id="modal-spec-series">CASIO // SERIES SPEC</span>
+        </div>
+        <button id="btn-close-spec-modal" class="text-2xl font-mono hover:text-accent-red leading-none text-ink cursor-pointer">&times;</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7 items-center">
+        <!-- Visual Studio Plate Isolation -->
+        <div class="bg-surface-muted/30 border border-border-hairline p-6 flex flex-col items-center justify-center min-h-[240px] sm:min-h-[290px] relative">
+          <div class="absolute top-2 left-2 flex flex-wrap gap-1">
+            <span id="modal-spec-cut" class="text-accent-red font-bold font-mono text-[9px] bg-accent-red-faint border border-accent-red/30 px-1.5 py-0.5">-40% CUT</span>
+            <span id="modal-spec-atl" class="hidden bg-amber-100 border border-amber-400 text-amber-900 px-1 py-0.5 text-[8px] font-mono font-bold tracking-tight">🌟 ALL-TIME LOW</span>
+          </div>
+          <img id="modal-spec-image" src="" alt="Watch Preview" class="max-h-48 sm:max-h-56 max-w-full object-contain filter contrast-105"/>
+          <div class="absolute bottom-2 left-2 font-mono text-[8px] text-ink-muted uppercase tracking-widest" id="modal-spec-sku">
+            SKU: --
+          </div>
+        </div>
+
+        <!-- Telemetric Specs & Arbitrage Delta -->
+        <div class="flex flex-col justify-between h-full">
+          <div>
+            <h2 id="modal-spec-title" class="font-grotesk font-black text-lg sm:text-xl uppercase tracking-tight text-ink leading-snug">
+              --
+            </h2>
+            <div class="mt-1 font-mono text-[10px] text-ink-muted uppercase tracking-wider" id="modal-spec-status">
+              🟢 IN STOCK • OFFICIAL BHAWAR DISTRIBUTOR
+            </div>
+
+            <!-- Pricing Matrix -->
+            <div class="mt-4 p-3 bg-surface border border-border-hairline font-mono flex flex-col gap-1.5">
+              <div class="flex items-center justify-between text-[11px] text-ink-muted">
+                <span>LIST M.R.P.</span>
+                <span id="modal-spec-mrp" class="line-through">₹--</span>
+              </div>
+              <div class="flex items-center justify-between text-sm sm:text-base font-bold text-ink">
+                <span>LIQUIDATION PRICE</span>
+                <span id="modal-spec-price" class="text-accent-red">₹--</span>
+              </div>
+              <div class="hairline-t pt-1.5 flex items-center justify-between text-[10px] text-accent-green font-semibold">
+                <span>NET ARBITRAGE SAVINGS</span>
+                <span id="modal-spec-savings">+₹--</span>
+              </div>
+            </div>
+
+            <!-- Technical Attributes Specs Table -->
+            <div class="mt-4 border-t border-border-hairline pt-3 font-mono text-[9px] sm:text-[10px] space-y-1.5 text-ink-muted uppercase">
+              <div class="flex justify-between">
+                <span>FAMILY / LINE</span>
+                <span id="modal-spec-family" class="text-ink font-semibold">--</span>
+              </div>
+              <div class="flex justify-between">
+                <span>TRACKER DISPATCH</span>
+                <span class="text-ink font-semibold">HOURLY GITHUB CRON</span>
+              </div>
+              <div class="flex justify-between">
+                <span>WARRANTY</span>
+                <span class="text-ink font-semibold">2 YEARS CASIO INDIA</span>
+              </div>
+              <div class="flex justify-between">
+                <span>DATA VERIFICATION</span>
+                <span class="text-ink font-semibold">BHAWAR SALES CORP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-6 flex flex-col gap-2">
+            <a id="modal-spec-buy-link" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-ink text-surface-pure font-mono text-[11px] uppercase tracking-widest text-center font-bold hover:bg-accent-red transition-colors flex items-center justify-center gap-1.5">
+              <span>SECURE AT BHAWAR STORE ↗</span>
+            </a>
+            <div class="flex gap-2">
+              <button id="modal-spec-bookmark-btn" class="flex-1 py-2 border border-border-hairline bg-surface font-mono text-[10px] uppercase tracking-wider text-ink hover:border-ink transition-colors flex items-center justify-center gap-1 cursor-pointer">
+                <span class="material-symbols-outlined text-[14px]">bookmark_border</span>
+                <span id="modal-bookmark-label">SAVE TO WATCHLIST</span>
+              </button>
+              <button id="modal-spec-share-btn" class="flex-1 py-2 border border-border-hairline bg-surface font-mono text-[10px] uppercase tracking-wider text-ink hover:border-ink transition-colors flex items-center justify-center gap-1 cursor-pointer">
+                <span class="material-symbols-outlined text-[14px]">share</span>
+                <span>SHARE DEAL</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVED WATCHLIST SLIDE-OVER DRAWER -->
+  <div id="saved-drawer-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 transition-opacity opacity-0 pointer-events-none"></div>
+  <aside id="saved-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-surface-pure border-l border-border-dark z-50 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
+    <!-- Drawer Header -->
+    <div class="p-4 sm:p-5 hairline-b flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">bookmark</span>
+        <h2 class="font-grotesk font-bold text-sm sm:text-base uppercase tracking-tight text-ink">DEAL LOCKER // SAVED WATCHES</h2>
+        <span id="drawer-count-badge" class="font-mono text-[9px] bg-ink text-surface-pure px-1.5 py-0.5 font-bold">0</span>
+      </div>
+      <button id="btn-close-saved-drawer" class="text-2xl font-mono hover:text-accent-red leading-none text-ink cursor-pointer">&times;</button>
+    </div>
+
+    <!-- Cumulative Savings Banner -->
+    <div class="p-3.5 bg-surface border-b border-border-hairline font-mono text-[10px] uppercase grid grid-cols-2 gap-2 text-ink">
+      <div class="flex flex-col">
+        <span class="text-ink-muted text-[8px] tracking-wider">TOTAL LIST VALUE</span>
+        <span id="drawer-total-mrp" class="font-bold text-xs mt-0.5">₹0</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-ink-muted text-[8px] tracking-wider">TOTAL SAVINGS</span>
+        <span id="drawer-total-savings" class="font-bold text-xs text-accent-green mt-0.5">₹0</span>
+      </div>
+    </div>
+
+    <!-- Drawer Watch List Items -->
+    <div id="saved-drawer-list" class="flex-1 overflow-y-auto p-4 divide-y divide-border-hairline space-y-3 font-mono">
+      <!-- Populated via app.js -->
+    </div>
+
+    <!-- Drawer Empty State -->
+    <div id="saved-drawer-empty" class="hidden flex-1 flex flex-col items-center justify-center p-8 text-center">
+      <span class="text-3xl mb-2">🔖</span>
+      <h3 class="font-grotesk font-bold text-sm uppercase text-ink">YOUR LOCKER IS EMPTY</h3>
+      <p class="font-mono text-[10px] text-ink-muted uppercase mt-1 leading-relaxed">
+        Click the bookmark icon on any watch card to pin deals for quick access and tracking.
+      </p>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-4 hairline-t bg-surface flex flex-col gap-2">
+      <button id="btn-clear-saved-all" class="w-full py-2 border border-border-hairline text-ink-muted font-mono text-[10px] uppercase tracking-wider hover:text-accent-red hover:border-accent-red transition-colors cursor-pointer">
+        CLEAR ALL SAVED WATCHES
+      </button>
+      <button id="btn-close-saved-drawer-footer" class="w-full py-2.5 bg-ink text-surface-pure font-mono text-[10px] uppercase tracking-widest font-bold hover:bg-accent-red transition-colors cursor-pointer">
+        CONTINUE BROWSING CATALOG
+      </button>
+    </div>
+  </aside>
 
   <script src="app.js"></script>
 </body>
