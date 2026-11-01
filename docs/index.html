@@ -436,218 +436,165 @@
   <!-- FIXED APP-SHELL CONSOLE DECK -->
   <div id="app-fixed-deck" class="flex-shrink-0 z-30 bg-background flex flex-col hairline-b shadow-xs">
     
-    <!-- 01: TOP NAVIGATION BAR -->
+    <!-- 01: MINIMALIST TOP BAR -->
     <header class="w-full hairline-b bg-surface-pure pt-safe">
-      <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-12 flex items-center justify-between text-[11px] font-mono tracking-[0.14em] uppercase text-ink">
-        <div class="flex items-center gap-6 sm:gap-8">
-          <a class="hover:text-accent-red transition-colors flex items-center gap-1.5" href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener">
-            <span>STORE</span>
-            <span class="text-[9px] text-ink-muted">↗</span>
-          </a>
-        </div>
-
-        <!-- CENTER BRAND // REFRESH TRIGGER -->
-        <a id="header-brand" class="flex items-center gap-2 font-bold tracking-[0.2em] text-[12px] group hover:text-accent-red transition-colors cursor-pointer select-none" href="javascript:void(0)" title="Click or tap to refresh radar live feeds">
-          <img src="icons/icon.svg" class="w-4 h-4 object-contain inline-block transition-transform group-hover:rotate-45" alt="Radar Icon"/>
+      <div class="max-w-[1400px] mx-auto px-3 sm:px-6 h-12 flex items-center justify-between gap-2 sm:gap-4 text-[11px] font-mono uppercase text-ink">
+        <!-- Brand / Refresh Trigger -->
+        <a id="header-brand" class="flex items-center gap-1.5 sm:gap-2 font-bold tracking-[0.16em] text-[12px] sm:text-[13px] group hover:text-accent-red transition-colors cursor-pointer select-none flex-shrink-0" href="javascript:void(0)" title="Click to refresh feeds">
+          <img src="icons/icon.svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain inline-block transition-transform group-hover:rotate-45" alt="Radar Icon"/>
           <span id="catalog-hero-title">CASIO.RADAR</span>
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
-          <span class="hidden md:inline font-mono text-[9px] text-ink-muted font-normal tracking-[0.15em] ml-1">LIQUIDATION CONSOLE</span>
+          <span class="hidden md:inline font-mono text-[9px] text-accent-red bg-accent-red-faint border border-accent-red/30 px-1.5 py-0.2 font-bold tracking-tight">
+            <span id="stat-deals">--</span> DEALS
+          </span>
+          <span class="hidden lg:inline font-mono text-[9px] text-ink-muted border border-border-hairline px-1.5 py-0.2">
+            PEAK <span id="stat-max-cut" class="text-accent-red font-bold">--</span>
+          </span>
         </a>
 
-        <div class="flex items-center gap-3 sm:gap-5 font-mono text-[10px]">
-          <!-- WISHLIST DRAWER BUTTON -->
-          <button id="btn-open-saved-drawer" class="hover:text-accent-red transition-colors flex items-center gap-1 cursor-pointer" title="Open Saved Watchlist Drawer">
-            <span class="material-symbols-outlined text-[15px]">bookmark</span>
+        <!-- Centered Search Bar -->
+        <div class="flex-1 max-w-xs relative flex items-center">
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="SEARCH MODEL..." 
+            class="w-full bg-surface border border-border-hairline pl-2.5 pr-7 py-1 text-[10px] font-mono tracking-wider uppercase text-ink placeholder:text-ink-muted focus:outline-none focus:border-ink transition-colors"
+          />
+          <button id="btn-clear-search" class="hidden absolute right-5 top-1/2 -translate-y-1/2 text-ink-muted hover:text-accent-red font-mono text-xs px-1 leading-none cursor-pointer" title="Clear search">&times;</button>
+          <span class="hidden sm:inline absolute right-2 top-1/2 -translate-y-1/2 text-[8px] font-mono text-ink-muted select-none">/</span>
+        </div>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0 font-mono text-[10px]">
+          <button id="btn-open-saved-drawer" class="hover:text-accent-red transition-colors flex items-center gap-1 cursor-pointer py-1 px-1.5 border border-border-hairline bg-surface" title="Saved Watchlist Drawer">
+            <span class="material-symbols-outlined text-[14px]">bookmark</span>
             <span class="hidden sm:inline">SAVED</span>
             <span id="header-saved-count" class="bg-ink text-surface-pure px-1 py-0.2 text-[8px] font-bold">0</span>
           </button>
 
-          <button id="btn-open-alert-modal" class="hover:text-accent-red transition-colors flex items-center gap-1.5 font-semibold text-accent-red cursor-pointer">
+          <button id="btn-open-alert-modal" class="hover:text-accent-red transition-colors flex items-center gap-1 font-semibold text-accent-red cursor-pointer py-1 px-1.5 border border-accent-red/20 bg-accent-red-faint text-[9px]">
             <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
-            <span>ALERTS [LIVE]</span>
+            <span class="hidden sm:inline">ALERTS</span>
           </button>
-          <a class="hover:text-accent-red transition-colors hidden md:inline-block" href="https://github.com/VijayAdithyaBK/casio-price-tracker" target="_blank" rel="noopener">GITHUB</a>
+
+          <a class="hover:text-accent-red transition-colors hidden lg:inline-flex items-center gap-1 text-[10px] text-ink-muted hover:text-ink" href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener">
+            <span>STORE ↗</span>
+          </a>
         </div>
       </div>
     </header>
 
-    <!-- 02: LIVE TELEMETRY RUNNER RIBBON -->
-    <div class="hairline-b bg-surface-muted/30 py-1.5 px-4 sm:px-8 flex items-center justify-between overflow-x-auto no-scrollbar font-mono text-[9px] sm:text-[10px] tracking-wider uppercase text-ink-muted">
-      <div class="flex items-center gap-3 sm:gap-5 flex-shrink-0">
-        <div class="flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-ink-muted"></span>
-          <span>CATALOG: <strong id="stat-scanned" class="text-ink font-grotesk font-bold">--</strong></span>
-        </div>
-        <span>•</span>
-        <div class="flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
-          <span>ACTIVE CUTS: <strong id="stat-deals" class="text-accent-red font-grotesk font-bold">--</strong></span>
-        </div>
-        <span>•</span>
-        <div class="flex items-center gap-1">
-          <span>⚡</span>
-          <span>PEAK CUT: <strong id="stat-max-cut" class="text-accent-red font-grotesk font-bold">--</strong></span>
-        </div>
-        <span>•</span>
-        <div class="flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>
-          <span>IN STOCK: <strong id="stat-in-stock" class="text-accent-green font-grotesk font-bold">--</strong></span>
-        </div>
-        <span>•</span>
-        <div class="flex items-center gap-1">
-          <span>💰</span>
-          <span>AVG SAVINGS: <strong id="stat-avg-savings" class="text-ink font-grotesk font-bold">--</strong></span>
-        </div>
-      </div>
-      <div class="hidden lg:flex items-center gap-2 text-ink-muted text-[9px] tracking-widest">
-        <span>BHAWAR AUTHORIZED LIQUIDATION // HOURLY ACTIONS SYNC</span>
-      </div>
-    </div>
-
-    <!-- 03: SERIES HARDWARE SELECTOR & SEARCH ROW -->
-    <div class="hairline-b py-2 px-4 sm:px-8 bg-surface-pure flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5">
-      <!-- Series Hardware Chips -->
-      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-shrink-0" id="series-pill-bar">
-        <!-- ALL -->
-        <button data-series="all" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-ink flex items-center gap-1.5 group cursor-pointer shadow-sm transition-all text-center">
-          <span class="text-[12px] leading-none">⌚</span>
-          <span class="text-[9px] font-mono text-ink tracking-tight font-bold series-label">ALL</span>
-          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium leading-none" id="pill-all-count">[174]</span>
+    <!-- 02: STREAMLINED CONTROL STRIP -->
+    <div class="h-10 px-3 sm:px-6 bg-surface-pure flex items-center justify-between gap-2 hairline-b">
+      <!-- Series Hardware Chips (Horizontally Scrollable) -->
+      <div class="flex items-center gap-1 overflow-x-auto no-scrollbar flex-1 py-1" id="series-pill-bar">
+        <button data-series="all" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-ink text-[9px] font-mono font-bold text-ink cursor-pointer flex items-center gap-1 shadow-xs">
+          <span class="series-label font-bold text-ink">ALL</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-all-count"></span>
         </button>
-
-        <!-- Edifice -->
-        <button data-series="Edifice" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">⏱️</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">EDF</span>
-          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium leading-none" id="pill-edf-cut">-40%</span>
+        <button data-series="Edifice" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">EDIFICE</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-edf-cut"></span>
         </button>
-
-        <!-- G-Shock -->
-        <button data-series="G-Shock" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">🛡️</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">G-SHK</span>
-          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium leading-none" id="pill-gshk-cut">-30%</span>
+        <button data-series="G-Shock" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">G-SHOCK</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-gshk-cut"></span>
         </button>
-
-        <!-- Vintage -->
-        <button data-series="Vintage" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">✨</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">VTG</span>
-          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium leading-none" id="pill-vtg-cut">-20%</span>
+        <button data-series="Vintage" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">VINTAGE</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-vtg-cut"></span>
         </button>
-
-        <!-- Pro Trek -->
-        <button data-series="Pro Trek" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">🧭</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">PRT</span>
-          <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink leading-none" id="pill-prt-cut">--</span>
+        <button data-series="Enticer" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">ENTICER</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-ent-cut"></span>
         </button>
-
-        <!-- Enticer -->
-        <button data-series="Enticer" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">👔</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">ENT</span>
-          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium leading-none" id="pill-ent-cut">-50%</span>
+        <button data-series="Pro Trek" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">PRO TREK</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-prt-cut"></span>
         </button>
-
-        <!-- Sheen -->
-        <button data-series="Sheen" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">💎</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">SHN</span>
-          <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink leading-none" id="pill-shn-cut">--</span>
+        <button data-series="Youth" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">YOUTH</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-yth-cut"></span>
         </button>
-
-        <!-- Youth -->
-        <button data-series="Youth" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">⚡</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">YTH</span>
-          <span class="series-cut-badge text-[8px] font-mono text-ink-muted group-hover:text-ink leading-none" id="pill-yth-cut">--</span>
+        <button data-series="Sheen" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">SHEEN</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-shn-cut"></span>
         </button>
-
-        <!-- Classic -->
-        <button data-series="Casio Classic" class="series-pill flex-shrink-0 px-2 sm:px-2.5 py-1 bg-surface-pure border border-border-hairline hover:border-ink transition-all flex items-center gap-1.5 group cursor-pointer text-center">
-          <span class="text-[12px] leading-none">🏷️</span>
-          <span class="text-[9px] font-mono text-ink-muted tracking-tight group-hover:text-ink series-label">CLS</span>
-          <span class="series-cut-badge text-[8px] font-mono text-accent-red font-medium leading-none" id="pill-cls-cut">-50%</span>
+        <button data-series="Casio Classic" class="series-pill flex-shrink-0 px-2 py-0.5 bg-surface-pure border border-border-hairline hover:border-ink text-[9px] font-mono text-ink-muted hover:text-ink cursor-pointer flex items-center gap-1 transition-colors">
+          <span class="series-label">CLASSIC</span>
+          <span class="series-cut-badge text-[8px] text-accent-red font-medium leading-none" id="pill-cls-cut"></span>
         </button>
       </div>
 
-      <!-- Compact Search Bar -->
-      <div class="w-full md:w-80 lg:w-96 relative flex-shrink-0">
-        <input 
-          type="text" 
-          id="search-input" 
-          placeholder="SEARCH MODEL, SKU, OR SERIES (e.g. GA-2100, MTP)..." 
-          class="w-full bg-surface border border-border-hairline pl-3 pr-14 py-1.5 text-[10px] font-mono tracking-wider uppercase text-ink placeholder:text-ink-faint focus:outline-none focus:border-ink transition-colors"
-        />
-        <button id="btn-clear-search" class="hidden absolute right-7 top-1/2 -translate-y-1/2 text-ink-muted hover:text-accent-red font-mono text-sm px-1 leading-none cursor-pointer" title="Clear search">&times;</button>
-        <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[9px] font-mono text-ink-muted bg-surface-muted px-1 py-0.5 border border-border-hairline select-none">/</span>
-      </div>
-    </div>
-    
-    <div id="search-match-text" class="hidden px-4 sm:px-8 py-1 bg-surface-muted/50 border-b border-border-hairline font-mono text-[9px] uppercase tracking-widest text-ink-muted"></div>
+      <!-- Right: Sort & Quick Toggles -->
+      <div class="flex items-center gap-1 sm:gap-1.5 flex-shrink-0 font-mono text-[9px]">
+        <!-- Sort Quick Buttons -->
+        <div class="flex items-center border border-border-hairline bg-surface p-0.5">
+          <button data-sort="discount_desc" class="sort-btn is-active px-1.5 py-0.5 text-[9px]" title="Sort by % Cut">% CUT</button>
+          <button data-sort="price_asc" class="sort-btn px-1.5 py-0.5 text-[9px]" title="Price: Low to High">PRICE ↑</button>
+          <button data-sort="price_desc" class="sort-btn px-1.5 py-0.5 text-[9px]" title="Price: High to Low">PRICE ↓</button>
+        </div>
 
-    <!-- 04: PARAMETRIC FILTERS & SORT COCKPIT -->
-    <div class="py-1.5 px-4 sm:px-8 bg-surface-pure flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 text-[10px] font-mono tracking-wider uppercase">
-      <!-- Sort Controls & Stock Toggle -->
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <span class="text-ink-muted text-[9px]">SORT:</span>
-        <button data-sort="discount_desc" class="sort-btn is-active text-[10px]">% CUT</button>
-        <button data-sort="savings_desc" class="sort-btn text-[10px]">₹ DELTA</button>
-        <button data-sort="price_asc" class="sort-btn text-[10px]">PRICE ↑</button>
-        <button data-sort="price_desc" class="sort-btn text-[10px]">PRICE ↓</button>
-        
-        <span class="w-px h-3 bg-border-hairline mx-1 hidden sm:inline-block"></span>
-
-        <button id="toggle-stock-filter" class="filter-pill-btn text-[10px] py-0.5 px-2" title="Toggle In-Stock Only">
+        <!-- Stock Toggle -->
+        <button id="toggle-stock-filter" class="filter-pill-btn px-2 py-1 text-[9px] flex items-center gap-1 cursor-pointer border border-border-hairline bg-surface-pure hover:border-ink" title="Toggle In-Stock Only">
           <span id="stock-indicator-dot" class="w-1.5 h-1.5 rounded-full bg-ink-muted"></span>
           <span id="stock-filter-text">IN STOCK</span>
         </button>
-        <button id="toggle-atl-filter" class="filter-pill-btn text-[10px] py-0.5 px-2" title="Filter to All-Time Lowest Prices Ever Recorded">
-          <span>🌟</span>
-          <span id="atl-filter-text">ALL-TIME LOW</span>
+
+        <!-- Secondary Filters Tray Toggle -->
+        <button id="btn-toggle-filters" class="px-2 py-1 text-[9px] font-mono uppercase tracking-wider border border-border-hairline bg-surface-pure hover:border-ink text-ink flex items-center gap-1 cursor-pointer" title="More Filters (Budget, Min Cut, All-Time Low)">
+          <span class="material-symbols-outlined text-[13px] leading-none">tune</span>
+          <span class="hidden sm:inline">MORE</span>
+          <span id="active-filter-badge" class="hidden w-1.5 h-1.5 rounded-full bg-accent-red"></span>
         </button>
-        <button id="toggle-bookmark-filter" class="filter-pill-btn text-[10px] py-0.5 px-2" title="Filter to Saved Watchlist">
-          <span class="material-symbols-outlined text-[12px]">bookmark</span>
-          <span id="bookmark-filter-text">SAVED</span>
-        </button>
-      </div>
-
-      <!-- Budget & Minimum Cut & Layout Switcher -->
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <!-- Budget Pills -->
-        <div class="flex items-center gap-1" id="budget-filter-group">
-          <span class="text-ink-muted text-[9px] mr-0.5">BUDGET:</span>
-          <button data-budget="all" class="budget-btn filter-pill-btn is-active text-[9px] py-0.5 px-1.5">ALL</button>
-          <button data-budget="under_2500" class="budget-btn filter-pill-btn text-[9px] py-0.5 px-1.5">&lt;₹2.5K</button>
-          <button data-budget="2500_5000" class="budget-btn filter-pill-btn text-[9px] py-0.5 px-1.5">₹2.5K–5K</button>
-          <button data-budget="5000_10000" class="budget-btn filter-pill-btn text-[9px] py-0.5 px-1.5">₹5K–10K</button>
-          <button data-budget="above_10000" class="budget-btn filter-pill-btn text-[9px] py-0.5 px-1.5">&gt;₹10K</button>
-        </div>
-
-        <!-- Cut Filter -->
-        <div class="flex items-center gap-1" id="discount-filter-group">
-          <span class="text-ink-muted text-[9px] mr-0.5">CUT:</span>
-          <button data-min-discount="0" class="cut-btn filter-pill-btn is-active text-[9px] py-0.5 px-1.5">ANY</button>
-          <button data-min-discount="30" class="cut-btn filter-pill-btn text-[9px] py-0.5 px-1.5">30%+</button>
-          <button data-min-discount="40" class="cut-btn filter-pill-btn text-[9px] py-0.5 px-1.5">40%+</button>
-          <button data-min-discount="50" class="cut-btn filter-pill-btn text-[9px] py-0.5 px-1.5">50%+</button>
-        </div>
-
-        <!-- Layout Matrix Mode -->
-        <div class="inline-flex items-center p-0.5 bg-surface border border-border-hairline gap-0.5 ml-1" id="layout-view-toggle">
-          <button data-layout-mode="editorial" class="view-matrix-btn is-active p-1" title="Editorial View" aria-label="Editorial View">
-            <span class="material-symbols-outlined text-[14px]">view_agenda</span>
-          </button>
-          <button data-layout-mode="dual" class="view-matrix-btn p-1" title="Two Card View" aria-label="2 Card View">
-            <span class="material-symbols-outlined text-[14px]">grid_view</span>
-          </button>
-          <button data-layout-mode="single" class="view-matrix-btn p-1" title="Single Card View" aria-label="1 Card View">
-            <span class="material-symbols-outlined text-[14px]">crop_square</span>
-          </button>
-        </div>
       </div>
     </div>
+
+    <!-- 03: COLLAPSIBLE FILTER TRAY (HIDDEN BY DEFAULT) -->
+    <div id="filter-tray" class="hidden hairline-b bg-surface-pure px-3 sm:px-6 py-2 transition-all">
+      <div class="max-w-[1400px] mx-auto flex flex-wrap items-center justify-between gap-3 text-[9px] font-mono uppercase">
+        <div class="flex flex-wrap items-center gap-3 sm:gap-5">
+          <!-- Budget Pills -->
+          <div class="flex items-center gap-1" id="budget-filter-group">
+            <span class="text-ink-muted mr-1">BUDGET:</span>
+            <button data-budget="all" class="budget-btn filter-pill-btn is-active py-0.5 px-1.5">ALL</button>
+            <button data-budget="under_2500" class="budget-btn filter-pill-btn py-0.5 px-1.5">&lt;₹2.5K</button>
+            <button data-budget="2500_5000" class="budget-btn filter-pill-btn py-0.5 px-1.5">₹2.5K–5K</button>
+            <button data-budget="5000_10000" class="budget-btn filter-pill-btn py-0.5 px-1.5">₹5K–10K</button>
+            <button data-budget="above_10000" class="budget-btn filter-pill-btn py-0.5 px-1.5">&gt;₹10K</button>
+          </div>
+
+          <!-- Cut Pills -->
+          <div class="flex items-center gap-1" id="discount-filter-group">
+            <span class="text-ink-muted mr-1">MIN CUT:</span>
+            <button data-min-discount="0" class="cut-btn filter-pill-btn is-active py-0.5 px-1.5">ANY</button>
+            <button data-min-discount="30" class="cut-btn filter-pill-btn py-0.5 px-1.5">30%+</button>
+            <button data-min-discount="40" class="cut-btn filter-pill-btn py-0.5 px-1.5">40%+</button>
+            <button data-min-discount="50" class="cut-btn filter-pill-btn py-0.5 px-1.5">50%+</button>
+          </div>
+
+          <!-- ATL & Saved Toggles -->
+          <div class="flex items-center gap-1.5">
+            <button id="toggle-atl-filter" class="filter-pill-btn py-0.5 px-2 flex items-center gap-1" title="All-Time Low Only">
+              <span>🌟</span>
+              <span id="atl-filter-text">ALL-TIME LOW</span>
+            </button>
+            <button id="toggle-bookmark-filter" class="filter-pill-btn py-0.5 px-2 flex items-center gap-1" title="Saved Only">
+              <span class="material-symbols-outlined text-[12px]">bookmark</span>
+              <span id="bookmark-filter-text">SAVED</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Clear Secondary Filters -->
+        <button id="btn-tray-reset" class="text-ink-muted hover:text-accent-red underline cursor-pointer text-[9px]">
+          RESET FILTERS
+        </button>
+      </div>
+    </div>
+
+    <!-- SEARCH RESULT COUNTER STRIP (ONLY WHEN SEARCHING) -->
+    <div id="search-match-text" class="hidden px-3 sm:px-6 py-1 bg-surface-muted/50 border-b border-border-hairline font-mono text-[9px] uppercase tracking-widest text-ink-muted"></div>
 
   </div>
 
@@ -687,6 +634,14 @@
             <span class="font-grotesk font-bold text-sm tracking-tight text-ink block">BHAWAR DISTRIBUTORS ARCHIVE</span>
             <span class="text-[9px] text-ink-faint">Casio India Liquidation Tracking • Automated Hourly Ingestion</span>
           </div>
+          <!-- Archival Ingestion Telemetry Stats -->
+          <div class="flex flex-wrap items-center gap-3 text-ink font-mono text-[10px]">
+            <span>CATALOG: <strong id="stat-scanned" class="font-bold">--</strong></span>
+            <span>•</span>
+            <span>IN STOCK: <strong id="stat-in-stock" class="font-bold">--</strong></span>
+            <span>•</span>
+            <span>AVG SAVINGS: <strong id="stat-avg-savings" class="font-bold">--</strong></span>
+          </div>
           <div class="flex flex-wrap items-center gap-4 text-ink font-mono text-[10px]">
             <a href="https://casiostore.bhawar.com/collections/watches" target="_blank" rel="noopener" class="hover:text-accent-red transition-colors flex items-center gap-1">
               <span>OFFICIAL STORE</span>
@@ -708,7 +663,7 @@
         </div>
 
         <div class="pt-3 flex items-center justify-between font-mono text-[9px] text-ink-muted uppercase tracking-widest border-t border-border-hairline">
-          <span>SYS:// VERSION 4.2.1</span>
+          <span>SYS:// VERSION 4.3.0</span>
           <span>CASIO.RADAR CONSOLE</span>
           <span>2026</span>
         </div>

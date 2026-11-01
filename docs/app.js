@@ -511,89 +511,82 @@ function renderGrid() {
     }
   }
 
-  container.innerHTML = visible.map((item, index) => {
-    const padIndex = String(index + 1).padStart(2, '0');
+  container.innerHTML = visible.map((item) => {
     const imageSrc = item.image || 'https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-2100RL-1A.png?v=1751277644';
     const seriesTitle = (item.series || 'CASIO').toUpperCase();
     const isSaved = bookmarks.includes(item.id);
     const stockStatus = item.available
-      ? '<span class="text-accent-green font-semibold">🟢 IN STOCK</span>'
-      : '<span class="text-ink-muted">🔴 OUT OF STOCK</span>';
+      ? ''
+      : '<span class="text-[8px] sm:text-[9px] font-mono text-ink-muted uppercase border border-border-hairline px-1 py-0.2 bg-surface-muted">OUT OF STOCK</span>';
 
     const atlBadge = item.isAllTimeLow
-      ? `<span class="bg-amber-100 border border-amber-400 text-amber-900 px-1 py-0.5 text-[8px] sm:text-[9px] font-bold tracking-tight" title="Lowest price recorded across all tracker runs">🌟 ALL-TIME LOW</span>`
+      ? `<span class="bg-amber-100 border border-amber-300 text-amber-900 px-1 py-0.2 text-[8px] sm:text-[9px] font-mono font-bold tracking-tight">ATL</span>`
       : '';
 
     return `
-      <article class="border-r border-b border-border-hairline p-4 sm:p-7 flex flex-col justify-between group bg-surface-pure hover:bg-surface-muted/30 transition-colors duration-200 cursor-pointer" data-watch-id="${item.id}">
-        <!-- Top spec label & deal index -->
-        <div class="flex items-center justify-between text-[9px] sm:text-[10px] font-mono tracking-widest text-ink-muted pb-2">
-          <span class="truncate max-w-[120px] sm:max-w-none">PLATE ${padIndex} • ${seriesTitle}</span>
+      <article class="p-3.5 sm:p-5 flex flex-col justify-between group bg-surface-pure hover:bg-surface-muted/20 transition-all duration-150 cursor-pointer border-r border-b border-border-hairline" data-watch-id="${item.id}">
+        <!-- Top Metadata & Action -->
+        <div class="flex items-center justify-between pb-2 text-[10px] font-mono uppercase tracking-wider text-ink-muted">
+          <span class="font-bold text-ink tracking-tight truncate max-w-[120px] sm:max-w-none">${seriesTitle}</span>
           <div class="flex items-center gap-1.5 flex-shrink-0">
             ${atlBadge}
-            <span class="text-accent-red font-bold tracking-normal border border-accent-red/30 px-1 py-0.5 bg-accent-red-faint text-[8px] sm:text-[9px]">
-              -${item.discountPercent}% CUT
+            <span class="font-mono font-bold text-accent-red bg-accent-red-faint border border-accent-red/25 px-1.5 py-0.2 text-[9px] leading-none">
+              -${item.discountPercent}%
             </span>
             <button 
               class="bookmark-btn p-1 text-ink-muted hover:text-accent-red transition-colors" 
-              title="Bookmark Watch" 
+              title="Save Watch" 
               data-id="${item.id}"
             >
-              <span class="material-symbols-outlined text-[15px] sm:text-[16px]">
+              <span class="material-symbols-outlined text-[15px] sm:text-[16px] leading-none">
                 ${isSaved ? 'bookmark' : 'bookmark_border'}
               </span>
             </button>
           </div>
         </div>
 
-        <!-- Archival Studio Isolation Plate -->
-        <div class="img-plate py-4 sm:py-8 flex items-center justify-center min-h-[140px] sm:min-h-[190px] relative bg-surface-muted/30">
-          <div class="absolute top-1.5 left-2 font-mono text-[7px] sm:text-[8px] text-ink-muted uppercase tracking-widest opacity-60">
-            RAW SPEC // ${item.sku || 'CATALOG'}
-          </div>
+        <!-- Clean Product Isolation Image -->
+        <div class="img-plate py-3 sm:py-6 flex items-center justify-center min-h-[130px] sm:min-h-[170px] relative">
           <img 
             alt="${item.title}" 
-            class="max-h-28 sm:max-h-44 max-w-full object-contain filter contrast-105 group-hover:scale-[1.04] transition-transform duration-300" 
+            class="max-h-28 sm:max-h-40 max-w-full object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-300" 
             src="${imageSrc}"
             loading="lazy"
           />
-          <div class="absolute bottom-1.5 right-2 font-mono text-[7px] sm:text-[8px] text-ink-muted tracking-widest uppercase">
-            GAP: +${formatInr(item.savings)}
-          </div>
         </div>
 
         <!-- Product Details, Pricing, Direct Link -->
-        <div class="pt-3">
-          <div class="flex items-baseline justify-between pt-2 border-t border-border-hairline text-ink">
-            <h2 class="font-grotesk font-bold text-[12px] sm:text-[14px] uppercase tracking-[-0.01em] line-clamp-1" title="${item.title}">
+        <div class="pt-2 border-t border-border-hairline flex flex-col gap-1.5">
+          <div class="flex items-start justify-between gap-1">
+            <h2 class="font-grotesk font-bold text-[12px] sm:text-[13px] uppercase tracking-tight text-ink line-clamp-1" title="${item.title}">
               ${item.title}
             </h2>
-            <div class="flex items-baseline gap-1.5 sm:gap-2 font-mono flex-shrink-0 ml-1.5">
-              <span class="text-[10px] sm:text-[11px] line-through text-ink-muted">${formatInr(item.originalPrice)}</span>
-              <span class="font-bold text-[13px] sm:text-[15px] text-ink">${formatInr(item.price)}</span>
-            </div>
-          </div>
-
-          <div class="card-specs mt-2 flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-ink-muted uppercase">
-            <span>ARBITRAGE: +${formatInr(item.savings)}</span>
             ${stockStatus}
           </div>
 
-          <div class="mt-2.5 flex items-center gap-2">
+          <div class="flex items-baseline justify-between font-mono">
+            <div class="flex items-baseline gap-1.5 sm:gap-2">
+              <span class="font-grotesk font-bold text-[13px] sm:text-[15px] text-ink">${formatInr(item.price)}</span>
+              <span class="text-[10px] sm:text-[11px] line-through text-ink-muted">${formatInr(item.originalPrice)}</span>
+            </div>
+            <span class="text-[9px] sm:text-[10px] text-accent-green font-semibold tracking-tight">SAVE ${formatInr(item.savings)}</span>
+          </div>
+
+          <div class="mt-1.5 flex items-center gap-2">
             <a 
-              class="card-btn flex-1 py-2 sm:py-2.5 hairline-all text-center block text-[9px] sm:text-[10px] font-mono tracking-[0.14em] uppercase bg-surface-pure text-ink hover:bg-ink hover:text-surface-pure transition-colors duration-150 font-semibold" 
+              class="card-btn flex-1 py-1.5 sm:py-2 text-center block text-[9px] sm:text-[10px] font-mono tracking-[0.12em] uppercase bg-surface-pure border border-ink text-ink hover:bg-ink hover:text-surface-pure transition-colors font-bold" 
               href="${item.url}" 
               rel="noopener noreferrer" 
               target="_blank"
             >
-              SECURE AT BHAWAR ↗
+              BUY DEAL ↗
             </a>
             <button 
-              class="share-deal-btn px-2.5 py-2 sm:py-2.5 hairline-all text-center font-mono text-[9px] sm:text-[10px] tracking-wider text-ink-muted hover:text-ink hover:border-ink transition-colors bg-surface-pure"
-              title="Share Deal or Copy Direct Link"
+              class="share-deal-btn px-2 py-1.5 sm:py-2 border border-border-hairline text-center font-mono text-ink-muted hover:text-ink hover:border-ink transition-colors bg-surface-pure cursor-pointer"
+              title="Share Deal"
               data-id="${item.id}"
             >
-              <span class="material-symbols-outlined text-[13px]">share</span>
+              <span class="material-symbols-outlined text-[13px] leading-none">share</span>
             </button>
           </div>
         </div>
@@ -746,6 +739,51 @@ function setupEvents() {
     });
   }
 
+  // Filter Tray & Active Badge
+  const filterTray = document.getElementById('filter-tray');
+  const toggleFilterBtn = document.getElementById('btn-toggle-filters');
+  const activeFilterBadge = document.getElementById('active-filter-badge');
+
+  function updateFilterBadge() {
+    const isFiltered = state.budget !== 'all' || state.minDiscount > 0 || state.allTimeLowOnly || state.savedOnly;
+    if (activeFilterBadge) {
+      activeFilterBadge.classList.toggle('hidden', !isFiltered);
+    }
+    if (toggleFilterBtn) {
+      toggleFilterBtn.classList.toggle('border-ink', isFiltered);
+      toggleFilterBtn.classList.toggle('bg-ink', isFiltered);
+      toggleFilterBtn.classList.toggle('text-surface-pure', isFiltered);
+      toggleFilterBtn.classList.toggle('bg-surface-pure', !isFiltered);
+      toggleFilterBtn.classList.toggle('text-ink', !isFiltered);
+    }
+  }
+
+  if (toggleFilterBtn && filterTray) {
+    toggleFilterBtn.addEventListener('click', () => {
+      filterTray.classList.toggle('hidden');
+    });
+  }
+
+  const trayResetBtn = document.getElementById('btn-tray-reset');
+  if (trayResetBtn) {
+    trayResetBtn.addEventListener('click', () => {
+      state.budget = 'all';
+      state.minDiscount = 0;
+      state.allTimeLowOnly = false;
+      state.savedOnly = false;
+
+      budgetButtons.forEach((b) => b.classList.toggle('is-active', b.dataset.budget === 'all'));
+      cutButtons.forEach((b) => b.classList.toggle('is-active', b.dataset.minDiscount === '0'));
+      if (atlToggleBtn) atlToggleBtn.classList.remove('is-active');
+      if (bookmarkToggleBtn) bookmarkToggleBtn.classList.remove('is-active');
+
+      updateFilterBadge();
+      state.visibleCount = state.pageSize;
+      renderGrid();
+      scrollToCatalogTop();
+    });
+  }
+
   // Budget Filter Buttons
   const budgetButtons = document.querySelectorAll('.budget-btn');
   budgetButtons.forEach((btn) => {
@@ -753,6 +791,7 @@ function setupEvents() {
       budgetButtons.forEach((b) => b.classList.remove('is-active'));
       btn.classList.add('is-active');
       state.budget = btn.dataset.budget;
+      updateFilterBadge();
       state.visibleCount = state.pageSize;
       renderGrid();
       scrollToCatalogTop();
@@ -766,6 +805,7 @@ function setupEvents() {
       cutButtons.forEach((b) => b.classList.remove('is-active'));
       btn.classList.add('is-active');
       state.minDiscount = parseInt(btn.dataset.minDiscount || '0', 10);
+      updateFilterBadge();
       state.visibleCount = state.pageSize;
       renderGrid();
       scrollToCatalogTop();
@@ -778,6 +818,7 @@ function setupEvents() {
     atlToggleBtn.addEventListener('click', () => {
       state.allTimeLowOnly = !state.allTimeLowOnly;
       atlToggleBtn.classList.toggle('is-active', state.allTimeLowOnly);
+      updateFilterBadge();
       state.visibleCount = state.pageSize;
       renderGrid();
       scrollToCatalogTop();
@@ -822,6 +863,7 @@ function setupEvents() {
     bookmarkToggleBtn.addEventListener('click', () => {
       state.savedOnly = !state.savedOnly;
       bookmarkToggleBtn.classList.toggle('is-active', state.savedOnly);
+      updateFilterBadge();
       state.visibleCount = state.pageSize;
       renderGrid();
       scrollToCatalogTop();
@@ -892,6 +934,7 @@ function setupEvents() {
         });
       }
 
+      updateFilterBadge();
       renderGrid();
       scrollToCatalogTop();
     });
