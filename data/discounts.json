@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-11-10T10:43:20.314Z",
+  "updatedAt": "2026-11-10T18:27:18.069Z",
   "storeUrl": "https://casiostore.bhawar.com/collections/watches",
   "stats": {
-    "totalScanned": 488,
-    "totalDiscounted": 134,
-    "inStockDiscounted": 134
+    "totalScanned": 469,
+    "totalDiscounted": 119,
+    "inStockDiscounted": 119
   },
   "items": [
     {
@@ -22,8 +22,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-sheen-she-3051pgl-7a-analog-womens-watch?variant=51261500260633",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/SHE-3051PGL-7A_Seq1.png?v=1757308884",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 4147.5
     },
     {
@@ -41,28 +41,9 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-sn6kgsl-7a?variant=51838292328729",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN6KGSL-7A_1.jpg?v=1767945484",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 2747.5
-    },
-    {
-      "id": "9928162279705_50750543036697",
-      "productId": 9928162279705,
-      "variantId": 50750543036697,
-      "title": "LTP-VT01GL-7B",
-      "variantTitle": null,
-      "sku": "A1786",
-      "series": "Enticer",
-      "price": 1997.5,
-      "originalPrice": 3995,
-      "savings": 1998,
-      "discountPercent": 50,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-ltp-vt01gl-7budf-gold-ip-white-analog-womens-watch?variant=50750543036697",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT01GL-7B_Seq1.jpg?v=1751281197",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 1997.5
     },
     {
       "id": "10235354546457_51838294196505",
@@ -79,8 +60,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-sn8ygl-7b?variant=51838294196505",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN8YGL-7B_1.jpg?v=1767946416",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1897.5
     },
     {
@@ -98,8 +79,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-sn8yrl-1b?variant=51838294393113",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN8YRL-1B_1.jpg?v=1767946580",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1897.5
     },
     {
@@ -117,8 +98,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ladies-ltp-vt03d-1bdf-watch?variant=50750550802713",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT03D-1B.png?v=1751281810",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1847.5
     },
     {
@@ -136,8 +117,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ladies-ltp-vt04d-4adf-watch?variant=50750550999321",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT04D-4A.png?v=1751281829",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1847.5
     },
     {
@@ -155,8 +136,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ladies-ltp-vt03gl-4bdf-watch?variant=50750550868249",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT03GL-4B.png?v=1751281816",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1847.5
     },
     {
@@ -174,8 +155,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ladies-ltp-vt03d-7bdf-watch?variant=50750550933785",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT03D-7B.png?v=1751281823",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1847.5
     },
     {
@@ -193,8 +174,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ladies-ltp-vt04d-1adf-watch?variant=50750551032089",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT04D-1A.png?v=1751281832",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1847.5
     },
     {
@@ -212,7 +193,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-sn5ygl-2a-mens-watch?variant=51123920601369",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN5YGL-2A_20_1.jpg?v=1754304331",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 1797.5
     },
@@ -231,7 +212,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-sn5yrl-2a-analog-mens-watch?variant=51123921715481",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN5YRL-2A_20_1.jpg?v=1754304376",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 1797.5
     },
@@ -250,8 +231,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-vt04l-8edf-grey-analog-mens-watch?variant=50750553194777",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-VT04L-8E.png?v=1751281929",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1747.5
     },
     {
@@ -269,7 +250,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-men-mtp-vt03l-7bdf-watch?variant=50750552670489",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-VT03L-7B.png?v=1751281908",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 1747.5
     },
@@ -288,8 +269,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-vt04l-7a2df-white-analog-womens-watch?variant=50750551130393",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT04L-7A2.png?v=1751281841",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1747.5
     },
     {
@@ -307,8 +288,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-vt02bl-1audf-black-analog-womens-watch?variant=50750543495449",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT02BL-1AU.png?v=1751281222",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1747.5
     },
     {
@@ -326,8 +307,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-vt04l-7a1df-gold-analog-womens-watch?variant=50750550966553",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT04L-7A1.png?v=1751281826",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1747.5
     },
     {
@@ -345,66 +326,28 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-sn8yl-2b?variant=51838294229273",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN8YL-2B_1.jpg?v=1767946471",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1747.5
     },
     {
-      "id": "9928162574617_50750543364377",
-      "productId": 9928162574617,
-      "variantId": 50750543364377,
-      "title": "LTP-VT01L-7B2",
+      "id": "9928168735001_50750552604953",
+      "productId": 9928168735001,
+      "variantId": 50750552604953,
+      "title": "MTP-VT03L-1B",
       "variantTitle": null,
-      "sku": "A1628",
+      "sku": "A2408",
       "series": "Enticer",
-      "price": 1647.5,
-      "originalPrice": 3295,
-      "savings": 1648,
+      "price": 1747.5,
+      "originalPrice": 3495,
+      "savings": 1748,
       "discountPercent": 50,
       "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-ltp-vt01l-7b2udf-white-analog-womens-watch?variant=50750543364377",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT01L-7B2_Seq1.jpg?v=1751281216",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "url": "https://casiostore.bhawar.com/products/casio-mtp-vt03l-1bdf-black-analog-mens-watch?variant=50750552604953",
+      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-VT03L-1B.png?v=1751281901",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": true,
-      "lowestPriceEver": 1647.5
-    },
-    {
-      "id": "9928162378009_50750543102233",
-      "productId": 9928162378009,
-      "variantId": 50750543102233,
-      "title": "LTP-VT01L-1B",
-      "variantTitle": null,
-      "sku": "A1626",
-      "series": "Enticer",
-      "price": 1647.5,
-      "originalPrice": 3295,
-      "savings": 1648,
-      "discountPercent": 50,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-ltp-vt01l-1budf-black-analog-womens-watch?variant=50750543102233",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT01L-1B_Seq1.jpg?v=1751281201",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 1647.5
-    },
-    {
-      "id": "9996120457497_51123926335769",
-      "productId": 9996120457497,
-      "variantId": 51123926335769,
-      "title": "LTP-SN5YL-7A",
-      "variantTitle": null,
-      "sku": "A2448",
-      "series": "Enticer",
-      "price": 1647.5,
-      "originalPrice": 3295,
-      "savings": 1648,
-      "discountPercent": 50,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-ltp-sn5yl-7a-white-analog-womens-watch?variant=51123926335769",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN5YL-7A_20_1.jpg?v=1754304525",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 1647.5
+      "lowestPriceEver": 1747.5
     },
     {
       "id": "9996120260889_51123926040857",
@@ -421,8 +364,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-sn5yl-3a-womens-watch?variant=51123926040857",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN5YL-3A_20_1.jpg?v=1754304506",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 1647.5
     },
     {
@@ -440,7 +383,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/efr-574bl-1av?variant=52084356088089",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFR-574BL-1AVU.png?v=1774094945",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7197
     },
@@ -459,7 +402,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gmc-b2100d-1adr-black-analog-dial-silver-stainless-steel-solid-one-touch-3-fold-clasp-band-g1631?variant=50750357537049",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GMC-B2100D-1A.png?v=1751278839",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 41996.5
     },
@@ -478,8 +421,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gw-5000hs-7-40th-anniversary-digital-watch?variant=51261498261785",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GW-5000HS-7.png?v=1757308721",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 17146.5
     },
     {
@@ -497,8 +440,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gm-110d-8a-metal-covered-analog-digital-watch?variant=51261498556697",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GM-110D-8A.png?v=1757308745",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 15396.5
     },
     {
@@ -516,7 +459,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/bms-300d-1av?variant=52084353630489",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/BMS-300D-1AV.png?v=1774094573",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 8046.5
     },
@@ -535,7 +478,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/bms-300l-5av?variant=52084355596569",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/BMS-300L-5AV.png?v=1774094747",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6996.5
     },
@@ -554,7 +497,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/bms-100d-1av?variant=52084353073433",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/BMS-100D-1AV.png?v=1774094347",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6996.5
     },
@@ -573,7 +516,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/bms-100d-8av?variant=52084353335577",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/BMS-100D-8AV.png?v=1774094449",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6996.5
     },
@@ -592,7 +535,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/bms-100l-1av?variant=52084353368345",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/BMS-100L-1AV.png?v=1774094486",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6296.5
     },
@@ -611,8 +554,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-sn2kd-1a-analog-mens-watch?variant=51123911393561",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN2KD-1A_20_1.jpg?v=1754304003",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 3496.5
     },
     {
@@ -630,7 +573,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-sn2kd-2a-analog-mens-watch?variant=51123916177689",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN2KD-2A_20_1.jpg?v=1754304201",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3496.5
     },
@@ -649,7 +592,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-vintage-ltp-sn5yb-1a-analog-womens-watch?variant=51123925287193",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN5YB-1A_20_1.jpg?v=1754304462",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2796.5
     },
@@ -668,7 +611,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-sn5yd-2a-analog-womens-watch?variant=51123924959513",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN5YSG-2A_20_1.jpg?v=1754304441",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2796.5
     },
@@ -687,7 +630,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-sn8yrl-2b?variant=51838294688025",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN8YRL-2B_1.jpg?v=1767946631",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2656.5
     },
@@ -706,7 +649,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-mudmaster-gwg-2000-1a3dr-mens-watch?variant=50750378049817",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GWG-2000-1A3.png?v=1751279192",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 52796
     },
@@ -725,7 +668,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gw-5000hs-1-mens-watch?variant=51261498229017",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GW-5000HS-1.png?v=1757308717",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 19596
     },
@@ -744,7 +687,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-ga-1000-1adr-black-analog-digital-mens-watch?variant=50750272504089",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-1000-1A_Seq1.png?v=1751277326",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 15996
     },
@@ -763,7 +706,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gst-s110-1adr-black-analog-digital-mens-watch?variant=50750400889113",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GST-S110-1A_l.png?v=1751279674",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 15196
     },
@@ -782,7 +725,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efs-s570db-2audf-blue-analog-mens-watch?variant=50800540025113",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFS-S570DB-2A_Seq1.png?v=1751283170",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 14396
     },
@@ -801,7 +744,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gst-s100g-1adr-mens-watch?variant=50750400626969",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GST-S100G-1A_l.png?v=1751279670",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 14236
     },
@@ -820,8 +763,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gm-700-1adr-silver-analog-digital-mens-watch?variant=50750350131481",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GM-700-1A.png?v=1751278708",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 12796
     },
     {
@@ -839,7 +782,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efr-s567d-1avudf-black-analog-mens-watch?variant=50800538845465",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFR-S567D-1AV_Seq1.png?v=1751283132",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 10396
     },
@@ -858,7 +801,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gbd-200uu-9dr-white-digital-mens-watch?variant=50750311203097",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GBD-200UU-9.png?v=1751277957",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 10396
     },
@@ -877,7 +820,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efr-571mdc-1avudf-black-analog-mens-watch?variant=50800535896345",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFR-571MDC-1AV_Seq1.png?v=1751283005",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 10236
     },
@@ -896,7 +839,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-a1000g-9-full-metal-digital-watch-gold?variant=51261500358937",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/A1000G-9.png?v=1757308894",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 9596
     },
@@ -915,7 +858,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efv-550d-7av-standard-chronograph-mens-watch?variant=51199079383321",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFV-550D-7AV_Seq1.png?v=1755868191",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 8796
     },
@@ -934,7 +877,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efv-550d-2av-standard-chronograph-mens-watch?variant=51199079350553",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFV-550D-2AV_Seq1.png?v=1755868189",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 8796
     },
@@ -953,8 +896,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efb-109d-2av-analog-mens-watch?variant=51199077089561",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFB-109DJ-2A.png?v=1755868169",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 8796
     },
     {
@@ -972,7 +915,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-ga-700-1bdr-black-analog-digital-mens-watch?variant=50750292197657",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-700-1B_Seq1.png?v=1751277726",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 8236
     },
@@ -991,7 +934,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ga-2100k-2a?variant=52084357988633",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-2100K-2A.png?v=1774095486",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7996
     },
@@ -1010,7 +953,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ga-2100k-1a?variant=52084357103897",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-2100K-1A.png?v=1774095429",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7996
     },
@@ -1029,7 +972,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-ga-400-1bhdr-black-red-analog-digital-watch?variant=50750291083545",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-400-1B_Seq1.png?v=1751277680",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7996
     },
@@ -1048,7 +991,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efv-610ecl-1a-rose-gold-chronograph-leather-watch?variant=51199079645465",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFV-610ECL-1AU.png?v=1755868204",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7996
     },
@@ -1067,8 +1010,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-ga-100-1a4ndr-mens-watch?variant=50750272962841",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-100-1A4_Seq1.png?v=1751277346",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 7596
     },
     {
@@ -1086,7 +1029,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gma-s2100-7adr-womens-watch?variant=50750389518617",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GMA-S2100-7A_Seq1.png?v=1751279521",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7436
     },
@@ -1105,7 +1048,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efv-640d-2av-mens-watch?variant=51199079907609",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFV-640D-2AVU.png?v=1755868207",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7196
     },
@@ -1124,7 +1067,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efv-650l-7av-mens-watch?variant=51199080038681",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFV-650L-7AV.png?v=1755868215",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7196
     },
@@ -1143,7 +1086,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-a1000a-7-full-metal-digital-watch-silver?variant=51261500326169",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/A1000A-7.png?v=1757308891",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7196
     },
@@ -1162,7 +1105,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-vintage-a1000m-1bef-black-digital-unisex-watch?variant=50750547558681",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/A1000M-1B_01.jpg?v=1751281501",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6796
     },
@@ -1181,7 +1124,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efr-552l-5avudf-light-brown-analog-mens-watch?variant=50800534946073",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFR-552L-5AVU.png?v=1751282976",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6636
     },
@@ -1200,7 +1143,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-dw-5600uhr-1dr-black-and-red-digital-mens-watch?variant=50750263820569",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/DW-5600UHR-1.png?v=1751277111",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6396
     },
@@ -1219,7 +1162,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gd-100-1bdr-mens-watch?variant=50750334566681",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GD-100-1B_Seq1.png?v=1751278180",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6396
     },
@@ -1238,7 +1181,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-b185g-9av-gold-ip-analog-mens-watch?variant=51199083938073",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-B185G-9AV.png?v=1755868333",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6396
     },
@@ -1257,7 +1200,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-b185b-7av-analog-mens-watch?variant=51199083708697",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-B185B-7AV.png?v=1755868321",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 6396
     },
@@ -1276,7 +1219,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-e157mrb-1bdf-rose-gold-analog-womens-watch?variant=50750541791513",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-E157MRB-1B_Seq1.jpg?v=1751281162",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 5756
     },
@@ -1295,7 +1238,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-vintage-a130weg-9a-unisex-watch?variant=51261497868569",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/A130WEG-9A.png?v=1757308699",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 5196
     },
@@ -1314,7 +1257,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-sn2ksg-1a-analog-mens-watch?variant=51123912343833",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN2KSG-1A_20_1.jpg?v=1754304047",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4796
     },
@@ -1333,7 +1276,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-v300g-1audf-mens-watch?variant=50750496604441",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-V300G-1AU.png?v=1751280320",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4716
     },
@@ -1352,7 +1295,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-v300g-9audf-mens-watch?variant=50750496669977",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-V300G-9AU.png?v=1751280324",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4716
     },
@@ -1371,7 +1314,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-sn3krl-1a-analog-mens-watch?variant=51123912868121",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN3KRL-1A_20_1.jpg?v=1754304070",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4396
     },
@@ -1390,7 +1333,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efr-552l-2avudf-grayish-blue-analog-mens-watch?variant=50750391681305",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GMD-S5600BA-1.png?v=1751279597",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4396
     },
@@ -1409,7 +1352,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-sn7yrl-4a?variant=51838293475609",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN7YRL-4A_1.jpg?v=1767946049",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4236
     },
@@ -1428,7 +1371,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-vt01g-7budf-womens-watch?variant=50750542971161",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT01G-7B_Seq1.jpg?v=1751281194",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3996
     },
@@ -1447,47 +1390,9 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-1302pe-4av-mens-watch?variant=51199083479321",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-1302PE-4AV.png?v=1755868308",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3996
-    },
-    {
-      "id": "9928161788185_50750542151961",
-      "productId": 9928161788185,
-      "variantId": 50750542151961,
-      "title": "LTP-V300G-1A",
-      "variantTitle": null,
-      "sku": "A1914",
-      "series": "Enticer",
-      "price": 3996,
-      "originalPrice": 4995,
-      "savings": 999,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-ltp-v300g-1audf-womens-watch?variant=50750542151961",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-V300G-1A_Seq1.jpg?v=1751281177",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 3996
-    },
-    {
-      "id": "9928143733017_50750490706201",
-      "productId": 9928143733017,
-      "variantId": 50750490706201,
-      "title": "LA700WEG-9A",
-      "variantTitle": null,
-      "sku": "A2233",
-      "series": "Vintage",
-      "price": 3596,
-      "originalPrice": 4495,
-      "savings": 899,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-vintage-la700weg-9adf-gold-digital-dial-gold-stainless-steel-band-a2233?variant=50750490706201",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LA700WEG-9A.png?v=1751280070",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": false,
-      "lowestPriceEver": 3596
     },
     {
       "id": "9928157954329_50750534779161",
@@ -1504,7 +1409,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mwd-110hb-1bvdf-black-digital-mens-watch?variant=50750534779161",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MWD-110HB-1BV.png?v=1751280944",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3596
     },
@@ -1523,7 +1428,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/la680wel-1?variant=51890784534809",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LA680WEL-1.png?v=1769253296",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
@@ -1542,7 +1447,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-1302d-7a1vdf-white-analog-womens-watch?variant=50750540448025",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-1302D-7A1V.png?v=1751281126",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
@@ -1561,7 +1466,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/la680wel-8a2?variant=51890784600345",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LA680WEL-8A2.png?v=1769253366",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
@@ -1580,8 +1485,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-aeq-120w-7avdf-silver-analog-digital-mens-watch?variant=50750548148505",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AEQ-120W-7AV.png?v=1751281537",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
     {
@@ -1599,7 +1504,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-1302d-7a2vdf-white-analog-womens-watch?variant=50750540546329",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-1302D-7A2V_01.jpg?v=1751281129",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
@@ -1618,8 +1523,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-aeq-120w-1bvdf-black-analog-digital-mens-watch?variant=50750548082969",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AEQ-120W-1BV.png?v=1751281533",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
     {
@@ -1637,8 +1542,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-1302dd-4a2vdf-cream-analog-womens-watch?variant=50750540677401",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-1302DD-4A2V.png?v=1751281133",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
     {
@@ -1656,26 +1561,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-lws-2200h-4avdf-light-pink-digital-unisex-watch?variant=50750533828889",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LWS-2200H-4AV.png?v=1751280888",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": false,
-      "lowestPriceEver": 3196
-    },
-    {
-      "id": "9928157233433_50750533599513",
-      "productId": 9928157233433,
-      "variantId": 50750533599513,
-      "title": "LWS-2200H-1AV",
-      "variantTitle": null,
-      "sku": "D316",
-      "series": "Casio Classic",
-      "price": 3196,
-      "originalPrice": 3995,
-      "savings": 799,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-lws-2200h-1avdf-digital-dial-black-resin-strap-step-tracker-d316?variant=50750533599513",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LWS-2200H-1AV.png?v=1751280883",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
@@ -1694,8 +1580,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-vt01gl-3budf-mens-watch?variant=50750500831513",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-VT01GL-3B_Seq1.jpg?v=1751280415",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
     {
@@ -1713,8 +1599,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-aeq-120w-1avdf-black-analog-digital-unisex-watch?variant=50750520164633",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AEQ-120W-1AV.png?v=1751280730",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
     {
@@ -1732,7 +1618,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-aeq-110w-3avdf-black-analog-digital-unisex-watch?variant=50750516887833",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AEQ-110W-3AV_01.jpg?v=1751280726",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3196
     },
@@ -1751,7 +1637,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-w-218hd-1avdf-digital-dial-silver-resin-strap-7-year-battery-d227?variant=50750535205145",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/W-218HD-1AV_Seq1.jpg?v=1751280971",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3116
     },
@@ -1770,7 +1656,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-vt01d-7budf-womens-watch?variant=50750542905625",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-VT01D-7B_Seq1.jpg?v=1751281192",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3036
     },
@@ -1789,7 +1675,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-ltp-v300l-7a2udf-womens-watch?variant=50750542348569",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-V300L-7A2_Seq1.jpg?v=1751281184",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3036
     },
@@ -1808,8 +1694,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-hdc-700-3a3vdf-black-analog-digital-dial-brown-resin-strap-10-year-battery-d179?variant=50750531698969",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/HDC-700-3A3V_Seq1.jpg?v=1751280836",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 2956
     },
     {
@@ -1827,7 +1713,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-aq-230a-4amqy-orange-analog-digital-unisex-watch?variant=50750484054297",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AQ-230A-4AMQY.png?v=1751279914",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2796
     },
@@ -1846,8 +1732,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mwd-110h-1avdf-black-digital-unisex-watch?variant=50750534517017",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MWD-110H-1AV.png?v=1751280926",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 2796
     },
     {
@@ -1865,8 +1751,8 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-vintage-a168xesg-9adf-gold-digital-unisex-watch?variant=50750460494105",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/A168XESG-9A.png?v=1751279805",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
+      "updatedAt": "2026-11-10T23:55:32+05:30",
+      "isAllTimeLow": false,
       "lowestPriceEver": 2796
     },
     {
@@ -1884,7 +1770,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mwd-110h-8bvdf-grey-digital-unisex-watch?variant=50750534713625",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MWD-110H-8BV.png?v=1751280940",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2796
     },
@@ -1903,66 +1789,9 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-vt01l-7b2udf-white-analog-mens-watch?variant=50750501290265",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-VT01L-7B2_Seq1.jpg?v=1751280424",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 2636
-    },
-    {
-      "id": "9928165261593_50750547886361",
-      "productId": 9928165261593,
-      "variantId": 50750547886361,
-      "title": "AE-1600H-1AV",
-      "variantTitle": null,
-      "sku": "D386",
-      "series": "Youth",
-      "price": 2556,
-      "originalPrice": 3195,
-      "savings": 639,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-ae-1600h-1avdf-black-digital-mens-watch?variant=50750547886361",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AE-1600H-1AV.png?v=1751281529",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 2556
-    },
-    {
-      "id": "10011114373401_51199083118873",
-      "productId": 10011114373401,
-      "variantId": 51199083118873,
-      "title": "MRW-230H-1E1V",
-      "variantTitle": null,
-      "sku": "A2402",
-      "series": "Youth",
-      "price": 2396,
-      "originalPrice": 2995,
-      "savings": 599,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-mrw-230h-1e1v-black-analog-mens-watch?variant=51199083118873",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MRW-230HJ-1E1.png?v=1755868293",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 2396
-    },
-    {
-      "id": "9928158707993_50750535991577",
-      "productId": 9928158707993,
-      "variantId": 50750535991577,
-      "title": "WS-1400H-1AV",
-      "variantTitle": null,
-      "sku": "D269",
-      "series": "Youth",
-      "price": 2396,
-      "originalPrice": 2995,
-      "savings": 599,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-mrw-230h-1e2v-blue-and-red-analog-mens-watch?variant=50750535991577",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/WS-1400H-1AV.png?v=1751281001",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
-      "lowestPriceEver": 2396
+      "lowestPriceEver": 2636
     },
     {
       "id": "9928156807449_50750531961113",
@@ -1979,45 +1808,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-lf-20w-1adf-black-digital-unisex-watch?variant=50750531961113",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LF-20W-1A.png?v=1751280858",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": true,
-      "lowestPriceEver": 2396
-    },
-    {
-      "id": "9928142848281_50750486610201",
-      "productId": 9928142848281,
-      "variantId": 50750486610201,
-      "title": "LA670WA-7",
-      "variantTitle": null,
-      "sku": "D342",
-      "series": "Vintage",
-      "price": 2396,
-      "originalPrice": 2995,
-      "savings": 599,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-vintage-la670wa-7df-gray-digital-dial-womens-watch?variant=50750486610201",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LA670WA-7.png?v=1751280006",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": false,
-      "lowestPriceEver": 2396
-    },
-    {
-      "id": "9928157462809_50750534254873",
-      "productId": 9928157462809,
-      "variantId": 50750534254873,
-      "title": "MW-620H-1AV",
-      "variantTitle": null,
-      "sku": "D355",
-      "series": "Youth",
-      "price": 2396,
-      "originalPrice": 2995,
-      "savings": 599,
-      "discountPercent": 20,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-mw-620h-1avdf-black-analog-mens-watch?variant=50750534254873",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MW-620H-1AV.png?v=1751280903",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2396
     },
@@ -2036,7 +1827,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-vintage-la700we-7adf-silver-digital-womens-watch?variant=50750490444057",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LA700WE-7A_front.jpg?v=1751280057",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2156
     },
@@ -2055,7 +1846,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/gm-5600bm-1?variant=51890781159705",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GM-5600BM-1.png?v=1769251239",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 16645.5
     },
@@ -2074,7 +1865,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efs-s570d-3audf-green-analog-mens-watch?variant=50800539369753",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFS-S570D-3AU.png?v=1751283149",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 16195.5
     },
@@ -2093,7 +1884,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gm-700p-6adr-mens-watch?variant=50750351048985",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GM-700P-6A.png?v=1751278735",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 15295.5
     },
@@ -2112,7 +1903,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/gm-s2110-1a1?variant=51890781290777",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GM-S2110-1A1.png?v=1769251807",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 11996
     },
@@ -2131,7 +1922,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efb-680d-2bvudf-blue-analog-mens-watch?variant=50800530030873",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFB-680D-2BV_1.png?v=1751282777",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 12595.5
     },
@@ -2150,7 +1941,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efb-680d-7avudf-mens-watch?variant=50800530161945",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFB-680D-7AV.png?v=1751282781",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 12595.5
     },
@@ -2169,7 +1960,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-ga-900-1adr-mens-watch?variant=50750292590873",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-900-1A_Seq01.png?v=1751277758",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 9895.5
     },
@@ -2188,7 +1979,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-ga-v01-1a-analog-digital-10-year-battery-watch?variant=51199082266905",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-V01-1A.png?v=1755868238",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 9895.5
     },
@@ -2207,7 +1998,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-edifice-efv-550l-1av-chronograph-leather-watch?variant=51199079416089",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/EFV-550L-1AV_Seq1.png?v=1755868193",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 9445.5
     },
@@ -2226,7 +2017,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-ga-100cb-1adr-black-blue-camouflage-analog-digital-watch?variant=50750273159449",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GA-100CB-1A_Seq1.png?v=1751277353",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 8545.5
     },
@@ -2245,7 +2036,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gma-p2100pc-7a-polarized-dial-watch?variant=51261501341977",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GMA-P2100PC-7A.png?v=1757308960",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 8095.5
     },
@@ -2264,7 +2055,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-g-shock-gd-b500-1dr-black-digital-mens-watch?variant=50750334730521",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/GD-B500-1.png?v=1751278198",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7645.5
     },
@@ -2283,7 +2074,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-vintage-a1000d-7ef-white-digital-unisex-watch?variant=50750547362073",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/A1000D-7_01.jpg?v=1751281492",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 7465.5
     },
@@ -2302,28 +2093,9 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-1183a-7b-yellow-analog-mens-watch?variant=51123913949465",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN2KSG-9A_20_1.jpg?v=1754304135",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 5395.5
-    },
-    {
-      "id": "9928161820953_50750542184729",
-      "productId": 9928161820953,
-      "variantId": 50750542184729,
-      "title": "LTP-V300G-7A",
-      "variantTitle": null,
-      "sku": "A1915",
-      "series": "Enticer",
-      "price": 4495.5,
-      "originalPrice": 4995,
-      "savings": 500,
-      "discountPercent": 10,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-ltp-v300g-7audf-womens-watch?variant=50750542184729",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-V300G-7A_Seq1.jpg?v=1751281178",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": false,
-      "lowestPriceEver": 4495.5
     },
     {
       "id": "9928149434649_50750499881241",
@@ -2340,7 +2112,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-vt01b-1budf-black-ip-analog-dial-black-ip-stainless-steel-band-mens-watch-a1973?variant=50750499881241",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-VT01B-1BU.png?v=1751280397",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4495.5
     },
@@ -2359,7 +2131,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-vintage-la680wga-1df-watch?variant=50750488707353",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LA680WGA-1.png?v=1751280027",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4495.5
     },
@@ -2378,7 +2150,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-sn2kl-1a-black-analog-mens-watch?variant=51123915424025",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-SN2KL-1A_20_1.jpg?v=1754304179",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4315.5
     },
@@ -2397,7 +2169,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/aq-230egl-9a?variant=51654720717081",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AQ-230EGL-9A.png?v=1763708559",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 4225.5
     },
@@ -2416,7 +2188,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-1303dd-2a?variant=51572638843161",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-1303DD-2AV.png?v=1761703910",
-      "updatedAt": "2026-11-10T16:13:14+05:30",
+      "updatedAt": "2026-11-10T23:57:16+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3595.5
     },
@@ -2435,28 +2207,9 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/ltp-1303dd-4a?variant=51572638875929",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-1303DD-4AV.png?v=1761703986",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 3595.5
-    },
-    {
-      "id": "10235354284313_51838293606681",
-      "productId": 10235354284313,
-      "variantId": 51838293606681,
-      "title": "LTP-SN8YD-2B",
-      "variantTitle": null,
-      "sku": "A2502",
-      "series": "Enticer",
-      "price": 3325.5,
-      "originalPrice": 3695,
-      "savings": 370,
-      "discountPercent": 10,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/ltp-sn8yd-2b?variant=51838293606681",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LTP-SN8YD-2B_1.jpg?v=1767946148",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": false,
-      "lowestPriceEver": 3325.5
     },
     {
       "id": "9928150384921_50750501060889",
@@ -2473,7 +2226,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-mtp-vt01l-2budf-blue-analog-mens-watch?variant=50750501060889",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/MTP-VT01L-2B_Seq1.jpg?v=1751280419",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2965.5
     },
@@ -2492,7 +2245,7 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-lf-30w-2a-blue-digital-unisex-watch?variant=51199082856729",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LF-30W-2A.png?v=1755868270",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2695.5
     },
@@ -2511,47 +2264,9 @@
       "available": true,
       "url": "https://casiostore.bhawar.com/products/casio-lf-30w-3a-green-digital-unisex-watch?variant=51199082889497",
       "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/LF-30W-3A.png?v=1755868272",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
+      "updatedAt": "2026-11-10T23:55:32+05:30",
       "isAllTimeLow": false,
       "lowestPriceEver": 2695.5
-    },
-    {
-      "id": "9936410444057_50800528523545",
-      "productId": 9936410444057,
-      "variantId": 50800528523545,
-      "title": "AQ-230A-1D",
-      "variantTitle": null,
-      "sku": "AD01",
-      "series": "Vintage",
-      "price": 2155.5,
-      "originalPrice": 2395,
-      "savings": 240,
-      "discountPercent": 10,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-aq-230a-1dhdf-black-analog-digital-unisex-watch?variant=50800528523545",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AQ-230A-1DMQ_01.jpg?v=1751282731",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": false,
-      "lowestPriceEver": 2155.5
-    },
-    {
-      "id": "9936410509593_50800528687385",
-      "productId": 9936410509593,
-      "variantId": 50800528687385,
-      "title": "AQ-230A-7B",
-      "variantTitle": null,
-      "sku": "AD02",
-      "series": "Vintage",
-      "price": 2155.5,
-      "originalPrice": 2395,
-      "savings": 240,
-      "discountPercent": 10,
-      "available": true,
-      "url": "https://casiostore.bhawar.com/products/casio-vintage-aq-230a-7bhdf-white-analog-digital-unisex-watch?variant=50800528687385",
-      "image": "https://cdn.shopify.com/s/files/1/0910/0073/3977/files/AQ-230A-7BMQ_01.jpg?v=1751282733",
-      "updatedAt": "2026-11-10T16:13:15+05:30",
-      "isAllTimeLow": false,
-      "lowestPriceEver": 2155.5
     }
   ]
 }
