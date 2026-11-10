@@ -818,9 +818,10 @@
       "originalPrice": 3695,
       "discountPercent": 50,
       "available": true,
-      "lastSeen": "2026-10-30T16:30:05.507Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.820Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 1847.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928167293209_50750550737177": {
       "title": "LTP-VT03BL-7B",
@@ -883,7 +884,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1797.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011112309017_51199076860185": {
       "title": "AE-1000W-8AV",
@@ -944,7 +945,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1797.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996117541145_51123917062425": {
       "title": "MTP-SN5YD-2A",
@@ -1054,11 +1055,10 @@
       "originalPrice": 3495,
       "discountPercent": 50,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 1747.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-07T01:33:51.763Z",
-      "saleEndedAt": "2026-11-07T08:14:26.448Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928168735001_50750552604953": {
       "title": "MTP-VT03L-1B",
@@ -1185,10 +1185,11 @@
       "price": 1647.5,
       "originalPrice": 3295,
       "discountPercent": 50,
-      "available": false,
-      "lastSeen": "2026-10-18T07:43:34.143Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.820Z"
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1647.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996120260889_51123926040857": {
       "title": "LTP-SN5YL-3A",
@@ -1196,9 +1197,10 @@
       "originalPrice": 3295,
       "discountPercent": 50,
       "available": true,
-      "lastSeen": "2026-10-25T10:36:18.170Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.820Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 1647.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996118589721_51123921158425": {
       "title": "MTP-SN5YL-7A",
@@ -1236,9 +1238,10 @@
       "originalPrice": 3295,
       "discountPercent": 50,
       "available": true,
-      "lastSeen": "2026-10-17T18:07:10.704Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.820Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 1647.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928160379161_50750538973465": {
       "title": "LTP-1241D-3A",
@@ -2253,7 +2256,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 41996.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928128856345_50750379852057": {
       "title": "GWG-B1000-1A4",
@@ -3033,9 +3036,10 @@
       "originalPrice": 5495,
       "discountPercent": 50,
       "available": true,
-      "lastSeen": "2026-10-28T06:38:14.683Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.821Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2747.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10235354677529_51838294393113": {
       "title": "LTP-SN8YRL-1B",
@@ -3043,9 +3047,10 @@
       "originalPrice": 3795,
       "discountPercent": 50,
       "available": true,
-      "lastSeen": "2026-10-26T02:56:20.406Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.821Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 1897.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10235354546457_51838294196505": {
       "title": "LTP-SN8YGL-7B",
@@ -3053,9 +3058,10 @@
       "originalPrice": 3795,
       "discountPercent": 50,
       "available": true,
-      "lastSeen": "2026-10-26T15:47:25.267Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.821Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 1897.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011114176793_51199082922265": {
       "title": "LF-30W-8A",
@@ -3096,7 +3102,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7197,
       "highestDiscountEver": 40,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10293140979993_52084355236121": {
       "title": "BMS-300D-2AV",
@@ -3117,7 +3123,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 8046.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10293141176601_52084355596569": {
       "title": "BMS-300L-5AV",
@@ -3128,7 +3134,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6996.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10293140619545_52084353073433": {
       "title": "BMS-100D-1AV",
@@ -3139,7 +3145,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6996.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996115837209_51123911393561": {
       "title": "MTP-SN2KD-1A",
@@ -3147,9 +3153,10 @@
       "originalPrice": 4995,
       "discountPercent": 30,
       "available": true,
-      "lastSeen": "2026-10-30T09:31:21.487Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.821Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 3496.5,
+      "highestDiscountEver": 30,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10235354513689_51838294130969": {
       "title": "LTP-SN8YG-3B",
@@ -3172,7 +3179,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 2796.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10235354874137_51838294786329": {
       "title": "LTP-SN8YSG-3B",
@@ -3195,7 +3202,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 2796.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10235354775833_51838294688025": {
       "title": "LTP-SN8YRL-2B",
@@ -3206,7 +3213,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 2656.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10247995719961_51890783093017": {
       "title": "GST-B1000D-1A",
@@ -3239,7 +3246,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 19596,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10247993950489_51890781159705": {
       "title": "GM-5600BM-1",
@@ -3250,7 +3257,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 16645.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928151957785_50750507974937": {
       "title": "ECB-950MP-1A",
@@ -3258,10 +3265,11 @@
       "originalPrice": 16995,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": true,
+      "isDiscounted": false,
       "lowestPriceEver": 15295.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T02:30:36.306Z",
+      "saleEndedAt": "2026-11-10T10:43:15.169Z"
     },
     "9928165490969_50750548377881": {
       "title": "EQS-940DB-1BV",
@@ -3282,7 +3290,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 12595.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936413131033_50800538845465": {
       "title": "EFR-S567D-1AV",
@@ -3293,7 +3301,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 10396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936412475673_50800535896345": {
       "title": "EFR-571MDC-1AV",
@@ -3304,7 +3312,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 10236,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936412508441_50800535994649": {
       "title": "EFR-571DC-1AV",
@@ -3324,11 +3332,10 @@
       "originalPrice": 11995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 9596,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-07T23:22:29.487Z",
-      "saleEndedAt": "2026-11-08T04:05:55.661Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936413884697_50800541729049": {
       "title": "EFV-640DC-1AV",
@@ -3346,9 +3353,10 @@
       "originalPrice": 10995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-11-01T02:04:19.081Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.821Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 8796,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011112800537_51199079153945": {
       "title": "EFV-550D-1AV",
@@ -3403,7 +3411,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7996,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10293141930265_52084357988633": {
       "title": "GA-2100K-2A",
@@ -3414,7 +3422,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7996,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10293141799193_52084357103897": {
       "title": "GA-2100K-1A",
@@ -3425,7 +3433,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7996,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936413720857_50800541270297": {
       "title": "EFV-640D-1AV",
@@ -3453,11 +3461,10 @@
       "originalPrice": 8995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 7196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-05T03:04:31.697Z",
-      "saleEndedAt": "2026-11-05T11:48:46.078Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10025412296985_51261501341977": {
       "title": "GMA-P2100PC-7A",
@@ -3468,7 +3475,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 8095.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011113849113_51199082594585": {
       "title": "GMA-P2100M-2A",
@@ -3519,7 +3526,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7465.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011115258137_51199084101913": {
       "title": "MTP-E735B-7AV",
@@ -3562,7 +3569,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 5756,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996116295961_51123912343833": {
       "title": "MTP-SN2KSG-1A",
@@ -3573,7 +3580,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4796,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996116427033_51123912868121": {
       "title": "MTP-SN3KRL-1A",
@@ -3581,11 +3588,10 @@
       "originalPrice": 5495,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 4396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-09T01:24:06.253Z",
-      "saleEndedAt": "2026-11-09T08:59:59.309Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10235354186009_51838293475609": {
       "title": "LTP-SN7YRL-4A",
@@ -3596,7 +3602,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4236,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996116918553_51123915260185": {
       "title": "MTP-SN3KD-2A",
@@ -3624,11 +3630,10 @@
       "originalPrice": 4995,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 4495.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-03T07:30:34.514Z",
-      "saleEndedAt": "2026-11-03T15:46:35.133Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10195474415897_51654720717081": {
       "title": "AQ-230EGL-9A",
@@ -3639,7 +3644,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4225.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928157954329_50750534779161": {
       "title": "MWD-110HB-1BV",
@@ -3647,11 +3652,10 @@
       "originalPrice": 4495,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3596,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-08T11:39:26.997Z",
-      "saleEndedAt": "2026-11-08T17:32:15.826Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10247996670233_51890784600345": {
       "title": "LA680WEL-8A2",
@@ -3662,7 +3666,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928160608537_50750539989273": {
       "title": "LTP-1302D-1A1V",
@@ -3680,11 +3684,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-08T11:39:26.997Z",
-      "saleEndedAt": "2026-11-08T17:32:15.826Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10247996604697_51890784534809": {
       "title": "LA680WEL-1",
@@ -3695,7 +3698,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928160706841_50750540448025": {
       "title": "LTP-1302D-7A1V",
@@ -3706,7 +3709,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928167227673_50750550671641": {
       "title": "LTP-V300D-4A",
@@ -3726,11 +3729,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-09T08:59:59.309Z",
-      "saleEndedAt": "2026-11-09T19:43:10.547Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928160870681_50750540677401": {
       "title": "LTP-1302DD-4A2V",
@@ -3738,9 +3740,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-15T06:53:37.975Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 3196,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10247994933529_51890782273817": {
       "title": "A158WEM-7",
@@ -3758,11 +3761,10 @@
       "originalPrice": 3895,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3116,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-03T07:30:34.514Z",
-      "saleEndedAt": "2026-11-03T15:46:35.133Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928149631257_50750500110617": {
       "title": "MTP-VT01D-2B",
@@ -3804,11 +3806,10 @@
       "originalPrice": 3695,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3325.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-02T07:09:00.491Z",
-      "saleEndedAt": "2026-11-02T17:44:02.770Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928157888793_50750534713625": {
       "title": "MWD-110H-8BV",
@@ -3816,11 +3817,10 @@
       "originalPrice": 3495,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2796,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-06T07:37:09.792Z",
-      "saleEndedAt": "2026-11-06T15:37:46.609Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928150515993_50750501290265": {
       "title": "MTP-VT01L-7B2",
@@ -3828,9 +3828,10 @@
       "originalPrice": 3295,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-25T10:36:18.171Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2636,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928160411929_50750539137305": {
       "title": "LTP-1241D-4A2",
@@ -3860,11 +3861,10 @@
       "originalPrice": 2995,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2695.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-03T07:30:34.514Z",
-      "saleEndedAt": "2026-11-03T15:46:35.133Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011114144025_51199082889497": {
       "title": "LF-30W-3A",
@@ -3872,11 +3872,10 @@
       "originalPrice": 2995,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2695.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-08T11:39:26.997Z",
-      "saleEndedAt": "2026-11-08T17:32:15.826Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928159232281_50750536745241": {
       "title": "WS-1700H-5AV",
@@ -3897,7 +3896,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 15996,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928135835929_50750400889113": {
       "title": "GST-S110-1A",
@@ -3908,7 +3907,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 15196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928135704857_50750400626969": {
       "title": "GST-S100G-1A",
@@ -3919,7 +3918,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 14236,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928123449625_50750351048985": {
       "title": "GM-700P-6A",
@@ -3930,7 +3929,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 15295.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928123384089_50750350328089": {
       "title": "GM-700G-9A",
@@ -3948,9 +3947,10 @@
       "originalPrice": 15995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-21T01:13:37.049Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 12796,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928130101529_50750383522073": {
       "title": "GX-56MF-1",
@@ -3968,9 +3968,10 @@
       "originalPrice": 9495,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-25T05:36:49.398Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 7596,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928112111897_50750273159449": {
       "title": "GA-100CB-1A",
@@ -3981,7 +3982,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 8545.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928131838233_50750389518617": {
       "title": "GMA-S2100-7A",
@@ -3992,7 +3993,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7436,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928114667801_50750288724249": {
       "title": "GA-2100RC-1A",
@@ -4013,7 +4014,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928146354457_50750494376217": {
       "title": "MTP-B145D-3AV",
@@ -4033,11 +4034,10 @@
       "originalPrice": 5495,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 4396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-05T03:04:31.697Z",
-      "saleEndedAt": "2026-11-05T11:48:46.078Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928145338649_50750493131033": {
       "title": "MTP-1314SG-1AV",
@@ -4045,10 +4045,11 @@
       "originalPrice": 4495,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": true,
+      "isDiscounted": false,
       "lowestPriceEver": 3596,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T02:30:36.306Z",
+      "saleEndedAt": "2026-11-10T10:43:15.169Z"
     },
     "9928144945433_50750492737817": {
       "title": "MTP-1302DD-5AV",
@@ -4069,7 +4070,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 2796,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928139211033_50750460494105": {
       "title": "A168XESG-9A",
@@ -4077,9 +4078,10 @@
       "originalPrice": 3495,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-24T00:12:57.201Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2796,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928142127385_50750485561625": {
       "title": "B640WDG-7",
@@ -4119,9 +4121,10 @@
       "originalPrice": 3495,
       "discountPercent": 50,
       "available": true,
-      "lastSeen": "2026-10-21T12:47:14.440Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 1747.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928159133977_50750536581401": {
       "title": "WS-1500H-5BV",
@@ -4164,7 +4167,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6996.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10293140685081_52084353302809": {
       "title": "BMS-100D-7AV",
@@ -4197,7 +4200,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6296.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10293140816153_52084353597721": {
       "title": "BMS-100L-5AV",
@@ -4220,7 +4223,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 52796,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928126365977_50750372643097": {
       "title": "GPR-H1000-1",
@@ -4283,7 +4286,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 11996,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928152973593_50750511874329": {
       "title": "EQS-920DB-1AV",
@@ -4306,7 +4309,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 12595.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928118468889_50750311203097": {
       "title": "GBD-200UU-9",
@@ -4317,7 +4320,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 10396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10025409118489_51261497639193": {
       "title": "GA-B2100-3A",
@@ -4360,7 +4363,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 9895.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011112931609_51199079383321": {
       "title": "EFV-550D-7AV",
@@ -4371,7 +4374,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 8796,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011112571161_51199077122329": {
       "title": "EFB-109D-7AV",
@@ -4392,7 +4395,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 9445.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928115519769_50750292197657": {
       "title": "GA-700-1B",
@@ -4403,7 +4406,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 8236,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928115224857_50750291083545": {
       "title": "GA-400-1B",
@@ -4414,7 +4417,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7996,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936412410137_50800535666969": {
       "title": "EFR-571DB-1A1V",
@@ -4445,7 +4448,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928130494745_50750385160473": {
       "title": "GMA-P2100-7A",
@@ -4468,7 +4471,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6796,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928111522073_50750271258905": {
       "title": "GA-010-2A",
@@ -4501,7 +4504,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7645.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936412147993_50800534946073": {
       "title": "EFR-552L-5AV",
@@ -4509,11 +4512,10 @@
       "originalPrice": 8295,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 6636,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-05T03:04:31.697Z",
-      "saleEndedAt": "2026-11-05T11:48:46.078Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928120729881_50750334566681": {
       "title": "GD-100-1B",
@@ -4524,7 +4526,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928144486681_50750492115225": {
       "title": "MDV-107D-3AV",
@@ -4555,7 +4557,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 5196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928141472025_50750484316441": {
       "title": "AQ-230GA-5AMQY",
@@ -4646,7 +4648,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 5395.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928147468569_50750496669977": {
       "title": "MTP-V300G-9A",
@@ -4657,7 +4659,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4716,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928147435801_50750496604441": {
       "title": "MTP-V300G-1A",
@@ -4668,7 +4670,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4716,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928145797401_50750493786393": {
       "title": "MTP-1374L-7AV",
@@ -4688,11 +4690,10 @@
       "originalPrice": 4995,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 4495.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-06T07:37:09.792Z",
-      "saleEndedAt": "2026-11-06T15:37:46.609Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928162214169_50750542971161": {
       "title": "LTP-VT01G-7B",
@@ -4703,7 +4704,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3996,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928149074201_50750499258649": {
       "title": "MTP-VD300D-1E",
@@ -4726,7 +4727,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3996,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928161788185_50750542151961": {
       "title": "LTP-V300G-1A",
@@ -4734,9 +4735,10 @@
       "originalPrice": 4995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-08T06:57:33.412Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 3996,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928161820953_50750542184729": {
       "title": "LTP-V300G-7A",
@@ -4747,7 +4749,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4495.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928169226521_50750554407193": {
       "title": "MWA-300H-1AV",
@@ -4845,11 +4847,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-07T08:14:26.448Z",
-      "saleEndedAt": "2026-11-07T15:22:28.673Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928165359897_50750548148505": {
       "title": "AEQ-120W-7AV",
@@ -4857,9 +4858,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-24T17:47:26.656Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 3196,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928165294361_50750548082969": {
       "title": "AEQ-120W-1BV",
@@ -4867,9 +4869,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-17T15:01:33.684Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 3196,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996117967129_51123918602521": {
       "title": "MTP-SN5YB-1A",
@@ -4889,9 +4892,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-22T11:03:22.804Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 3196,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928157364505_50750534123801": {
       "title": "LWS-2200H-8AV",
@@ -4909,9 +4913,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-22T05:42:28.717Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 3196,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996119114009_51123923976473": {
       "title": "LTP-SN5YSR-5A",
@@ -4934,7 +4939,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3595.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928156709145_50750531797273": {
       "title": "HDC-700-9AV",
@@ -4967,7 +4972,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3595.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928161952025_50750542348569": {
       "title": "LTP-V300L-7A2",
@@ -4975,11 +4980,10 @@
       "originalPrice": 3795,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3036,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-07T08:14:26.448Z",
-      "saleEndedAt": "2026-11-07T15:22:28.673Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928141799705_50750484873497": {
       "title": "AQ-800E-7A",
@@ -5007,9 +5011,10 @@
       "originalPrice": 3695,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-26T02:56:20.407Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2956,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928153301273_50750512759065": {
       "title": "AE-1000W-1AV",
@@ -5037,9 +5042,10 @@
       "originalPrice": 3495,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-11-01T09:59:56.683Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2796,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928145207577_50750492999961": {
       "title": "MTP-1314D-7AV",
@@ -5067,9 +5073,10 @@
       "originalPrice": 3195,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-31T14:17:55.422Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2556,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928158707993_50750535991577": {
       "title": "WS-1400H-1AV",
@@ -5077,11 +5084,10 @@
       "originalPrice": 2995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-03T15:46:35.133Z",
-      "saleEndedAt": "2026-11-03T21:27:50.652Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928156807449_50750531961113": {
       "title": "LF-20W-1A",
@@ -5089,9 +5095,10 @@
       "originalPrice": 2995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-25T10:36:18.171Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2396,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928142782745_50750486544665": {
       "title": "LA670WA-1",
@@ -5109,11 +5116,10 @@
       "originalPrice": 2995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-08T11:39:26.997Z",
-      "saleEndedAt": "2026-11-08T17:32:15.826Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928166899993_50750550278425": {
       "title": "LTP-V007D-2E",
@@ -5161,9 +5167,10 @@
       "originalPrice": 2995,
       "discountPercent": 20,
       "available": true,
-      "lastSeen": "2026-10-08T06:57:33.412Z",
-      "isDiscounted": false,
-      "saleEndedAt": "2026-11-01T16:44:29.822Z"
+      "isDiscounted": true,
+      "lowestPriceEver": 2396,
+      "highestDiscountEver": 20,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011114078489_51199082823961": {
       "title": "LF-30W-1A",
@@ -5208,7 +5215,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 2156,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928153923865_50750515872025": {
       "title": "AE-1500WH-8B2V",
@@ -5236,11 +5243,10 @@
       "originalPrice": 2395,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2155.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-06T07:37:09.792Z",
-      "saleEndedAt": "2026-11-06T15:37:46.609Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9936410509593_50800528687385": {
       "title": "AQ-230A-7B",
@@ -5248,11 +5254,10 @@
       "originalPrice": 2395,
       "discountPercent": 10,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2155.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-07T01:33:51.764Z",
-      "saleEndedAt": "2026-11-07T08:14:26.448Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928142520601_50750486053145": {
       "title": "DBC-32-1A",
@@ -5285,7 +5290,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 9895.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928157462809_50750534254873": {
       "title": "MW-620H-1AV",
@@ -5293,11 +5298,10 @@
       "originalPrice": 2995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 2396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-08T11:39:26.997Z",
-      "saleEndedAt": "2026-11-08T17:32:15.826Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928111948057_50750272733465": {
       "title": "GA-1000-4B",
@@ -5328,7 +5332,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 14396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928120533273_50750327554329": {
       "title": "GBX-100NS-1",
@@ -5359,7 +5363,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3596,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928142946585_50750486708505": {
       "title": "LA670WD-1",
@@ -5377,11 +5381,10 @@
       "originalPrice": 4995,
       "discountPercent": 30,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3496.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-03T07:30:34.514Z",
-      "saleEndedAt": "2026-11-03T15:46:35.133Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9996115607833_51123911164185": {
       "title": "MTP-SN2KL-3A",
@@ -5402,7 +5405,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 16195.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011112898841_51199079350553": {
       "title": "EFV-550D-2AV",
@@ -5413,7 +5416,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 8796,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011115094297_51199083938073": {
       "title": "MTP-B185G-9AV",
@@ -5424,7 +5427,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "10011114897689_51199083708697": {
       "title": "MTP-B185B-7AV",
@@ -5435,7 +5438,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 6396,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928146485529_50750494507289": {
       "title": "MTP-E321RL-2AV",
@@ -5468,7 +5471,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4315.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928157233433_50750533599513": {
       "title": "LWS-2200H-1AV",
@@ -5476,11 +5479,10 @@
       "originalPrice": 3995,
       "discountPercent": 20,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 3196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-07T08:14:26.448Z",
-      "saleEndedAt": "2026-11-07T15:22:28.673Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928162148633_50750542905625": {
       "title": "LTP-VT01D-7B",
@@ -5491,7 +5493,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 3036,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928150384921_50750501060889": {
       "title": "MTP-VT01L-2B",
@@ -5502,7 +5504,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 2965.5,
       "highestDiscountEver": 10,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928165196057_50750547689753": {
       "title": "AE-1600H-8BV",
@@ -5651,7 +5653,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 7196,
       "highestDiscountEver": 20,
-      "lastSeen": "2026-11-10T02:30:36.306Z"
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     },
     "9928142553369_50750486085913": {
       "title": "DBC-32D-1A",
@@ -5674,7 +5676,150 @@
       "highestDiscountEver": 50,
       "lastSeen": "2026-11-05T03:04:31.697Z",
       "saleEndedAt": "2026-11-05T11:48:46.078Z"
+    },
+    "10025411445017_51261500260633": {
+      "title": "SHE-3051PGL-7AUD",
+      "price": 4147.5,
+      "originalPrice": 8295,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 4147.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928162279705_50750543036697": {
+      "title": "LTP-VT01GL-7B",
+      "price": 1997.5,
+      "originalPrice": 3995,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1997.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928167555353_50750550999321": {
+      "title": "LTP-VT04D-4A",
+      "price": 1847.5,
+      "originalPrice": 3695,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1847.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928167424281_50750550868249": {
+      "title": "LTP-VT03GL-4B",
+      "price": 1847.5,
+      "originalPrice": 3695,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1847.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928167489817_50750550933785": {
+      "title": "LTP-VT03D-7B",
+      "price": 1847.5,
+      "originalPrice": 3695,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1847.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928167588121_50750551032089": {
+      "title": "LTP-VT04D-1A",
+      "price": 1847.5,
+      "originalPrice": 3695,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1847.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928168964377_50750553194777": {
+      "title": "MTP-VT04L-8E",
+      "price": 1747.5,
+      "originalPrice": 3495,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1747.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928167686425_50750551130393": {
+      "title": "LTP-VT04L-7A2",
+      "price": 1747.5,
+      "originalPrice": 3495,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1747.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928162705689_50750543495449": {
+      "title": "LTP-VT02BL-1A",
+      "price": 1747.5,
+      "originalPrice": 3495,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1747.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928167522585_50750550966553": {
+      "title": "LTP-VT04L-7A1",
+      "price": 1747.5,
+      "originalPrice": 3495,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1747.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "9928162574617_50750543364377": {
+      "title": "LTP-VT01L-7B2",
+      "price": 1647.5,
+      "originalPrice": 3295,
+      "discountPercent": 50,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 1647.5,
+      "highestDiscountEver": 50,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "10025409708313_51261498261785": {
+      "title": "GW-5000HS-7",
+      "price": 17146.5,
+      "originalPrice": 24495,
+      "discountPercent": 30,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 17146.5,
+      "highestDiscountEver": 30,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
+    },
+    "10025409970457_51261498556697": {
+      "title": "GM-110D-8A",
+      "price": 15396.5,
+      "originalPrice": 21995,
+      "discountPercent": 30,
+      "available": true,
+      "isDiscounted": true,
+      "lowestPriceEver": 15396.5,
+      "highestDiscountEver": 30,
+      "lastSeen": "2026-11-10T10:43:15.169Z"
     }
   },
-  "lastRun": "2026-11-10T02:30:36.319Z"
+  "lastRun": "2026-11-10T10:43:20.315Z"
 }
