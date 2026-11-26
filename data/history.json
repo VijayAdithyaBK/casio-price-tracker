@@ -1199,7 +1199,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1647.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.400Z"
     },
     "9996120260889_51123926040857": {
       "title": "LTP-SN5YL-3A",
@@ -1210,7 +1210,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1647.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.400Z"
     },
     "9996118589721_51123921158425": {
       "title": "MTP-SN5YL-7A",
@@ -2032,11 +2032,10 @@
       "originalPrice": 9995,
       "discountPercent": 40,
       "available": true,
-      "isDiscounted": false,
+      "isDiscounted": true,
       "lowestPriceEver": 5997,
       "highestDiscountEver": 40,
-      "lastSeen": "2026-11-05T11:48:46.078Z",
-      "saleEndedAt": "2026-11-05T19:25:20.084Z"
+      "lastSeen": "2026-11-26T14:40:32.400Z"
     },
     "9928152547609_50750510956825": {
       "title": "EFV-C110D-5A",
@@ -2267,7 +2266,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 41996.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.400Z"
     },
     "9928128856345_50750379852057": {
       "title": "GWG-B1000-1A4",
@@ -3076,7 +3075,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1897.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.399Z"
     },
     "10011114176793_51199082922265": {
       "title": "LF-30W-8A",
@@ -4193,7 +4192,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1747.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.399Z"
     },
     "9928159133977_50750536581401": {
       "title": "WS-1500H-5BV",
@@ -5814,7 +5813,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 4147.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.399Z"
     },
     "9928162279705_50750543036697": {
       "title": "LTP-VT01GL-7B",
@@ -5825,7 +5824,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1997.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.399Z"
     },
     "9928167555353_50750550999321": {
       "title": "LTP-VT04D-4A",
@@ -5848,7 +5847,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1847.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.399Z"
     },
     "9928167489817_50750550933785": {
       "title": "LTP-VT03D-7B",
@@ -5859,7 +5858,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1847.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.399Z"
     },
     "9928167588121_50750551032089": {
       "title": "LTP-VT04D-1A",
@@ -5894,7 +5893,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1747.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.400Z"
     },
     "9928162705689_50750543495449": {
       "title": "LTP-VT02BL-1A",
@@ -5905,7 +5904,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1747.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.399Z"
     },
     "9928167522585_50750550966553": {
       "title": "LTP-VT04L-7A1",
@@ -5916,7 +5915,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 1747.5,
       "highestDiscountEver": 50,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.400Z"
     },
     "9928162574617_50750543364377": {
       "title": "LTP-VT01L-7B2",
@@ -5951,7 +5950,7 @@
       "isDiscounted": true,
       "lowestPriceEver": 15396.5,
       "highestDiscountEver": 30,
-      "lastSeen": "2026-11-26T04:40:31.917Z"
+      "lastSeen": "2026-11-26T14:40:32.400Z"
     },
     "9928168636697_50750552506649": {
       "title": "MTP-VT03D-7B",
@@ -5966,5 +5965,5 @@
       "saleEndedAt": "2026-11-20T08:19:27.824Z"
     }
   },
-  "lastRun": "2026-11-26T04:40:31.929Z"
+  "lastRun": "2026-11-26T14:40:33.549Z"
 }
